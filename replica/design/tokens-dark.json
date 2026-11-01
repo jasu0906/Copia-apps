@@ -1,0 +1,94 @@
+{
+  "_about": "Tokens de la landing (modo oscuro). Mismos nombres que tokens.json. on-step y los layer-* no cambian en el HTML actual: el texto del frasco y las capas de piel van en #1B2627 fijo en ambos modos.",
+  "color": {
+    "bg": "#111819",
+    "surface": "#182223",
+    "border": "#2D3A3B",
+    "border-control": "#6B7B7C",
+    "text": "#E6EEEC",
+    "text-muted": "#97A6A5",
+    "accent": "#E6EEEC",
+    "on-accent": "#111819",
+    "focus": "#6FA7A3",
+    "step-1": "#6FA7A3",
+    "step-2": "#D9957A",
+    "step-3": "#9E95D2",
+    "step-4": "#D9B54F",
+    "on-step": "#1B2627",
+    "layer-1": "#F3D9C9",
+    "layer-2": "#E9B8A2",
+    "layer-3": "#D79A86",
+    "on-layer": "#1B2627"
+  },
+  "pairs": [
+    [
+      "text",
+      "bg"
+    ],
+    [
+      "text",
+      "surface"
+    ],
+    [
+      "text-muted",
+      "bg"
+    ],
+    [
+      "text-muted",
+      "surface"
+    ],
+    [
+      "on-accent",
+      "accent"
+    ],
+    [
+      "on-step",
+      "step-1"
+    ],
+    [
+      "on-step",
+      "step-2"
+    ],
+    [
+      "on-step",
+      "step-3"
+    ],
+    [
+      "on-step",
+      "step-4"
+    ],
+    [
+      "on-layer",
+      "layer-1"
+    ],
+    [
+      "on-layer",
+      "layer-2"
+    ],
+    [
+      "on-layer",
+      "layer-3"
+    ],
+    [
+      "focus",
+      "bg",
+      "ui"
+    ],
+    [
+      "focus",
+      "surface",
+      "ui"
+    ],
+    [
+      "border-control",
+      "bg",
+      "ui"
+    ],
+    [
+      "border-control",
+      "surface",
+      "ui"
+    ]
+  ],
+  "_decorative": "'border' solo se usa en adornos (chips, separadores) y no necesita 3:1. Los bordes de controles usan 'border-control'."
+}

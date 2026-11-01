@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spaline · Rutina de cuidado de la piel</title>
+<meta name="description" content="Spaline: rutina de cuidado de la piel en 4 pasos. Limpiar, tratar, hidratar y proteger.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: historia vertical; un frasco fijo (sticky) que cambia de color y fórmula mientras bajas por los 4 pasos de la rutina */
+:root{
+  --bg:#EDF0EE; --surface:#F8FAF9; --ink:#1B2627; --muted:#5C6B6C; --line:#CBD4D2;
+  --line-control:#768584; --focus:#2F6F6A; --on-step:#1B2627;
+  --c1:#9FC7C4; --c2:#E7B8A4; --c3:#C9C2E6; --c4:#F2D27A;
+  --cur:var(--c1);
+  --display:"Gloock",Georgia,"Times New Roman",serif;
+  --body:"Manrope",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111819;--surface:#182223;--ink:#E6EEEC;--muted:#97A6A5;--line:#2D3A3B;
+  --line-control:#6B7B7C;--focus:#6FA7A3;
+  --c1:#6FA7A3;--c2:#D9957A;--c3:#9E95D2;--c4:#D9B54F;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111819;--surface:#182223;--ink:#E6EEEC;--muted:#97A6A5;--line:#2D3A3B;
+  --line-control:#6B7B7C;--focus:#6FA7A3;
+  --c1:#6FA7A3;--c2:#D9957A;--c3:#9E95D2;--c4:#D9B54F;color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;line-height:1.05;margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--ink);z-index:20;margin-top:env(safe-area-inset-top,0px)}
+
+/* HERO */
+.hero{padding-block:64px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(48px,9vw,112px);letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.6px var(--ink)}
+.hero p{max-width:44ch;color:var(--muted);font-size:18px;margin:20px 0 28px}
+.btn{display:inline-flex;gap:10px;align-items:center;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:14px 22px;font:700 15px var(--body);cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.btn:active{transform:translateY(0);box-shadow:none}
+.btn[aria-disabled="true"]{opacity:.6;cursor:default;transform:none;box-shadow:none}
+.btn:focus-visible,.tab:focus-visible,.layer-btn:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.drops{position:relative;aspect-ratio:1;max-width:100%}
+.drops span{position:absolute;border-radius:50% 50% 50% 0;transform:rotate(-45deg);opacity:.9;animation:float 6s ease-in-out infinite}
+.drops span:nth-child(1){width:46%;height:46%;left:10%;top:18%;background:var(--c1)}
+.drops span:nth-child(2){width:30%;height:30%;left:56%;top:8%;background:var(--c2);animation-delay:-2s}
+.drops span:nth-child(3){width:34%;height:34%;left:48%;top:56%;background:var(--c3);animation-delay:-4s}
+.drops span:nth-child(4){width:16%;height:16%;left:18%;top:70%;background:var(--c4);animation-delay:-1s}
+@keyframes float{50%{translate:0 -10px}}
+.scrollhint{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.scrollhint i{width:1px;height:28px;background:var(--muted);display:block;animation:hint 1.8s infinite}
+@keyframes hint{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* RUTINA (sticky) */
+.routine{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding-block:40px}
+.stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12vh);height:min(70vh,560px);display:grid;place-items:center;background:var(--surface);border-radius:28px;overflow:hidden}
+.stage::before{content:"";position:absolute;width:70%;aspect-ratio:1;border-radius:50%;background:var(--cur);opacity:.35;filter:blur(30px);transition:background .6s}
+.bottle{position:relative;width:min(150px,40%);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.cap{height:56px;width:46%;margin:0 auto;background:var(--ink);border-radius:10px 10px 4px 4px}
+.neck{height:12px;width:34%;margin:0 auto;background:var(--ink);opacity:.7}
+.body{height:220px;border-radius:26px;background:var(--cur);transition:background .6s;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;box-shadow:inset -14px 0 0 rgba(0,0,0,.06)}
+.body b{font-family:var(--display);font-weight:400;font-size:22px;color:var(--on-step);line-height:1}
+.body small{font-family:var(--mono);font-size:12px;color:var(--on-step)}
+.fill{position:absolute;left:12px;right:12px;bottom:12px;top:12px;border-radius:18px;background:rgba(255,255,255,.18);clip-path:inset(var(--empty,0%) 0 0 0);transition:clip-path .6s}
+.stepnum{position:absolute;top:18px;left:20px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.steps{display:flex;flex-direction:column}
+.step{min-height:70vh;display:flex;flex-direction:column;justify-content:center;gap:12px;padding-left:20px;border-left:4px solid transparent;transition:border-color .4s}
+.step.on{border-left-color:var(--cur)}
+.step h3{transition:color .4s}
+.step.dim h3{color:var(--muted)}
+.step h3{font-size:clamp(34px,5vw,52px)}
+.step p{margin:0;max-width:42ch;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+.swatch{width:14px;height:14px;border-radius:50%;display:inline-block;vertical-align:middle;margin-right:8px}
+
+/* CAPAS DE LA PIEL */
+.skin{padding-block:72px}
+.skin h2{font-size:clamp(36px,6vw,64px);max-width:16ch;margin:12px 0 28px}
+.layers{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.layer-visual{border-radius:24px;overflow:hidden;border:1px solid var(--line)}
+.lv{padding:18px 20px;font-family:var(--mono);font-size:12px;display:flex;justify-content:space-between;color:#1B2627;transition:padding .4s}
+.lv.active{padding-block:34px}
+.lv1{background:#F3D9C9}.lv2{background:#E9B8A2}.lv3{background:#D79A86}
+.layer-list{display:flex;flex-direction:column;gap:10px}
+.layer-btn{text-align:left;background:var(--surface);border:1px solid var(--line-control);border-radius:16px;padding:16px;color:var(--ink);font:inherit;cursor:pointer}
+.layer-btn:hover{border-color:var(--ink)}
+.layer-btn[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.layer-btn strong{display:block;font-size:17px}
+.layer-btn span{color:var(--muted);font-size:14px}
+
+/* AM / PM */
+.ampm{padding-block:56px}
+.tabs{display:inline-flex;background:var(--surface);border:1px solid var(--line-control);border-radius:999px;padding:4px;margin:16px 0 24px}
+.tab{border:0;background:none;color:var(--ink);font:700 14px var(--body);padding:10px 20px;border-radius:999px;cursor:pointer}
+.tab:hover:not([aria-selected="true"]){background:var(--bg)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.list{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{background:var(--surface);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card .dot{width:36px;height:36px;border-radius:50%}
+.card h4{margin:0;font-size:16px}
+.card p{margin:0;color:var(--muted);font-size:14px}
+.card .price{font-family:var(--mono);font-size:13px;margin-top:auto;font-variant-numeric:tabular-nums}
+
+.final{padding-block:72px 96px;text-align:left}
+.final h2{font-size:clamp(40px,7vw,80px);max-width:14ch;margin-bottom:24px}
+.note{font-size:13px;color:var(--muted);margin-top:16px}
+footer{border-top:1px solid var(--line);padding-block:20px;font-size:13px;color:var(--muted)}
+
+.reveal{transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s}
+.reveal.pre{transform:translateY(24px);opacity:.4}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;padding-block:40px 24px}
+  .drops{width:70%;margin:0 auto}
+  .routine{grid-template-columns:1fr;gap:0}
+  .stage{top:env(safe-area-inset-top,0px);height:42vh;z-index:2;box-shadow:0 -8px 0 var(--bg)}
+  .body{height:150px}.cap{height:40px}
+  .step{min-height:75vh;justify-content:flex-end;padding-bottom:6vh}
+  .layers{grid-template-columns:1fr}
+  .list{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="wrap hero">
+  <div>
+    <div class="eyebrow">Spaline · cuidado de la piel en 4 pasos</div>
+    <h1>Piel que <em>respira</em> mejor.</h1>
+    <p>Fórmulas cortas, con ingredientes que puedes leer. Baja por la página y arma tu rutina paso a paso: limpiar, tratar, hidratar y proteger.</p>
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <a class="btn" href="#rutina">Ver la rutina ↓</a>
+      <div class="scrollhint"><i></i>desliza</div>
+    </div>
+  </div>
+  <div class="drops" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+</header>
+
+<section class="wrap routine" id="rutina">
+  <div class="stage" aria-hidden="true">
+    <div class="stepnum" id="stepnum">Paso 1 de 4</div>
+    <div class="bottle" id="bottle">
+      <div class="cap"></div><div class="neck"></div>
+      <div class="body"><div class="fill"></div><b id="bname">Gel Limpiador</b><small id="bspec">150 ml · pH 5.5</small></div>
+    </div>
+  </div>
+
+  <div class="steps">
+    <article class="step" data-c="--c1" data-name="Gel Limpiador" data-spec="150 ml · pH 5.5" data-rot="-6">
+      <div class="eyebrow"><span class="swatch" style="background:var(--c1)"></span>Paso 1 · Limpiar</div>
+      <h3>Gel Limpiador de Avena</h3>
+      <p>Quita el sebo y el protector solar del día sin dejar la piel tirante. Espuma suave, sin sulfatos fuertes.</p>
+      <div class="chips"><span class="chip">pH 5.5</span><span class="chip">Avena coloidal</span><span class="chip">Glicerina</span></div>
+    </article>
+    <article class="step" data-c="--c2" data-name="Sérum Vitamina C" data-spec="30 ml · 10% C" data-rot="4">
+      <div class="eyebrow"><span class="swatch" style="background:var(--c2)"></span>Paso 2 · Tratar</div>
+      <h3>Sérum de Vitamina C</h3>
+      <p>Aporta luminosidad y ayuda a unificar el tono. Se aplica de mañana, 3 a 4 gotas sobre la piel seca.</p>
+      <div class="chips"><span class="chip">10% vitamina C</span><span class="chip">Ácido ferúlico</span><span class="chip">Mañana</span></div>
+    </article>
+    <article class="step" data-c="--c3" data-name="Crema Barrera" data-spec="50 ml · 3 ceramidas" data-rot="-3">
+      <div class="eyebrow"><span class="swatch" style="background:var(--c3)"></span>Paso 3 · Hidratar</div>
+      <h3>Crema Barrera</h3>
+      <p>Repone las grasas naturales de la piel y retiene el agua. Textura ligera que se absorbe en un minuto.</p>
+      <div class="chips"><span class="chip">Ceramidas NP, AP, EOP</span><span class="chip">Niacinamida 4%</span></div>
+    </article>
+    <article class="step" data-c="--c4" data-name="Protector FPS 50" data-spec="50 ml · UVA/UVB" data-rot="6">
+      <div class="eyebrow"><span class="swatch" style="background:var(--c4)"></span>Paso 4 · Proteger</div>
+      <h3>Protector Solar FPS 50</h3>
+      <p>El paso más importante del día. Acabado invisible, sin capa blanca. Reaplica cada 2 horas si estás al sol.</p>
+      <div class="chips"><span class="chip">FPS 50</span><span class="chip">PA++++</span><span class="chip">Sin brillo</span></div>
+    </article>
+  </div>
+</section>
+
+<section class="wrap skin reveal">
+  <div class="eyebrow">Dónde actúa cada producto</div>
+  <h2>Tu piel tiene capas. Cada paso llega a una.</h2>
+  <div class="layers">
+    <div class="layer-visual" aria-hidden="true">
+      <div class="lv lv1 active" id="lv1"><span>Estrato córneo</span><span>~0.02 mm</span></div>
+      <div class="lv lv2" id="lv2"><span>Epidermis viva</span><span>~0.1 mm</span></div>
+      <div class="lv lv3" id="lv3"><span>Dermis</span><span>~2 mm</span></div>
+    </div>
+    <div class="layer-list" role="group" aria-label="Capas de la piel">
+      <button class="layer-btn" id="lb1" aria-pressed="true" data-l="1"><strong>Estrato córneo</strong><span>La barrera de la superficie. Aquí trabajan el limpiador, la crema y el protector.</span></button>
+      <button class="layer-btn" id="lb2" aria-pressed="false" data-l="2"><strong>Epidermis viva</strong><span>Donde se produce el pigmento. La vitamina C ayuda a reducir las manchas.</span></button>
+      <button class="layer-btn" id="lb3" aria-pressed="false" data-l="3"><strong>Dermis</strong><span>Colágeno y elastina. El protector solar evita que el sol los dañe con los años.</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="wrap ampm reveal">
+  <div class="eyebrow">Tu rutina</div>
+  <h2 style="font-size:clamp(36px,6vw,64px)">Mañana y noche</h2>
+  <div class="tabs" role="tablist" aria-label="Momento del día">
+    <button class="tab" role="tab" id="tab-am" aria-selected="true" aria-controls="list" tabindex="0">☀ Mañana</button>
+    <button class="tab" role="tab" id="tab-pm" aria-selected="false" aria-controls="list" tabindex="-1">☾ Noche</button>
+  </div>
+  <div class="list" id="list" role="tabpanel" aria-labelledby="tab-am" tabindex="0"></div>
+  <p class="note">Productos y precios de ejemplo (USD), pendientes del catálogo real de Spaline.</p>
+</section>
+
+<section class="wrap final reveal">
+  <h2>Kit completo, cuatro pasos.</h2>
+  <button class="btn" id="buy">Agregar el kit · $68</button>
+  <p class="note" id="buymsg" role="status" aria-live="polite"></p>
+</section>
+
+<footer class="wrap">© Spaline · Venezuela. Borrador: productos, fórmulas y precios de ejemplo pendientes de sustituir.</footer>
+
+<script>
+(function(){
+  const root=document.documentElement, steps=[...document.querySelectorAll('.step')];
+  const bottle=document.getElementById('bottle'), bname=document.getElementById('bname'),
+        bspec=document.getElementById('bspec'), num=document.getElementById('stepnum'),
+        prog=document.getElementById('progress');
+  let cur=-1;
+  function setStep(i){
+    if(i===cur)return; cur=i; const s=steps[i];
+    root.style.setProperty('--cur','var('+s.dataset.c+')');
+    bname.textContent=s.dataset.name; bspec.textContent=s.dataset.spec;
+    num.textContent='Paso '+(i+1)+' de 4';
+    bottle.style.transform='rotate('+s.dataset.rot+'deg) translateY('+(i%2?-8:0)+'px)';
+    s.style.setProperty('--cur','var('+s.dataset.c+')');
+    steps.forEach((el,k)=>{el.classList.toggle('on',k===i);el.classList.toggle('dim',k!==i)});
+  }
+  function onScroll(){
+    const h=document.documentElement.scrollHeight-innerHeight;
+    prog.style.width=(h>0?scrollY/h*100:0)+'%';
+    const mid=innerHeight*.55; let best=0;
+    steps.forEach((s,i)=>{if(s.getBoundingClientRect().top<mid)best=i});
+    setStep(best);
+    document.querySelectorAll('.reveal').forEach(r=>{
+      const t=r.getBoundingClientRect().top; r.classList.toggle('pre',t>innerHeight*.95);
+    });
+  }
+  addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll);
+  onScroll();
+
+  // Capas
+  document.querySelectorAll('.layer-btn').forEach(b=>b.addEventListener('click',()=>{
+    const l=b.dataset.l;
+    document.querySelectorAll('.layer-btn').forEach(x=>x.setAttribute('aria-pressed',x===b));
+    [1,2,3].forEach(n=>document.getElementById('lv'+n).classList.toggle('active',String(n)===l));
+  }));
+
+  // AM/PM
+  const data={
+    am:[['--c1','Gel Limpiador','Lava 30 segundos con agua tibia.','$16'],['--c2','Sérum Vitamina C','3–4 gotas en cara y cuello.','$24'],['--c3','Crema Barrera','Una capa fina.','$18'],['--c4','Protector FPS 50','Dos dedos de producto.','$20']],
+    pm:[['--c1','Gel Limpiador','Doble limpieza si usaste protector.','$16'],['--c3','Crema Barrera','Capa un poco más generosa.','$18'],['--c3','Contorno de ojos','Toques suaves con el anular.','$14'],['--c1','Bruma de agua termal','Opcional, para refrescar.','$10']]
+  };
+  const list=document.getElementById('list');
+  function render(k){
+    list.innerHTML=data[k].map(d=>'<div class="card"><div class="dot" style="background:var('+d[0]+')"></div><h4>'+d[1]+'</h4><p>'+d[2]+'</p><div class="price">'+d[3]+'</div></div>').join('');
+    tabs.forEach(t=>{const on=t.id==='tab-'+k;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1});
+    list.setAttribute('aria-labelledby','tab-'+k);
+  }
+  const tabs=[document.getElementById('tab-am'),document.getElementById('tab-pm')];
+  tabs.forEach((t,i)=>{
+    t.onclick=()=>render(t.id.slice(4));
+    t.onkeydown=e=>{
+      let j=null;
+      if(e.key==='ArrowRight')j=(i+1)%tabs.length; else if(e.key==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;
+      else if(e.key==='Home')j=0; else if(e.key==='End')j=tabs.length-1;
+      if(j!==null){e.preventDefault();tabs[j].focus();render(tabs[j].id.slice(4));}
+    };
+  });
+  render('am');
+
+  const buy=document.getElementById('buy');
+  buy.onclick=()=>{
+    if(buy.getAttribute('aria-disabled')==='true')return;
+    buy.setAttribute('aria-disabled','true'); buy.textContent='Agregando…';
+    setTimeout(()=>{buy.removeAttribute('aria-disabled'); buy.textContent='Agregar el kit · $68';
+      document.getElementById('buymsg').textContent='Kit agregado al carrito (vista previa: todavía no hay tienda conectada).';},600);
+  };
+})();
+</script>
+</body>
+</html>
