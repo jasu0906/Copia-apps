@@ -36,3 +36,12 @@ como el "MANDARINA COCO / momento de playita" de las publicaciones). El logotipo
 ## Movimiento
 - barra de progreso en degradado, gotas flotantes, revelado al hacer scroll, frasco girando
 - respeta prefers-reduced-motion
+
+## Actualización: catálogo oficial (nov 2026)
+- Logo oficial (morado sobre claro, blanco en modo oscuro) y fotos de estudio con fondo transparente
+  extraídas del catálogo PDF de la marca → `spaline/img/*.webp`.
+- Tienda con 6 fragancias: Nueva Línea (Mandarina Coco, Cherry Berry, Mora Yogurt; 4 productos) y
+  Línea Profesional (Blueberry Orange, Orquídea Salvaje, Leche de Almendras Dulces; 3 productos).
+- Textos de marca, beneficios, propiedades e ingredientes tomados del catálogo, sin cambios de sentido.
+- Leche de Almendras Dulces: solo hay foto de grupo; los tamaños de los body mist de la Línea
+  Profesional no aparecen en el catálogo.

@@ -4,98 +4,142 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Spa Line · Si tu piel hablara, pediría Spa Line</title>
-<meta name="description" content="Spa Line: cuidado corporal en tres fragancias, Mandarina Coco, Cherry Berry y Mora Yogurt. Hecho para Venezuela.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Dancing+Script:wght@600;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta name="description" content="Spa Line: más de dos décadas cuidando la piel de la mujer venezolana. Mandarina Coco, Cherry Berry, Mora Yogurt y la Línea Profesional.">
+<link rel="icon" href="img/logo-morado.webp">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Dancing+Script:wght@700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Tokens: replica/design/tokens.json (claro) y tokens-dark.json (oscuro). Colores sacados de las publicaciones de @spalineve. */
+/* Tokens: replica/design/tokens.json (claro) y tokens-dark.json (oscuro). Colores del catálogo y de @spalineve. */
 :root{
   --bg:#FBF4F8; --surface:#FFFFFF; --ink:#2A1030; --muted:#6E5372; --line:#EED9E5; --line-control:#A27E98;
   --accent:#8B1A6B; --on-accent:#FFFFFF; --focus:#8B1A6B; --pink:#E64A97;
-  --f1:#A9CB55; --f2:#5FCAD8; --f3:#C9AAE8; --on-f:#2A1030;
-  --f1-ink:#3F5A0E; --f2-ink:#0E5964; --f3-ink:#5B2A86;
-  --cur:var(--f1); --cur-ink:var(--f1-ink);
-  --display:"Baloo 2",system-ui,sans-serif;
-  --script:"Dancing Script",cursive;
-  --body:"Manrope",system-ui,-apple-system,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --f1:#A9CB55; --f2:#5FCAD8; --f3:#C9AAE8; --f4:#9DB0EE; --f5:#E9AAD8; --f6:#E8D3A6;
+  --f1-ink:#3F5A0E; --f2-ink:#0E5964; --f3-ink:#5B2A86; --f4-ink:#2D3F8F; --f5-ink:#8B1A6B; --f6-ink:#6E431B;
+  --cur:var(--f1);
+  --display:"Baloo 2",system-ui,sans-serif; --script:"Dancing Script",cursive;
+  --body:"Manrope",system-ui,-apple-system,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#1A0F1D;--surface:#251729;--ink:#F7EAF2;--muted:#C8AFC3;--line:#3A2840;--line-control:#8E7088;
   --accent:#F27BB5;--on-accent:#1A0F1D;--focus:#F27BB5;--pink:#F27BB5;
-  --f1:#9BBE48;--f2:#4FBACB;--f3:#B391DB;
-  --f1-ink:#C3E07C;--f2-ink:#8EE0EA;--f3-ink:#D9C0F5;color-scheme:dark}}
+  --f1:#9BBE48;--f2:#4FBACB;--f3:#B391DB;--f4:#8396DB;--f5:#D98BC4;--f6:#CDB585;
+  --f1-ink:#C3E07C;--f2-ink:#8EE0EA;--f3-ink:#D9C0F5;--f4-ink:#BFCBF7;--f5-ink:#F4BFE4;--f6-ink:#EBD3A6;color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#1A0F1D;--surface:#251729;--ink:#F7EAF2;--muted:#C8AFC3;--line:#3A2840;--line-control:#8E7088;
   --accent:#F27BB5;--on-accent:#1A0F1D;--focus:#F27BB5;--pink:#F27BB5;
-  --f1:#9BBE48;--f2:#4FBACB;--f3:#B391DB;
-  --f1-ink:#C3E07C;--f2-ink:#8EE0EA;--f3-ink:#D9C0F5;color-scheme:dark}
+  --f1:#9BBE48;--f2:#4FBACB;--f3:#B391DB;--f4:#8396DB;--f5:#D98BC4;--f6:#CDB585;
+  --f1-ink:#C3E07C;--f2-ink:#8EE0EA;--f3-ink:#D9C0F5;--f4-ink:#BFCBF7;--f5-ink:#F4BFE4;--f6-ink:#EBD3A6;color-scheme:dark}
 
 *{box-sizing:border-box}
 body{margin:0;padding-bottom:88px;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+img{max-width:100%}
 a{color:inherit}
-.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 h1,h2,h3{font-family:var(--display);font-weight:800;text-wrap:balance;line-height:1;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(38px,6vw,64px)}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.script{font-family:var(--script);font-weight:700}
-#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--f1),var(--f2),var(--f3),var(--pink));z-index:20;margin-top:env(safe-area-inset-top,0px)}
+.lead{color:var(--muted);max-width:56ch;margin:12px 0 0;font-size:17px}
+.demo-banner{background:var(--accent);color:var(--on-accent);text-align:center;font-size:13px;padding:8px 16px}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--f1),var(--f2),var(--f3),var(--pink));z-index:20}
 
-/* Barra superior */
-.top{display:flex;justify-content:space-between;align-items:center;padding-block:20px}
-.wordmark{font-family:var(--display);font-weight:800;font-size:26px;line-height:.85;text-decoration:none;color:var(--accent);letter-spacing:.02em}
-.wordmark span{display:block}
-.toplink{font-weight:700;font-size:14px;text-decoration:none;border-bottom:2px solid var(--pink)}
-.toplink:hover{color:var(--accent)}
+/* Navegación */
+.top{display:flex;justify-content:space-between;align-items:center;padding-block:14px;gap:16px}
+.logo{display:block;width:84px}
+.logo img{display:block;width:100%;height:auto}
+.navlinks{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end}
+.navlinks a{font-weight:700;font-size:14px;text-decoration:none;border-bottom:2px solid transparent}
+.navlinks a:hover{border-color:var(--pink)}
 
 /* Botones */
-.btn{display:inline-flex;gap:10px;align-items:center;background:var(--accent);color:var(--on-accent);border:2px solid var(--accent);border-radius:999px;padding:13px 22px;font:700 15px var(--body);cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn{display:inline-flex;gap:10px;align-items:center;justify-content:center;background:var(--accent);color:var(--on-accent);border:2px solid var(--accent);border-radius:999px;padding:13px 22px;font:700 15px var(--body);cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
 .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(139,26,107,.25)}
-.btn:active{transform:translateY(0);box-shadow:none}
+.btn:active{transform:none;box-shadow:none}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-control)}
 .btn.ghost:hover{border-color:var(--accent);box-shadow:none}
-.btn:focus-visible,.tab:focus-visible,.toplink:focus-visible,.wordmark:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+:is(a,button,[tabindex="0"]):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 
 /* Inicio */
-.hero{padding-block:32px 40px;display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center}
-.hero h1{font-size:clamp(46px,8.5vw,104px)}
-.hero h1 em{font-style:normal;font-family:var(--script);font-weight:700;color:var(--pink);font-size:1.08em}
-.hero p{max-width:42ch;color:var(--muted);font-size:18px;margin:20px 0 28px}
-.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.hero{padding-block:24px 48px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(34px,5.4vw,60px);font-weight:600;line-height:1.05}
+.hero h1 img{display:block;width:min(240px,58%);height:auto;margin-top:12px}
+.hero p{max-width:44ch;color:var(--muted);font-size:18px;margin:22px 0 28px}
+.hero-products{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:2%;aspect-ratio:1/1;padding:8% 4% 12%}
+.hero-products::before{content:"";position:absolute;inset:6% 6% 10%;border-radius:50%;background:radial-gradient(circle at 50% 45%,var(--f2),transparent 70%);opacity:.55}
+.hero-products img{position:relative;height:auto;filter:drop-shadow(0 18px 18px rgba(42,16,48,.22))}
 
-/* Foto del inicio */
-.hero-photo{margin:0;border-radius:28px;overflow:hidden;aspect-ratio:1010/1133;background:var(--surface);box-shadow:0 20px 50px rgba(139,26,107,.18);transform:rotate(2deg)}
-.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
-figcaption.credit{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:8px}
+/* Nuestra marca */
+.brand{padding-block:48px;display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:center}
+.brand figure{margin:0;border-radius:28px;overflow:hidden;aspect-ratio:1010/1133;background:var(--surface)}
+.brand figure img{width:100%;height:100%;object-fit:cover;display:block}
+.brand p{font-size:18px;margin:16px 0 0;max-width:52ch}
+.brand strong{color:var(--accent)}
 
-/* Fragancias (foto fija) */
+/* Nueva Línea: fragancias con grupo de productos fijo */
 .fragrances{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding-block:24px 40px}
-.stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12vh);height:min(70vh,560px);display:grid;place-items:center;background:var(--surface);border-radius:28px;overflow:hidden}
-.stepnum{position:absolute;top:16px;left:16px;z-index:2;font-family:var(--mono);font-size:12px;color:var(--ink);background:var(--surface);padding:4px 10px;border-radius:999px}
-.photos{position:absolute;inset:0}
-.photos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
-.photos img.on{opacity:1}
+.stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 10vh);height:min(76vh,600px);border-radius:28px;overflow:hidden;background:var(--surface)}
+.stage::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 62%,var(--cur),transparent 68%);opacity:.6;transition:background .6s}
+.stepnum{position:absolute;top:16px;left:16px;z-index:2;font-family:var(--mono);font-size:12px;background:var(--surface);padding:4px 10px;border-radius:999px}
+.group{position:absolute;inset:12% 5% 8%;display:flex;align-items:flex-end;justify-content:center;gap:3%;opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.group.on{opacity:1;transform:none}
+.group img{height:auto;filter:drop-shadow(0 16px 16px rgba(42,16,48,.22))}
 .steps{display:flex;flex-direction:column}
-.step{min-height:70vh;display:flex;flex-direction:column;justify-content:center;gap:12px;padding-left:20px;border-left:4px solid transparent;transition:border-color .4s}
+.step{min-height:78vh;display:flex;flex-direction:column;justify-content:center;gap:12px;padding-left:20px;border-left:4px solid transparent;transition:border-color .4s}
 .step.on{border-left-color:var(--cur)}
-.step h3{font-size:clamp(36px,5vw,56px);transition:color .4s}
+.step h3{font-size:clamp(38px,5vw,58px);transition:color .4s}
 .step.dim h3{color:var(--muted)}
 .step .tag{font-family:var(--mono);font-size:14px;color:var(--muted)}
-.step p{margin:0;max-width:40ch;color:var(--muted)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 10px;background:var(--surface)}
+.benefits{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:12px;max-width:46ch}
+.benefits li{padding-left:16px;border-left:3px solid var(--line);color:var(--muted)}
+.benefits strong{color:var(--ink)}
 .swatch{width:14px;height:14px;border-radius:50%;display:inline-block;vertical-align:middle;margin-right:8px}
 
-/* Colección */
-.shop{display:grid;grid-template-columns:minmax(0,400px) 1fr;gap:16px;align-items:start}
-.col-photo{margin:0;border-radius:20px;overflow:hidden;background:var(--surface);aspect-ratio:1/1;position:sticky;top:16px}
-.col-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.price{font-weight:700;font-size:15px}
+/* Tienda */
+.shop{padding-block:56px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:22px 0 8px}
+.tabgroup{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tabgroup .eyebrow{width:100%;margin-top:6px}
+.tab{border:1px solid var(--line-control);background:var(--surface);color:var(--ink);font:700 14px var(--body);padding:9px 16px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.tab:hover:not([aria-selected="true"]){border-color:var(--accent)}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.tab .swatch{margin:0;width:12px;height:12px}
+.list{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.card{background:var(--surface);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0;border-top:6px solid var(--card)}
+.card .pic{height:220px;display:flex;align-items:center;justify-content:center;border-radius:16px;background:radial-gradient(circle at 50% 60%,color-mix(in srgb,var(--card) 45%,transparent),transparent 70%);margin-bottom:6px}
+.card .pic img{height:88%;width:auto;max-width:90%;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(42,16,48,.2))}
+.card .kind{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--card-ink)}
+.card h4{margin:0;font-size:17px;line-height:1.3}
+.card p{margin:0;color:var(--muted);font-size:14px}
+.card .size{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+.price{font-weight:700;font-size:15px;margin-top:auto;padding-top:6px}
 .price.pending{font-weight:500;font-size:13px;color:var(--muted)}
 .buy{display:flex;gap:8px;align-items:center;margin-top:6px;flex-wrap:wrap}
 .qty{display:inline-flex;align-items:center;border:1px solid var(--line-control);border-radius:999px}
 .qty button{width:34px;height:34px;border:0;background:none;color:var(--ink);font:700 18px var(--body);cursor:pointer;border-radius:999px}
 .qty output{min-width:22px;text-align:center;font-variant-numeric:tabular-nums}
-.add{flex:1;min-width:110px;justify-content:center;padding:9px 14px;font-size:14px}
-.qty button:focus-visible,.cart-btn:focus-visible,.cart button:focus-visible,.cart a:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.add{flex:1;min-width:100px;padding:9px 14px;font-size:14px}
+.shop-note{color:var(--muted);font-size:14px;margin-top:14px}
+
+/* Sello de eficacia */
+.seal{padding-block:40px}
+.seal .box{background:var(--surface);border-radius:28px;padding:clamp(24px,5vw,56px)}
+.ingredients{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.ingredients div{border:2px solid var(--pink);border-radius:20px;padding:18px}
+.ingredients h3{font-size:26px;color:var(--accent)}
+.ingredients p{margin:6px 0 0;color:var(--muted)}
+
+/* Gira */
+.tour{padding-block:40px 24px}
+.tour .box{background:var(--surface);border-radius:28px;padding:clamp(24px,5vw,56px);display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+.tour p{color:var(--muted);margin:14px 0 0;max-width:46ch}
+.tour figure{margin:0;border-radius:20px;overflow:hidden;aspect-ratio:503/484}
+.tour figure img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Cierre */
+.final{padding-block:72px 64px;text-align:center}
+.final .say{font-size:clamp(26px,4vw,40px);font-family:var(--display);font-weight:600;margin:0}
+.final img{width:min(240px,60%);height:auto;margin:16px auto 28px;display:block}
+.final .actions{justify-content:center}
+footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 /* Carrito */
 .cart-btn{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:30;background:var(--accent);color:var(--on-accent);border:0;border-radius:999px;padding:14px 20px;font:700 15px var(--body);cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.25);display:flex;gap:10px;align-items:center}
@@ -107,133 +151,151 @@ figcaption.credit{font-family:var(--mono);font-size:12px;color:var(--muted);marg
 .cart-head h2{font-size:32px}
 .close{border:1px solid var(--line-control);background:var(--surface);color:var(--ink);border-radius:999px;width:40px;height:40px;font-size:20px;cursor:pointer}
 .cart ul{list-style:none;padding:0;margin:16px 0;display:flex;flex-direction:column;gap:10px;overflow:auto;flex:1}
-.cart li{background:var(--surface);border-radius:16px;padding:12px 14px;display:flex;justify-content:space-between;gap:10px;align-items:center;border-left:5px solid var(--card)}
+.cart li{background:var(--surface);border-radius:16px;padding:10px 12px;display:flex;gap:10px;align-items:center;border-left:5px solid var(--card)}
+.cart li img{width:34px;height:52px;object-fit:contain}
+.cart li .t{flex:1;min-width:0}
 .cart li small{display:block;color:var(--muted);font-size:13px}
-.cart .empty{color:var(--muted)}
 .cart .msg{background:var(--surface);border:1px dashed var(--line-control);border-radius:14px;padding:12px;font-family:var(--mono);font-size:12px;white-space:pre-wrap;max-height:160px;overflow:auto;margin:0 0 12px}
 .cart .warn{font-size:13px;color:var(--muted);margin:8px 0 0}
-.cart .btn{justify-content:center}
 .cart .btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
-.demo-banner{background:var(--accent);color:var(--on-accent);text-align:center;font-size:13px;padding:8px 16px}
-
-.collection{padding-block:56px}
-.collection h2,.tour h2{font-size:clamp(38px,6vw,64px)}
-.collection .lead{color:var(--muted);max-width:52ch;margin:12px 0 0}
-.tabs{display:inline-flex;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line-control);border-radius:28px;padding:4px;margin:20px 0 24px;gap:2px}
-.tab{border:0;background:none;color:var(--ink);font:700 14px var(--body);padding:10px 18px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
-.tab:hover:not([aria-selected="true"]){background:var(--bg)}
-.tab[aria-selected="true"]{background:var(--accent);color:var(--on-accent)}
-.tab .swatch{margin:0;width:12px;height:12px}
-.list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.card{background:var(--surface);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px;min-width:0;border-top:6px solid var(--card)}
-.card .kind{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--card-ink)}
-.card h4{margin:0;font-size:17px;line-height:1.3}
-.card p{margin:0;color:var(--muted);font-size:14px}
-.card .size{font-family:var(--mono);font-size:13px;margin-top:auto;padding-top:8px;font-variant-numeric:tabular-nums}
-
-/* Recorrido */
-.tour{padding-block:40px 24px}
-.tour .box{background:var(--surface);border-radius:28px;padding:clamp(24px,5vw,56px);display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;position:relative;overflow:hidden}
-.tour .box::after{content:"";position:absolute;right:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:conic-gradient(var(--f1),var(--f2),var(--f3),var(--pink),var(--f1));opacity:.35;filter:blur(18px)}
-.tour p{color:var(--muted);margin:14px 0 0;max-width:46ch}
-.tour figure{margin:0;border-radius:20px;overflow:hidden;position:relative;z-index:1;aspect-ratio:503/484}
-.tour figure img{width:100%;height:100%;object-fit:cover;display:block}
-
-.final{padding-block:72px 96px}
-.final h2{font-size:clamp(44px,7.5vw,88px);max-width:12ch;margin-bottom:24px}
-.final h2 em{font-style:normal;font-family:var(--script);color:var(--pink)}
-.note{font-size:14px;color:var(--muted);margin-top:16px}
-footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 .reveal{transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s}
 .reveal.pre{transform:translateY(24px);opacity:.4}
 
+@media (max-width:900px){.list{grid-template-columns:repeat(2,1fr)}.ingredients{grid-template-columns:1fr}}
 @media (max-width:760px){
-  .hero{grid-template-columns:1fr;padding-block:16px 24px}
-  .hero-photo{width:78%;margin:8px auto 0}
-  .shop{grid-template-columns:1fr}
-  .col-photo{position:static;aspect-ratio:4/3}
+  .navlinks a:not(.keep){display:none}
+  .hero,.brand,.tour .box{grid-template-columns:1fr}
+  .hero{padding-block:8px 24px}
+  .hero-products{width:92%;margin:0 auto}
+  .brand figure{width:80%;margin:0 auto}
   .fragrances{grid-template-columns:1fr;gap:0}
-  .stage{top:env(safe-area-inset-top,0px);height:44vh;z-index:2;box-shadow:0 -8px 0 var(--bg)}
-  .step{min-height:75vh;justify-content:flex-end;padding-bottom:6vh}
-  .list{grid-template-columns:1fr 1fr}
+  .stage{top:env(safe-area-inset-top,0px);height:34vh;z-index:2;box-shadow:0 -8px 0 var(--bg)}
+  .group{inset:14% 4% 6%}
+  .step{min-height:90vh;justify-content:flex-end;padding-bottom:4vh;gap:8px}
+  .step h3{font-size:34px}
+  .benefits{gap:8px;font-size:15px}
   .cart-btn{padding:12px 16px}
-  .tour .box{grid-template-columns:1fr}
 }
-@media (max-width:420px){.list{grid-template-columns:1fr}}
+@media (max-width:420px){.list{grid-template-columns:1fr 1fr;gap:10px}.card{padding:12px}.card .pic{height:170px}.add{min-width:0}.buy{flex-direction:column;align-items:stretch}.qty{justify-content:space-between}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
-<div class="demo-banner">Demo: precios y número de WhatsApp pendientes. Fotos tomadas de @spalineve, a sustituir por los originales.</div>
+<div class="demo-banner">Demo: precios y número de WhatsApp pendientes.</div>
 <div id="progress"></div>
 
 <nav class="wrap top" aria-label="Principal">
-  <a class="wordmark" href="#" aria-label="Spa Line, inicio"><span>SPA</span><span>LINE</span></a>
-  <a class="toplink" href="https://www.instagram.com/spalineve/" rel="noopener">@spalineve</a>
+  <a class="logo" href="#" aria-label="Spa Line, inicio">
+    <picture><source srcset="img/logo-blanco.webp" media="(prefers-color-scheme: dark)"><img src="img/logo-morado.webp" alt="Spa Line" width="620" height="625"></picture>
+  </a>
+  <div class="navlinks">
+    <a href="#marca">Nuestra marca</a>
+    <a href="#fragancias">Fragancias</a>
+    <a class="keep" href="#tienda">Tienda</a>
+    <a class="keep" href="https://www.instagram.com/spalineve/" rel="noopener">Instagram</a>
+  </div>
 </nav>
 
 <header class="wrap hero">
   <div>
-    <div class="eyebrow">Spa Line · cuidado corporal · Venezuela</div>
-    <h1>¡Si tu piel hablara, pediría <em>Spa Line</em>!</h1>
+    <div class="eyebrow">Cuidado corporal · Venezuela</div>
+    <h1>Si tu piel hablara, pediría: <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Spa Line</span>
+      <picture><source srcset="img/logo-blanco.webp" media="(prefers-color-scheme: dark)"><img src="img/logo-morado.webp" alt="" width="620" height="625"></picture></h1>
     <p>Un aroma para cada momento de tu vida. Tres personalidades, una misma sensación: frescura total y una piel hidratada todo el día.</p>
     <div class="actions">
-      <a class="btn" href="#fragancias">Conoce las fragancias ↓</a>
-      <a class="btn ghost" href="https://www.instagram.com/spalineve/" rel="noopener">Escríbenos en Instagram</a>
+      <a class="btn" href="#tienda">Comprar ahora</a>
+      <a class="btn ghost" href="#fragancias">Conoce las fragancias ↓</a>
     </div>
   </div>
-  <figure class="hero-photo"><img src="img/modelo-mora-yogurt.jpg" alt="Modelo con look ochentero sostiene el exfoliante en crema Mora Yogurt de Spa Line" width="1010" height="1133"></figure>
+  <div class="hero-products" aria-label="Línea Cherry Berry: crema, body mist, gel de baño y scrub cream" role="img">
+    <img src="img/cherry-crema.webp" alt="" width="379" height="900" style="width:24%">
+    <img src="img/cherry-rocio.webp" alt="" width="270" height="900" style="width:16%">
+    <img src="img/cherry-gel.webp" alt="" width="407" height="900" style="width:23%">
+    <img src="img/cherry-scrub.webp" alt="" width="318" height="900" style="width:20%">
+  </div>
 </header>
 
-<section class="wrap fragrances" id="fragancias" aria-label="Fragancias">
+<section class="wrap brand reveal" id="marca" aria-labelledby="marca-title">
+  <figure><img src="img/modelo-mora-yogurt.jpg" alt="Modelo con look ochentero sostiene el Scrub Cream Mora Yogurt de Spa Line" width="1010" height="1133" loading="lazy"></figure>
+  <div>
+    <div class="eyebrow">Nuestra marca</div>
+    <h2 id="marca-title">Más de dos décadas contigo</h2>
+    <p>Por más de <strong>dos décadas</strong>, Spa Line ha acompañado a la mujer venezolana en el cuidado de su piel, siendo sinónimo de <strong>confianza y bienestar</strong>.</p>
+    <p>Hoy, evolucionamos para conectar con nuevas generaciones, <strong>manteniendo intacta</strong> nuestra esencia: la eficacia de la ciencia y la riqueza de los ingredientes naturales de nuestra tierra. Spa Line: la belleza que <strong>cuida</strong>, que <strong>renace</strong> y que te <strong>acompaña</strong>.</p>
+  </div>
+</section>
+
+<section class="wrap" id="fragancias" aria-labelledby="nl-title" style="padding-top:32px">
+  <div class="eyebrow">Nueva Línea</div>
+  <h2 id="nl-title">Tres personalidades</h2>
+  <p class="lead">Cada fragancia tiene 4 productos clave: gel exfoliante, crema corporal, body mist y scrub cream.</p>
+</section>
+
+<section class="wrap fragrances" aria-label="Fragancias de la Nueva Línea">
   <div class="stage" aria-hidden="true">
-    <div class="stepnum" id="stepnum">Fragancia 1 de 3</div>
-    <div class="photos">
-      <img class="on" src="img/mandarina-coco.jpg" alt="" width="968" height="696">
-      <img src="img/cherry-berry.jpg" alt="" width="434" height="336" loading="lazy">
-      <img src="img/mora-yogurt.jpg" alt="" width="434" height="395" loading="lazy">
-    </div>
+    <div class="stepnum" id="stepnum">Mandarina Coco · 1 de 3</div>
+    <div class="group on"><img src="img/mandarina-gel.webp" alt="" style="width:23%" width="447" height="900"><img src="img/mandarina-crema.webp" alt="" style="width:21%" width="381" height="900"><img src="img/mandarina-rocio.webp" alt="" style="width:14%" width="273" height="900"><img src="img/mandarina-scrub.webp" alt="" style="width:18%" width="323" height="900"></div>
+    <div class="group"><img src="img/cherry-gel.webp" alt="" style="width:21%" width="407" height="900" loading="lazy"><img src="img/cherry-crema.webp" alt="" style="width:21%" width="379" height="900" loading="lazy"><img src="img/cherry-rocio.webp" alt="" style="width:14%" width="270" height="900" loading="lazy"><img src="img/cherry-scrub.webp" alt="" style="width:18%" width="318" height="900" loading="lazy"></div>
+    <div class="group"><img src="img/mora-gel.webp" alt="" style="width:26%" width="537" height="900" loading="lazy"><img src="img/mora-crema.webp" alt="" style="width:21%" width="383" height="900" loading="lazy"><img src="img/mora-rocio.webp" alt="" style="width:14%" width="273" height="900" loading="lazy"><img src="img/mora-scrub.webp" alt="" style="width:18%" width="333" height="900" loading="lazy"></div>
   </div>
 
   <div class="steps">
-    <article class="step" data-c="--f1" data-ink="--f1-ink" data-name="Mandarina Coco" data-spec="momento de playita" data-rot="-6">
+    <article class="step" data-c="--f1" data-name="Mandarina Coco">
       <div class="eyebrow"><span class="swatch" style="background:var(--f1)"></span>Fragancia 1</div>
       <h3>Mandarina Coco</h3>
       <div class="tag">momento de playita</div>
-      <p>Mandarina y coco, con todo el verde de la colección.</p>
-      <div class="chips"><span class="chip">Gel de baño exfoliante</span><span class="chip">Scrub cream</span><span class="chip">Crema hidratante</span><span class="chip">Rocío corporal</span></div>
+      <ul class="benefits">
+        <li><strong>Revitaliza y energiza:</strong> la mandarina aporta vitamina C y antioxidantes que iluminan la piel y promueven su regeneración natural.</li>
+        <li><strong>Hidrata profundamente:</strong> el coco nutre y suaviza, ayudando a mantener la humedad natural de la piel.</li>
+        <li><strong>Suaviza y mejora la textura:</strong> juntos ayudan a mantener una piel más lisa, flexible y con aspecto saludable.</li>
+      </ul>
     </article>
-    <article class="step" data-c="--f2" data-ink="--f2-ink" data-name="Cherry Berry" data-spec="momento de paz" data-rot="4">
+    <article class="step" data-c="--f2" data-name="Cherry Berry">
       <div class="eyebrow"><span class="swatch" style="background:var(--f2)"></span>Fragancia 2</div>
       <h3>Cherry Berry</h3>
       <div class="tag">momento de paz</div>
-      <p>Cerezas y frutos rojos, en turquesa y rosa.</p>
-      <div class="chips"><span class="chip">Gel de baño exfoliante</span><span class="chip">Scrub cream</span><span class="chip">Crema hidratante</span><span class="chip">Rocío corporal</span></div>
+      <ul class="benefits">
+        <li><strong>Ilumina y revitaliza:</strong> las cerezas aportan vitamina C y antioxidantes que ayudan a darle un aspecto más fresco y radiante a la piel.</li>
+        <li><strong>Suaviza y tonifica:</strong> las berries nutren profundamente, mejorando la textura y elasticidad de la piel.</li>
+        <li><strong>Aroma dulce y vibrante:</strong> su fragancia frutal despierta los sentidos y deja una sensación de energía y alegría.</li>
+      </ul>
     </article>
-    <article class="step" data-c="--f3" data-ink="--f3-ink" data-name="Mora Yogurt" data-spec="regálate un momento" data-rot="-3">
+    <article class="step" data-c="--f3" data-name="Mora Yogurt">
       <div class="eyebrow"><span class="swatch" style="background:var(--f3)"></span>Fragancia 3</div>
       <h3>Mora Yogurt</h3>
       <div class="tag">regálate un momento</div>
-      <p>Mora y yogurt, en lila y rosa.</p>
-      <div class="chips"><span class="chip">Gel de baño exfoliante</span><span class="chip">Scrub cream</span><span class="chip">Crema hidratante</span><span class="chip">Rocío corporal</span></div>
+      <ul class="benefits">
+        <li><strong>Nutre y suaviza:</strong> la mora aporta vitaminas y antioxidantes que ayudan a mantener la piel tersa y radiante.</li>
+        <li><strong>Hidrata y equilibra:</strong> el yogurt contribuye a mantener la humedad natural y suaviza la textura de la piel.</li>
+        <li><strong>Aroma dulce y envolvente:</strong> su fragancia combina lo frutal y cremoso, dejando una sensación de confort y frescura durante todo el día.</li>
+      </ul>
     </article>
   </div>
 </section>
 
-<section class="wrap collection reveal" aria-labelledby="col-title">
-  <div class="eyebrow">La colección</div>
-  <h2 id="col-title">Cuatro productos por fragancia</h2>
-  <p class="lead">Elige tu aroma y combina los cuatro: del baño a la última capa de perfume.</p>
-  <div class="tabs" role="tablist" aria-label="Fragancia">
-    <button class="tab" role="tab" id="tab-f1" aria-selected="true" aria-controls="list-panel" tabindex="0"><span class="swatch" style="background:var(--f1)"></span>Mandarina Coco</button>
-    <button class="tab" role="tab" id="tab-f2" aria-selected="false" aria-controls="list-panel" tabindex="-1"><span class="swatch" style="background:var(--f2)"></span>Cherry Berry</button>
-    <button class="tab" role="tab" id="tab-f3" aria-selected="false" aria-controls="list-panel" tabindex="-1"><span class="swatch" style="background:var(--f3)"></span>Mora Yogurt</button>
-  </div>
-  <div class="shop" id="list-panel" role="tabpanel" aria-labelledby="tab-f1" tabindex="0">
-    <figure class="col-photo"><img id="colimg" src="img/mandarina-coco.jpg" alt="Línea Mandarina Coco de Spa Line" width="968" height="696"></figure>
+<section class="wrap shop reveal" id="tienda" aria-labelledby="shop-title">
+  <div class="eyebrow">Tienda</div>
+  <h2 id="shop-title">Elige tu momento</h2>
+  <p class="lead">Arma tu pedido y envíalo por WhatsApp. Te respondemos con las formas de pago y el envío.</p>
+  <div class="tabs" role="tablist" aria-label="Fragancia" id="tabs"></div>
+  <div id="panel" role="tabpanel" tabindex="0">
     <div class="list" id="list"></div>
+  </div>
+  <p class="shop-note" id="shopNote"></p>
+</section>
+
+<section class="wrap seal reveal" aria-labelledby="seal-title">
+  <div class="box">
+    <div class="eyebrow">En todos los productos</div>
+    <h2 id="seal-title">Nuestro sello de eficacia</h2>
+    <p class="lead">Estos tres ingredientes están presentes en nuestra fórmula base, garantizando eficacia y cuidado en cada producto.</p>
+    <div class="ingredients">
+      <div><h3>Alantoína</h3><p>Suaviza y protege la piel, ideal para pieles sensibles.</p></div>
+      <div><h3>Tocoferol acetato</h3><p>Potente antioxidante que combate el envejecimiento.</p></div>
+      <div><h3>Pantenol</h3><p>Acondiciona e hidrata intensamente, mejorando la elasticidad.</p></div>
+    </div>
   </div>
 </section>
 
@@ -242,18 +304,20 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
     <div>
       <div class="eyebrow">De gira</div>
       <h2 id="tour-title">Recorriendo toda Venezuela</h2>
-      <p>Para llevarte tu momento Spa Line bien cerquita. Sigue la cuenta para saber dónde estaremos.</p>
-      <div class="actions" style="margin-top:22px"><a class="btn ghost" href="https://www.instagram.com/spalineve/" rel="noopener">Seguir a @spalineve</a></div>
+      <p>Para llevarte tu momento Spa Line bien cerquita. Sigue nuestras redes para saber dónde estaremos.</p>
+      <div class="actions" style="margin-top:22px"><a class="btn ghost" href="https://www.instagram.com/spalineve/" rel="noopener">Instagram @spalineve</a><a class="btn ghost" href="https://www.tiktok.com/@spalineve" rel="noopener">TikTok @spalineve</a></div>
     </div>
     <figure><img src="img/gira-stand.jpg" alt="Productos Spa Line de las tres fragancias en el stand de un evento" width="503" height="484" loading="lazy"></figure>
   </div>
 </section>
 
 <section class="wrap final reveal" aria-labelledby="final-title">
-  <h2 id="final-title">¿Cuál es tu <em>momento</em>?</h2>
-  <a class="btn" href="https://www.instagram.com/spalineve/" rel="noopener">Pídelo por Instagram</a>
-  <p class="note">Precios y disponibilidad por mensaje directo en @spalineve.</p>
+  <p class="say" id="final-title">Si tu piel hablara, pediría:</p>
+  <picture><source srcset="img/logo-blanco.webp" media="(prefers-color-scheme: dark)"><img src="img/logo-morado.webp" alt="Spa Line" width="620" height="625" loading="lazy"></picture>
+  <div class="actions"><a class="btn" href="#tienda">Arma tu pedido</a></div>
 </section>
+
+<footer class="wrap"><span>© Spa Line · Venezuela</span><span><a href="https://www.instagram.com/spalineve/" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@spalineve" rel="noopener">TikTok</a> · @spalineve</span></footer>
 
 <button class="cart-btn" id="cartBtn" aria-haspopup="dialog">🛍 Mi pedido <span class="count" id="cartCount">0</span></button>
 <dialog class="cart" id="cart" aria-labelledby="cartTitle">
@@ -267,18 +331,40 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
   </div>
 </dialog>
 
-<footer class="wrap"><span>© Spa Line · Venezuela</span><a href="https://www.instagram.com/spalineve/" rel="noopener">Instagram @spalineve</a></footer>
-
 <script>
 (function(){
+  // ===== Configuración de la tienda (rellenar) =====
+  const WHATSAPP='';   // número con código de país, sin + ni espacios. Ej.: 58412XXXXXXX
+  const PRICES={};     // precio en USD por producto, con la clave del producto. Ej.: {'mandarina-gel':5, 'cherry-scrub':7}
+
+  // ===== Catálogo (datos de las etiquetas y del catálogo de Spa Line) =====
+  const T={
+    gel:['Gel exfoliante','Gel de baño exfoliante','Hidratante y removedor de células muertas. Gránulos no abrasivos.'],
+    scrub:['Scrub cream','Exfoliante en crema sin enjuagar','Exfolia en seco y cuida la piel.'],
+    crema:['Crema corporal','Crema hidratante para manos y cuerpo','Hidratante y emoliente de rápida absorción.'],
+    mist:['Body mist','Rocío corporal','Refrescante, hidratante y reafirmante.']
+  };
+  const LINES=[
+    {id:'f1',name:'Mandarina Coco',group:'Nueva Línea',items:[['mandarina-gel','gel','200 ml'],['mandarina-crema','crema','240 ml'],['mandarina-rocio','mist','150 ml'],['mandarina-scrub','scrub','300 ml']]},
+    {id:'f2',name:'Cherry Berry',group:'Nueva Línea',items:[['cherry-gel','gel','200 ml'],['cherry-crema','crema','240 ml'],['cherry-rocio','mist','150 ml'],['cherry-scrub','scrub','300 ml']]},
+    {id:'f3',name:'Mora Yogurt',group:'Nueva Línea',items:[['mora-gel','gel','200 ml'],['mora-crema','crema','240 ml'],['mora-rocio','mist','150 ml'],['mora-scrub','scrub','300 ml']]},
+    {id:'f4',name:'Blueberry Orange',group:'Línea Profesional',items:[['blueberry-gel','gel','250 ml','Gel de baño exfoliante hidratante','Para el cuerpo.'],['blueberry-crema','crema','250 ml',null,'Para manos y cuerpo.'],['blueberry-mist','mist','','Body mist','Refresca y perfuma.']]},
+    {id:'f5',name:'Orquídea Salvaje',group:'Línea Profesional',items:[['orquidea-gel','gel','250 ml','Gel exfoliante para manos y cuerpo','Toque de seda.'],['orquidea-crema','crema','250 ml','Crema para manos y cuerpo','Toque de seda.'],['orquidea-mist','mist','','Body mist','Aroma floral.']]},
+    {id:'f6',name:'Leche de Almendras Dulces',group:'Línea Profesional',items:[['almendras-gel','gel','250 ml',null,'Para el cuerpo.','almendras-grupo'],['almendras-crema','crema','250 ml',null,'Para manos y cuerpo.','almendras-grupo'],['almendras-mist','mist','','Body mist','Aroma cálido y reconfortante.','almendras-grupo']]}
+  ];
+  const PRODUCTS={};
+  LINES.forEach(L=>L.items.forEach(([key,type,size,name,desc,img])=>{
+    PRODUCTS[key]={key,line:L,kind:T[type][0],name:name||T[type][1],desc:desc||T[type][2],size,img:'img/'+(img||key)+'.webp'};
+  }));
+
+  // ===== Fragancias con scroll =====
   const root=document.documentElement, steps=[...document.querySelectorAll('.step')];
-  const photos=[...document.querySelectorAll('.photos img')], num=document.getElementById('stepnum'),
-        prog=document.getElementById('progress');
+  const groups=[...document.querySelectorAll('.group')], num=document.getElementById('stepnum'), prog=document.getElementById('progress');
   let cur=-1;
   function setStep(i){
     if(i===cur)return; cur=i; const s=steps[i];
     root.style.setProperty('--cur','var('+s.dataset.c+')');
-    photos.forEach((im,k)=>im.classList.toggle('on',k===i));
+    groups.forEach((g,k)=>g.classList.toggle('on',k===i));
     num.textContent=s.dataset.name+' · '+(i+1)+' de '+steps.length;
     steps.forEach((el,k)=>{el.classList.toggle('on',k===i);el.classList.toggle('dim',k!==i)});
   }
@@ -288,58 +374,61 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
     const mid=innerHeight*.55; let best=0;
     steps.forEach((s,i)=>{if(s.getBoundingClientRect().top<mid)best=i});
     setStep(best);
-    document.querySelectorAll('.reveal').forEach(r=>{
-      const t=r.getBoundingClientRect().top; r.classList.toggle('pre',t>innerHeight*.95);
-    });
+    document.querySelectorAll('.reveal').forEach(r=>r.classList.toggle('pre',r.getBoundingClientRect().top>innerHeight*.95));
   }
-  addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll);
-  onScroll();
+  addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll); onScroll();
 
-  // ===== Configuración de la tienda (rellenar) =====
-  const WHATSAPP='';          // número con código de país, sin + ni espacios. Ej.: 58412XXXXXXX
-  const PRICES={};            // precio en USD por producto: {gel:0, scrub:0, crema:0, rocio:0}
-  const FRAG={f1:['Mandarina Coco','img/mandarina-coco.jpg'],f2:['Cherry Berry','img/cherry-berry.jpg'],f3:['Mora Yogurt','img/mora-yogurt.jpg']};
-  const IDS=['gel','scrub','crema','rocio'];
-  // Colección: datos tomados de las etiquetas de los productos
-  const products=[
-    ['Gel de baño','Gel de baño exfoliante','Exfoliante para el cuerpo, para la ducha.','200 ml'],
-    ['Scrub cream','Exfoliante en crema','Sin enjuagar.','300 ml'],
-    ['Crema','Crema hidratante','Para manos y cuerpo.','240 ml'],
-    ['Rocío','Rocío corporal','Hidratante y emoliente.','150 ml']
-  ];
-  const list=document.getElementById('list'), panel=document.getElementById('list-panel'), colimg=document.getElementById('colimg');
-  const tabs=[...document.querySelectorAll('.tab')];
+  // ===== Tienda =====
+  const tabsEl=document.getElementById('tabs'), list=document.getElementById('list'), panel=document.getElementById('panel'), note=document.getElementById('shopNote');
   const money=v=>'$'+Number(v).toFixed(2);
-  function priceHTML(id){return PRICES[id]!=null?'<div class="price">'+money(PRICES[id])+'</div>':'<div class="price pending">Precio por confirmar</div>';}
-  function render(k){
-    list.innerHTML=products.map((p,i)=>{const key=k+'-'+IDS[i];return '<div class="card" style="--card:var(--'+k+');--card-ink:var(--'+k+'-ink)"><div class="kind">'+p[0]+'</div><h4>'+p[1]+'</h4><p>'+p[2]+'</p><div class="size">'+p[3]+'</div>'+priceHTML(IDS[i])+
-      '<div class="buy"><div class="qty" role="group" aria-label="Cantidad de '+p[1]+'"><button type="button" data-q="-1" aria-label="Quitar uno">−</button><output>1</output><button type="button" data-q="1" aria-label="Añadir uno">+</button></div>'+
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  let html='', lastGroup='';
+  LINES.forEach((L,i)=>{
+    if(L.group!==lastGroup){ if(lastGroup)html+='</div>'; html+='<div class="tabgroup"><span class="eyebrow">'+L.group+'</span>'; lastGroup=L.group; }
+    html+='<button class="tab" role="tab" id="tab-'+L.id+'" aria-controls="panel" aria-selected="'+(i===0)+'" tabindex="'+(i===0?0:-1)+'"><span class="swatch" style="background:var(--'+L.id+')"></span>'+L.name+'</button>';
+  });
+  tabsEl.innerHTML=html+'</div>';
+  const tabs=[...tabsEl.querySelectorAll('.tab')];
+  function render(id){
+    const L=LINES.find(l=>l.id===id);
+    list.innerHTML=L.items.map(([key])=>{const p=PRODUCTS[key];return '<div class="card" style="--card:var(--'+L.id+');--card-ink:var(--'+L.id+'-ink)">'+
+      '<div class="pic"><img src="'+p.img+'" alt="'+esc(p.name+' '+L.name)+'" loading="lazy"></div>'+
+      '<div class="kind">'+p.kind+'</div><h4>'+esc(p.name)+'</h4><p>'+esc(p.desc)+'</p>'+(p.size?'<div class="size">'+p.size+'</div>':'')+
+      (PRICES[key]!=null?'<div class="price">'+money(PRICES[key])+'</div>':'<div class="price pending">Precio por confirmar</div>')+
+      '<div class="buy"><div class="qty" role="group" aria-label="Cantidad"><button type="button" data-q="-1" aria-label="Quitar uno">−</button><output>1</output><button type="button" data-q="1" aria-label="Añadir uno">+</button></div>'+
       '<button type="button" class="btn add" data-key="'+key+'">Agregar</button></div></div>';}).join('');
-    tabs.forEach(t=>{const on=t.id==='tab-'+k;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1});
-    panel.setAttribute('aria-labelledby','tab-'+k);
-    colimg.src=FRAG[k][1]; colimg.alt='Línea '+FRAG[k][0]+' de Spa Line';
+    tabs.forEach(t=>{const on=t.id==='tab-'+id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1});
+    panel.setAttribute('aria-labelledby','tab-'+id);
+    note.textContent=L.id==='f6'?'Leche de Almendras Dulces: por ahora solo hay una foto de grupo de la línea.':'';
   }
+  tabs.forEach((t,i)=>{
+    t.onclick=()=>render(t.id.slice(4));
+    t.onkeydown=e=>{let j=null;
+      if(e.key==='ArrowRight')j=(i+1)%tabs.length; else if(e.key==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;
+      else if(e.key==='Home')j=0; else if(e.key==='End')j=tabs.length-1;
+      if(j!==null){e.preventDefault();tabs[j].focus();render(tabs[j].id.slice(4));}};
+  });
   list.addEventListener('click',e=>{
     const q=e.target.closest('[data-q]');
     if(q){const o=q.parentNode.querySelector('output');o.value=Math.max(1,Math.min(20,(+o.value||1)+(+q.dataset.q)));return;}
     const a=e.target.closest('.add'); if(!a)return;
-    const n=+a.parentNode.querySelector('output').value||1;
-    cart[a.dataset.key]=(cart[a.dataset.key]||0)+n; save(); updateCart();
+    cart[a.dataset.key]=(cart[a.dataset.key]||0)+(+a.parentNode.querySelector('output').value||1); save(); updateCart();
     a.textContent='¡Agregado!'; setTimeout(()=>a.textContent='Agregar',900);
   });
+  render('f1');
 
   // ===== Carrito =====
   let cart={}; try{cart=JSON.parse(localStorage.getItem('spaline-cart')||'{}')||{}}catch(e){cart={}}
+  Object.keys(cart).forEach(k=>{if(!PRODUCTS[k])delete cart[k]});
   function save(){try{localStorage.setItem('spaline-cart',JSON.stringify(cart))}catch(e){}}
   const dlg=document.getElementById('cart'), cartList=document.getElementById('cartList'), cartCount=document.getElementById('cartCount'),
         cartMsg=document.getElementById('cartMsg'), sendWa=document.getElementById('sendWa'), cartWarn=document.getElementById('cartWarn');
-  function lines(){return Object.entries(cart).filter(([,n])=>n>0).map(([key,n])=>{const [f,id]=key.split('-');const i=IDS.indexOf(id);return {key,f,id,n,name:products[i][1],size:products[i][3],frag:FRAG[f][0]};});}
   function updateCart(){
-    const L=lines(); cartCount.textContent=L.reduce((a,l)=>a+l.n,0);
-    cartList.innerHTML=L.length?L.map(l=>'<li style="--card:var(--'+l.f+')"><div><strong>'+l.name+'</strong><small>'+l.frag+' · '+l.size+'</small></div><div class="qty" role="group" aria-label="Cantidad de '+l.name+' '+l.frag+'"><button type="button" data-k="'+l.key+'" data-d="-1" aria-label="Quitar uno">−</button><output>'+l.n+'</output><button type="button" data-k="'+l.key+'" data-d="1" aria-label="Añadir uno">+</button></div></li>').join(''):'<li class="empty" style="--card:var(--line)">Todavía no has agregado productos.</li>';
-    const allPriced=L.length&&L.every(l=>PRICES[l.id]!=null);
-    const total=allPriced?L.reduce((a,l)=>a+PRICES[l.id]*l.n,0):null;
-    const msg='¡Hola Spa Line! Quiero hacer este pedido:\n'+(L.length?L.map(l=>'• '+l.n+' × '+l.name+' '+l.frag+' ('+l.size+')').join('\n'):'(vacío)')+(total!=null?'\nTotal: '+money(total):'')+'\n\n¿Cómo puedo pagar y cuándo me llega?';
+    const L=Object.entries(cart).filter(([,n])=>n>0).map(([k,n])=>({p:PRODUCTS[k],n}));
+    cartCount.textContent=L.reduce((a,l)=>a+l.n,0);
+    cartList.innerHTML=L.length?L.map(({p,n})=>'<li style="--card:var(--'+p.line.id+')"><img src="'+p.img+'" alt=""><div class="t"><strong>'+esc(p.name)+'</strong><small>'+p.line.name+(p.size?' · '+p.size:'')+'</small></div><div class="qty" role="group" aria-label="Cantidad de '+esc(p.name)+'"><button type="button" data-k="'+p.key+'" data-d="-1" aria-label="Quitar uno">−</button><output>'+n+'</output><button type="button" data-k="'+p.key+'" data-d="1" aria-label="Añadir uno">+</button></div></li>').join(''):'<li style="--card:var(--line)">Todavía no has agregado productos.</li>';
+    const total=L.length&&L.every(l=>PRICES[l.p.key]!=null)?L.reduce((a,l)=>a+PRICES[l.p.key]*l.n,0):null;
+    const msg='¡Hola Spa Line! Quiero hacer este pedido:\n'+(L.length?L.map(({p,n})=>'• '+n+' × '+p.name+' '+p.line.name+(p.size?' ('+p.size+')':'')).join('\n'):'(vacío)')+(total!=null?'\nTotal: '+money(total):'')+'\n\n¿Cómo puedo pagar y cuándo me llega?';
     cartMsg.textContent=msg;
     const ready=WHATSAPP&&L.length;
     sendWa.href=ready?'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg):'#';
@@ -352,16 +441,6 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
   document.getElementById('cartClose').onclick=()=>dlg.close();
   dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();});
   updateCart();
-  tabs.forEach((t,i)=>{
-    t.onclick=()=>render(t.id.slice(4));
-    t.onkeydown=e=>{
-      let j=null;
-      if(e.key==='ArrowRight')j=(i+1)%tabs.length; else if(e.key==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;
-      else if(e.key==='Home')j=0; else if(e.key==='End')j=tabs.length-1;
-      if(j!==null){e.preventDefault();tabs[j].focus();render(tabs[j].id.slice(4));}
-    };
-  });
-  render('f1');
 })();
 </script>
 </body>

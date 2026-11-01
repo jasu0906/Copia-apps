@@ -17,7 +17,13 @@
     "on-fragrance": "#2A1030",
     "mandarina-ink": "#C3E07C",
     "cherry-ink": "#8EE0EA",
-    "mora-ink": "#D9C0F5"
+    "mora-ink": "#D9C0F5",
+    "blueberry": "#8396DB",
+    "orquidea": "#D98BC4",
+    "almendras": "#CDB585",
+    "blueberry-ink": "#BFCBF7",
+    "orquidea-ink": "#F4BFE4",
+    "almendras-ink": "#EBD3A6"
   },
   "pairs": [
     [
@@ -108,6 +114,30 @@
       "border-control",
       "surface",
       "ui"
+    ],
+    [
+      "blueberry-ink",
+      "surface"
+    ],
+    [
+      "blueberry-ink",
+      "bg"
+    ],
+    [
+      "orquidea-ink",
+      "surface"
+    ],
+    [
+      "orquidea-ink",
+      "bg"
+    ],
+    [
+      "almendras-ink",
+      "surface"
+    ],
+    [
+      "almendras-ink",
+      "bg"
     ]
   ],
   "_decorative": "'border' solo en adornos; los bordes de controles usan 'border-control'. '*-ink' es el color de cada fragancia para texto."
