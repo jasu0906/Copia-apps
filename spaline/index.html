@@ -3,124 +3,139 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Spaline · Rutina de cuidado de la piel</title>
-<meta name="description" content="Spaline: rutina de cuidado de la piel en 4 pasos. Limpiar, tratar, hidratar y proteger.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<title>Spa Line · Un aroma para cada momento</title>
+<meta name="description" content="Spa Line: cuidado corporal en tres fragancias, Mandarina Coco, Cherry Berry y Mora Yogurt. Hecho para Venezuela.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Dancing+Script:wght@600;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: historia vertical; un frasco fijo (sticky) que cambia de color y fórmula mientras bajas por los 4 pasos de la rutina */
+/* Tokens: replica/design/tokens.json (claro) y tokens-dark.json (oscuro). Colores sacados de las publicaciones de @spalineve. */
 :root{
-  --bg:#EDF0EE; --surface:#F8FAF9; --ink:#1B2627; --muted:#5C6B6C; --line:#CBD4D2;
-  --line-control:#768584; --focus:#2F6F6A; --on-step:#1B2627;
-  --c1:#9FC7C4; --c2:#E7B8A4; --c3:#C9C2E6; --c4:#F2D27A;
-  --cur:var(--c1);
-  --display:"Gloock",Georgia,"Times New Roman",serif;
+  --bg:#FBF4F8; --surface:#FFFFFF; --ink:#2A1030; --muted:#6E5372; --line:#EED9E5; --line-control:#A27E98;
+  --accent:#8B1A6B; --on-accent:#FFFFFF; --focus:#8B1A6B; --pink:#E64A97;
+  --f1:#A9CB55; --f2:#5FCAD8; --f3:#C9AAE8; --on-f:#2A1030;
+  --f1-ink:#3F5A0E; --f2-ink:#0E5964; --f3-ink:#5B2A86;
+  --cur:var(--f1); --cur-ink:var(--f1-ink);
+  --display:"Baloo 2",system-ui,sans-serif;
+  --script:"Dancing Script",cursive;
   --body:"Manrope",system-ui,-apple-system,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#111819;--surface:#182223;--ink:#E6EEEC;--muted:#97A6A5;--line:#2D3A3B;
-  --line-control:#6B7B7C;--focus:#6FA7A3;
-  --c1:#6FA7A3;--c2:#D9957A;--c3:#9E95D2;--c4:#D9B54F;color-scheme:dark}}
+  --bg:#1A0F1D;--surface:#251729;--ink:#F7EAF2;--muted:#C8AFC3;--line:#3A2840;--line-control:#8E7088;
+  --accent:#F27BB5;--on-accent:#1A0F1D;--focus:#F27BB5;--pink:#F27BB5;
+  --f1:#9BBE48;--f2:#4FBACB;--f3:#B391DB;
+  --f1-ink:#C3E07C;--f2-ink:#8EE0EA;--f3-ink:#D9C0F5;color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#111819;--surface:#182223;--ink:#E6EEEC;--muted:#97A6A5;--line:#2D3A3B;
-  --line-control:#6B7B7C;--focus:#6FA7A3;
-  --c1:#6FA7A3;--c2:#D9957A;--c3:#9E95D2;--c4:#D9B54F;color-scheme:dark}
+  --bg:#1A0F1D;--surface:#251729;--ink:#F7EAF2;--muted:#C8AFC3;--line:#3A2840;--line-control:#8E7088;
+  --accent:#F27BB5;--on-accent:#1A0F1D;--focus:#F27BB5;--pink:#F27BB5;
+  --f1:#9BBE48;--f2:#4FBACB;--f3:#B391DB;
+  --f1-ink:#C3E07C;--f2-ink:#8EE0EA;--f3-ink:#D9C0F5;color-scheme:dark}
+
+*{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+a{color:inherit}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;line-height:1.05;margin:0}
+h1,h2,h3{font-family:var(--display);font-weight:800;text-wrap:balance;line-height:1;margin:0;letter-spacing:-.01em}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--ink);z-index:20;margin-top:env(safe-area-inset-top,0px)}
+.script{font-family:var(--script);font-weight:700}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--f1),var(--f2),var(--f3),var(--pink));z-index:20;margin-top:env(safe-area-inset-top,0px)}
 
-/* HERO */
-.hero{padding-block:64px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
-.hero h1{font-size:clamp(48px,9vw,112px);letter-spacing:-.02em}
-.hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.6px var(--ink)}
-.hero p{max-width:44ch;color:var(--muted);font-size:18px;margin:20px 0 28px}
-.btn{display:inline-flex;gap:10px;align-items:center;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:14px 22px;font:700 15px var(--body);cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
-.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.18)}
+/* Barra superior */
+.top{display:flex;justify-content:space-between;align-items:center;padding-block:20px}
+.wordmark{font-family:var(--display);font-weight:800;font-size:26px;line-height:.85;text-decoration:none;color:var(--accent);letter-spacing:.02em}
+.wordmark span{display:block}
+.toplink{font-weight:700;font-size:14px;text-decoration:none;border-bottom:2px solid var(--pink)}
+.toplink:hover{color:var(--accent)}
+
+/* Botones */
+.btn{display:inline-flex;gap:10px;align-items:center;background:var(--accent);color:var(--on-accent);border:2px solid var(--accent);border-radius:999px;padding:13px 22px;font:700 15px var(--body);cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(139,26,107,.25)}
 .btn:active{transform:translateY(0);box-shadow:none}
-.btn[aria-disabled="true"]{opacity:.6;cursor:default;transform:none;box-shadow:none}
-.btn:focus-visible,.tab:focus-visible,.layer-btn:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
-.drops{position:relative;aspect-ratio:1;max-width:100%}
-.drops span{position:absolute;border-radius:50% 50% 50% 0;transform:rotate(-45deg);opacity:.9;animation:float 6s ease-in-out infinite}
-.drops span:nth-child(1){width:46%;height:46%;left:10%;top:18%;background:var(--c1)}
-.drops span:nth-child(2){width:30%;height:30%;left:56%;top:8%;background:var(--c2);animation-delay:-2s}
-.drops span:nth-child(3){width:34%;height:34%;left:48%;top:56%;background:var(--c3);animation-delay:-4s}
-.drops span:nth-child(4){width:16%;height:16%;left:18%;top:70%;background:var(--c4);animation-delay:-1s}
-@keyframes float{50%{translate:0 -10px}}
-.scrollhint{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center}
-.scrollhint i{width:1px;height:28px;background:var(--muted);display:block;animation:hint 1.8s infinite}
-@keyframes hint{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-control)}
+.btn.ghost:hover{border-color:var(--accent);box-shadow:none}
+.btn:focus-visible,.tab:focus-visible,.toplink:focus-visible,.wordmark:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 
-/* RUTINA (sticky) */
-.routine{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding-block:40px}
+/* Inicio */
+.hero{padding-block:32px 40px;display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(46px,8.5vw,104px)}
+.hero h1 em{font-style:normal;font-family:var(--script);font-weight:700;color:var(--pink);font-size:1.08em}
+.hero p{max-width:42ch;color:var(--muted);font-size:18px;margin:20px 0 28px}
+.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.drops{position:relative;aspect-ratio:1;max-width:100%}
+.drops span{position:absolute;border-radius:50% 50% 50% 0;transform:rotate(-45deg);animation:float 6s ease-in-out infinite}
+.drops span:nth-child(1){width:44%;height:44%;left:8%;top:20%;background:var(--f1)}
+.drops span:nth-child(2){width:32%;height:32%;left:56%;top:6%;background:var(--f2);animation-delay:-2s}
+.drops span:nth-child(3){width:36%;height:36%;left:48%;top:54%;background:var(--f3);animation-delay:-4s}
+.drops span:nth-child(4){width:15%;height:15%;left:20%;top:72%;background:var(--pink);animation-delay:-1s}
+@keyframes float{50%{translate:0 -10px}}
+
+/* Fragancias (frasco fijo) */
+.fragrances{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding-block:24px 40px}
 .stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12vh);height:min(70vh,560px);display:grid;place-items:center;background:var(--surface);border-radius:28px;overflow:hidden}
-.stage::before{content:"";position:absolute;width:70%;aspect-ratio:1;border-radius:50%;background:var(--cur);opacity:.35;filter:blur(30px);transition:background .6s}
-.bottle{position:relative;width:min(150px,40%);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-.cap{height:56px;width:46%;margin:0 auto;background:var(--ink);border-radius:10px 10px 4px 4px}
-.neck{height:12px;width:34%;margin:0 auto;background:var(--ink);opacity:.7}
-.body{height:220px;border-radius:26px;background:var(--cur);transition:background .6s;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;box-shadow:inset -14px 0 0 rgba(0,0,0,.06)}
-.body b{font-family:var(--display);font-weight:400;font-size:22px;color:var(--on-step);line-height:1}
-.body small{font-family:var(--mono);font-size:12px;color:var(--on-step)}
-.fill{position:absolute;left:12px;right:12px;bottom:12px;top:12px;border-radius:18px;background:rgba(255,255,255,.18);clip-path:inset(var(--empty,0%) 0 0 0);transition:clip-path .6s}
+.stage::before{content:"";position:absolute;width:72%;aspect-ratio:1;border-radius:50%;background:var(--cur);opacity:.45;filter:blur(34px);transition:background .6s}
 .stepnum{position:absolute;top:18px;left:20px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.bottle{position:relative;width:min(170px,44%);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.cap{height:44px;width:58%;margin:0 auto;background:#D8D2D6;border-radius:8px 8px 4px 4px;box-shadow:inset -8px 0 0 rgba(0,0,0,.06)}
+.neck{height:14px;width:48%;margin:0 auto;background:#C9C2C7}
+.body{height:250px;border-radius:30px 30px 26px 26px;background:var(--cur);transition:background .6s;position:relative;display:flex;align-items:center;justify-content:center;padding:18px 14px;box-shadow:inset -14px 0 0 rgba(0,0,0,.07)}
+.label{background:#FFFFFFE6;border-radius:14px;padding:14px 10px;text-align:center;width:100%;color:#2A1030}
+.label .brand{font-family:var(--display);font-weight:800;font-size:28px;line-height:.85;color:var(--cur-ink-fixed,#2A1030)}
+.label .brand span{display:block}
+.label .name{font-family:var(--script);font-weight:700;font-size:22px;line-height:1.1;margin-top:8px;color:#8B1A6B}
+.label small{display:block;font-family:var(--mono);font-size:12px;margin-top:6px;color:#2A1030}
 .steps{display:flex;flex-direction:column}
 .step{min-height:70vh;display:flex;flex-direction:column;justify-content:center;gap:12px;padding-left:20px;border-left:4px solid transparent;transition:border-color .4s}
 .step.on{border-left-color:var(--cur)}
-.step h3{transition:color .4s}
+.step h3{font-size:clamp(36px,5vw,56px);transition:color .4s}
 .step.dim h3{color:var(--muted)}
-.step h3{font-size:clamp(34px,5vw,52px)}
-.step p{margin:0;max-width:42ch;color:var(--muted)}
+.step .tag{font-family:var(--mono);font-size:14px;color:var(--muted)}
+.step p{margin:0;max-width:40ch;color:var(--muted)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+.chip{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 10px;background:var(--surface)}
 .swatch{width:14px;height:14px;border-radius:50%;display:inline-block;vertical-align:middle;margin-right:8px}
 
-/* CAPAS DE LA PIEL */
-.skin{padding-block:72px}
-.skin h2{font-size:clamp(36px,6vw,64px);max-width:16ch;margin:12px 0 28px}
-.layers{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
-.layer-visual{border-radius:24px;overflow:hidden;border:1px solid var(--line)}
-.lv{padding:18px 20px;font-family:var(--mono);font-size:12px;display:flex;justify-content:space-between;color:#1B2627;transition:padding .4s}
-.lv.active{padding-block:34px}
-.lv1{background:#F3D9C9}.lv2{background:#E9B8A2}.lv3{background:#D79A86}
-.layer-list{display:flex;flex-direction:column;gap:10px}
-.layer-btn{text-align:left;background:var(--surface);border:1px solid var(--line-control);border-radius:16px;padding:16px;color:var(--ink);font:inherit;cursor:pointer}
-.layer-btn:hover{border-color:var(--ink)}
-.layer-btn[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
-.layer-btn strong{display:block;font-size:17px}
-.layer-btn span{color:var(--muted);font-size:14px}
-
-/* AM / PM */
-.ampm{padding-block:56px}
-.tabs{display:inline-flex;background:var(--surface);border:1px solid var(--line-control);border-radius:999px;padding:4px;margin:16px 0 24px}
-.tab{border:0;background:none;color:var(--ink);font:700 14px var(--body);padding:10px 20px;border-radius:999px;cursor:pointer}
+/* Colección */
+.collection{padding-block:56px}
+.collection h2,.tour h2{font-size:clamp(38px,6vw,64px)}
+.collection .lead{color:var(--muted);max-width:52ch;margin:12px 0 0}
+.tabs{display:inline-flex;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line-control);border-radius:28px;padding:4px;margin:20px 0 24px;gap:2px}
+.tab{border:0;background:none;color:var(--ink);font:700 14px var(--body);padding:10px 18px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
 .tab:hover:not([aria-selected="true"]){background:var(--bg)}
-.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--on-accent)}
+.tab .swatch{margin:0;width:12px;height:12px}
 .list{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.card{background:var(--surface);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
-.card .dot{width:36px;height:36px;border-radius:50%}
-.card h4{margin:0;font-size:16px}
+.card{background:var(--surface);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px;min-width:0;border-top:6px solid var(--card)}
+.card .kind{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--card-ink)}
+.card h4{margin:0;font-size:17px;line-height:1.3}
 .card p{margin:0;color:var(--muted);font-size:14px}
-.card .price{font-family:var(--mono);font-size:13px;margin-top:auto;font-variant-numeric:tabular-nums}
+.card .size{font-family:var(--mono);font-size:13px;margin-top:auto;padding-top:8px;font-variant-numeric:tabular-nums}
 
-.final{padding-block:72px 96px;text-align:left}
-.final h2{font-size:clamp(40px,7vw,80px);max-width:14ch;margin-bottom:24px}
-.note{font-size:13px;color:var(--muted);margin-top:16px}
-footer{border-top:1px solid var(--line);padding-block:20px;font-size:13px;color:var(--muted)}
+/* Recorrido */
+.tour{padding-block:40px 24px}
+.tour .box{background:var(--surface);border-radius:28px;padding:clamp(24px,5vw,56px);display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;position:relative;overflow:hidden}
+.tour .box::after{content:"";position:absolute;right:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:conic-gradient(var(--f1),var(--f2),var(--f3),var(--pink),var(--f1));opacity:.35;filter:blur(18px)}
+.tour p{color:var(--muted);margin:14px 0 0;max-width:46ch}
+.tour .flag{font-size:44px;line-height:1;position:relative;z-index:1}
+
+.final{padding-block:72px 96px}
+.final h2{font-size:clamp(44px,7.5vw,88px);max-width:12ch;margin-bottom:24px}
+.final h2 em{font-style:normal;font-family:var(--script);color:var(--pink)}
+.note{font-size:14px;color:var(--muted);margin-top:16px}
+footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 .reveal{transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s}
 .reveal.pre{transform:translateY(24px);opacity:.4}
 
 @media (max-width:760px){
-  .hero{grid-template-columns:1fr;padding-block:40px 24px}
-  .drops{width:70%;margin:0 auto}
-  .routine{grid-template-columns:1fr;gap:0}
-  .stage{top:env(safe-area-inset-top,0px);height:42vh;z-index:2;box-shadow:0 -8px 0 var(--bg)}
-  .body{height:150px}.cap{height:40px}
+  .hero{grid-template-columns:1fr;padding-block:16px 24px}
+  .drops{width:62%;margin:0 auto}
+  .fragrances{grid-template-columns:1fr;gap:0}
+  .stage{top:env(safe-area-inset-top,0px);height:44vh;z-index:2;box-shadow:0 -8px 0 var(--bg)}
+  .body{height:180px}.cap{height:32px}.label .brand{font-size:22px}.label .name{font-size:18px}
   .step{min-height:75vh;justify-content:flex-end;padding-bottom:6vh}
-  .layers{grid-template-columns:1fr}
   .list{grid-template-columns:1fr 1fr}
+  .tour .box{grid-template-columns:1fr}
 }
+@media (max-width:420px){.list{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -128,91 +143,89 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:13px;color:
 
 <div id="progress"></div>
 
+<nav class="wrap top" aria-label="Principal">
+  <a class="wordmark" href="#" aria-label="Spa Line, inicio"><span>SPA</span><span>LINE</span></a>
+  <a class="toplink" href="https://www.instagram.com/spalineve/" rel="noopener">@spalineve</a>
+</nav>
+
 <header class="wrap hero">
   <div>
-    <div class="eyebrow">Spaline · cuidado de la piel en 4 pasos</div>
-    <h1>Piel que <em>respira</em> mejor.</h1>
-    <p>Fórmulas cortas, con ingredientes que puedes leer. Baja por la página y arma tu rutina paso a paso: limpiar, tratar, hidratar y proteger.</p>
-    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
-      <a class="btn" href="#rutina">Ver la rutina ↓</a>
-      <div class="scrollhint"><i></i>desliza</div>
+    <div class="eyebrow">Spa Line · cuidado corporal · Venezuela</div>
+    <h1>Un aroma para cada <em>momento</em> de tu vida.</h1>
+    <p>Tres personalidades, una misma sensación: frescura total y una piel hidratada todo el día.</p>
+    <div class="actions">
+      <a class="btn" href="#fragancias">Conoce las fragancias ↓</a>
+      <a class="btn ghost" href="https://www.instagram.com/spalineve/" rel="noopener">Escríbenos en Instagram</a>
     </div>
   </div>
   <div class="drops" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 </header>
 
-<section class="wrap routine" id="rutina">
+<section class="wrap fragrances" id="fragancias" aria-label="Fragancias">
   <div class="stage" aria-hidden="true">
-    <div class="stepnum" id="stepnum">Paso 1 de 4</div>
+    <div class="stepnum" id="stepnum">Fragancia 1 de 3</div>
     <div class="bottle" id="bottle">
       <div class="cap"></div><div class="neck"></div>
-      <div class="body"><div class="fill"></div><b id="bname">Gel Limpiador</b><small id="bspec">150 ml · pH 5.5</small></div>
+      <div class="body"><div class="label"><div class="brand"><span>SPA</span><span>LINE</span></div><div class="name" id="bname">Mandarina Coco</div><small id="bspec">momento de playita</small></div></div>
     </div>
   </div>
 
   <div class="steps">
-    <article class="step" data-c="--c1" data-name="Gel Limpiador" data-spec="150 ml · pH 5.5" data-rot="-6">
-      <div class="eyebrow"><span class="swatch" style="background:var(--c1)"></span>Paso 1 · Limpiar</div>
-      <h3>Gel Limpiador de Avena</h3>
-      <p>Quita el sebo y el protector solar del día sin dejar la piel tirante. Espuma suave, sin sulfatos fuertes.</p>
-      <div class="chips"><span class="chip">pH 5.5</span><span class="chip">Avena coloidal</span><span class="chip">Glicerina</span></div>
+    <article class="step" data-c="--f1" data-ink="--f1-ink" data-name="Mandarina Coco" data-spec="momento de playita" data-rot="-6">
+      <div class="eyebrow"><span class="swatch" style="background:var(--f1)"></span>Fragancia 1</div>
+      <h3>Mandarina Coco</h3>
+      <div class="tag">momento de playita</div>
+      <p>Mandarina y coco, con todo el verde de la colección.</p>
+      <div class="chips"><span class="chip">Gel de baño exfoliante</span><span class="chip">Scrub cream</span><span class="chip">Crema hidratante</span><span class="chip">Rocío corporal</span></div>
     </article>
-    <article class="step" data-c="--c2" data-name="Sérum Vitamina C" data-spec="30 ml · 10% C" data-rot="4">
-      <div class="eyebrow"><span class="swatch" style="background:var(--c2)"></span>Paso 2 · Tratar</div>
-      <h3>Sérum de Vitamina C</h3>
-      <p>Aporta luminosidad y ayuda a unificar el tono. Se aplica de mañana, 3 a 4 gotas sobre la piel seca.</p>
-      <div class="chips"><span class="chip">10% vitamina C</span><span class="chip">Ácido ferúlico</span><span class="chip">Mañana</span></div>
+    <article class="step" data-c="--f2" data-ink="--f2-ink" data-name="Cherry Berry" data-spec="momento de paz" data-rot="4">
+      <div class="eyebrow"><span class="swatch" style="background:var(--f2)"></span>Fragancia 2</div>
+      <h3>Cherry Berry</h3>
+      <div class="tag">momento de paz</div>
+      <p>Cerezas y frutos rojos, en turquesa y rosa.</p>
+      <div class="chips"><span class="chip">Gel de baño exfoliante</span><span class="chip">Scrub cream</span><span class="chip">Crema hidratante</span><span class="chip">Rocío corporal</span></div>
     </article>
-    <article class="step" data-c="--c3" data-name="Crema Barrera" data-spec="50 ml · 3 ceramidas" data-rot="-3">
-      <div class="eyebrow"><span class="swatch" style="background:var(--c3)"></span>Paso 3 · Hidratar</div>
-      <h3>Crema Barrera</h3>
-      <p>Repone las grasas naturales de la piel y retiene el agua. Textura ligera que se absorbe en un minuto.</p>
-      <div class="chips"><span class="chip">Ceramidas NP, AP, EOP</span><span class="chip">Niacinamida 4%</span></div>
-    </article>
-    <article class="step" data-c="--c4" data-name="Protector FPS 50" data-spec="50 ml · UVA/UVB" data-rot="6">
-      <div class="eyebrow"><span class="swatch" style="background:var(--c4)"></span>Paso 4 · Proteger</div>
-      <h3>Protector Solar FPS 50</h3>
-      <p>El paso más importante del día. Acabado invisible, sin capa blanca. Reaplica cada 2 horas si estás al sol.</p>
-      <div class="chips"><span class="chip">FPS 50</span><span class="chip">PA++++</span><span class="chip">Sin brillo</span></div>
+    <article class="step" data-c="--f3" data-ink="--f3-ink" data-name="Mora Yogurt" data-spec="regálate un momento" data-rot="-3">
+      <div class="eyebrow"><span class="swatch" style="background:var(--f3)"></span>Fragancia 3</div>
+      <h3>Mora Yogurt</h3>
+      <div class="tag">regálate un momento</div>
+      <p>Mora y yogurt, en lila y rosa.</p>
+      <div class="chips"><span class="chip">Gel de baño exfoliante</span><span class="chip">Scrub cream</span><span class="chip">Crema hidratante</span><span class="chip">Rocío corporal</span></div>
     </article>
   </div>
 </section>
 
-<section class="wrap skin reveal">
-  <div class="eyebrow">Dónde actúa cada producto</div>
-  <h2>Tu piel tiene capas. Cada paso llega a una.</h2>
-  <div class="layers">
-    <div class="layer-visual" aria-hidden="true">
-      <div class="lv lv1 active" id="lv1"><span>Estrato córneo</span><span>~0.02 mm</span></div>
-      <div class="lv lv2" id="lv2"><span>Epidermis viva</span><span>~0.1 mm</span></div>
-      <div class="lv lv3" id="lv3"><span>Dermis</span><span>~2 mm</span></div>
+<section class="wrap collection reveal" aria-labelledby="col-title">
+  <div class="eyebrow">La colección</div>
+  <h2 id="col-title">Cuatro productos por fragancia</h2>
+  <p class="lead">Elige tu aroma y combina los cuatro: del baño a la última capa de perfume.</p>
+  <div class="tabs" role="tablist" aria-label="Fragancia">
+    <button class="tab" role="tab" id="tab-f1" aria-selected="true" aria-controls="list" tabindex="0"><span class="swatch" style="background:var(--f1)"></span>Mandarina Coco</button>
+    <button class="tab" role="tab" id="tab-f2" aria-selected="false" aria-controls="list" tabindex="-1"><span class="swatch" style="background:var(--f2)"></span>Cherry Berry</button>
+    <button class="tab" role="tab" id="tab-f3" aria-selected="false" aria-controls="list" tabindex="-1"><span class="swatch" style="background:var(--f3)"></span>Mora Yogurt</button>
+  </div>
+  <div class="list" id="list" role="tabpanel" aria-labelledby="tab-f1" tabindex="0"></div>
+</section>
+
+<section class="wrap tour reveal" aria-labelledby="tour-title">
+  <div class="box">
+    <div>
+      <div class="eyebrow">De gira</div>
+      <h2 id="tour-title">Recorriendo toda Venezuela</h2>
+      <p>Para llevarte tu momento Spa Line bien cerquita. Sigue la cuenta para saber dónde estaremos.</p>
+      <div class="actions" style="margin-top:22px"><a class="btn ghost" href="https://www.instagram.com/spalineve/" rel="noopener">Seguir a @spalineve</a></div>
     </div>
-    <div class="layer-list" role="group" aria-label="Capas de la piel">
-      <button class="layer-btn" id="lb1" aria-pressed="true" data-l="1"><strong>Estrato córneo</strong><span>La barrera de la superficie. Aquí trabajan el limpiador, la crema y el protector.</span></button>
-      <button class="layer-btn" id="lb2" aria-pressed="false" data-l="2"><strong>Epidermis viva</strong><span>Donde se produce el pigmento. La vitamina C ayuda a reducir las manchas.</span></button>
-      <button class="layer-btn" id="lb3" aria-pressed="false" data-l="3"><strong>Dermis</strong><span>Colágeno y elastina. El protector solar evita que el sol los dañe con los años.</span></button>
-    </div>
+    <div class="flag" aria-hidden="true">🇻🇪 ✨</div>
   </div>
 </section>
 
-<section class="wrap ampm reveal">
-  <div class="eyebrow">Tu rutina</div>
-  <h2 style="font-size:clamp(36px,6vw,64px)">Mañana y noche</h2>
-  <div class="tabs" role="tablist" aria-label="Momento del día">
-    <button class="tab" role="tab" id="tab-am" aria-selected="true" aria-controls="list" tabindex="0">☀ Mañana</button>
-    <button class="tab" role="tab" id="tab-pm" aria-selected="false" aria-controls="list" tabindex="-1">☾ Noche</button>
-  </div>
-  <div class="list" id="list" role="tabpanel" aria-labelledby="tab-am" tabindex="0"></div>
-  <p class="note">Productos y precios de ejemplo (USD), pendientes del catálogo real de Spaline.</p>
+<section class="wrap final reveal" aria-labelledby="final-title">
+  <h2 id="final-title">¿Cuál es tu <em>momento</em>?</h2>
+  <a class="btn" href="https://www.instagram.com/spalineve/" rel="noopener">Pídelo por Instagram</a>
+  <p class="note">Precios y disponibilidad por mensaje directo en @spalineve.</p>
 </section>
 
-<section class="wrap final reveal">
-  <h2>Kit completo, cuatro pasos.</h2>
-  <button class="btn" id="buy">Agregar el kit · $68</button>
-  <p class="note" id="buymsg" role="status" aria-live="polite"></p>
-</section>
-
-<footer class="wrap">© Spaline · Venezuela. Borrador: productos, fórmulas y precios de ejemplo pendientes de sustituir.</footer>
+<footer class="wrap"><span>© Spa Line · Venezuela</span><a href="https://www.instagram.com/spalineve/" rel="noopener">Instagram @spalineve</a></footer>
 
 <script>
 (function(){
@@ -225,9 +238,8 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:13px;color:
     if(i===cur)return; cur=i; const s=steps[i];
     root.style.setProperty('--cur','var('+s.dataset.c+')');
     bname.textContent=s.dataset.name; bspec.textContent=s.dataset.spec;
-    num.textContent='Paso '+(i+1)+' de 4';
+    num.textContent='Fragancia '+(i+1)+' de '+steps.length;
     bottle.style.transform='rotate('+s.dataset.rot+'deg) translateY('+(i%2?-8:0)+'px)';
-    s.style.setProperty('--cur','var('+s.dataset.c+')');
     steps.forEach((el,k)=>{el.classList.toggle('on',k===i);el.classList.toggle('dim',k!==i)});
   }
   function onScroll(){
@@ -243,25 +255,20 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:13px;color:
   addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll);
   onScroll();
 
-  // Capas
-  document.querySelectorAll('.layer-btn').forEach(b=>b.addEventListener('click',()=>{
-    const l=b.dataset.l;
-    document.querySelectorAll('.layer-btn').forEach(x=>x.setAttribute('aria-pressed',x===b));
-    [1,2,3].forEach(n=>document.getElementById('lv'+n).classList.toggle('active',String(n)===l));
-  }));
-
-  // AM/PM
-  const data={
-    am:[['--c1','Gel Limpiador','Lava 30 segundos con agua tibia.','$16'],['--c2','Sérum Vitamina C','3–4 gotas en cara y cuello.','$24'],['--c3','Crema Barrera','Una capa fina.','$18'],['--c4','Protector FPS 50','Dos dedos de producto.','$20']],
-    pm:[['--c1','Gel Limpiador','Doble limpieza si usaste protector.','$16'],['--c3','Crema Barrera','Capa un poco más generosa.','$18'],['--c3','Contorno de ojos','Toques suaves con el anular.','$14'],['--c1','Bruma de agua termal','Opcional, para refrescar.','$10']]
-  };
+  // Colección: datos tomados de las etiquetas de los productos
+  const products=[
+    ['Gel de baño','Gel de baño exfoliante','Exfoliante para el cuerpo, para la ducha.','200 ml'],
+    ['Scrub cream','Exfoliante en crema','Sin enjuagar.','300 ml'],
+    ['Crema','Crema hidratante','Para manos y cuerpo.','240 ml'],
+    ['Rocío','Rocío corporal','Hidratante y emoliente.','150 ml']
+  ];
   const list=document.getElementById('list');
+  const tabs=[...document.querySelectorAll('.tab')];
   function render(k){
-    list.innerHTML=data[k].map(d=>'<div class="card"><div class="dot" style="background:var('+d[0]+')"></div><h4>'+d[1]+'</h4><p>'+d[2]+'</p><div class="price">'+d[3]+'</div></div>').join('');
+    list.innerHTML=products.map(p=>'<div class="card" style="--card:var(--'+k+');--card-ink:var(--'+k+'-ink)"><div class="kind">'+p[0]+'</div><h4>'+p[1]+'</h4><p>'+p[2]+'</p><div class="size">'+p[3]+'</div></div>').join('');
     tabs.forEach(t=>{const on=t.id==='tab-'+k;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1});
     list.setAttribute('aria-labelledby','tab-'+k);
   }
-  const tabs=[document.getElementById('tab-am'),document.getElementById('tab-pm')];
   tabs.forEach((t,i)=>{
     t.onclick=()=>render(t.id.slice(4));
     t.onkeydown=e=>{
@@ -271,15 +278,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:13px;color:
       if(j!==null){e.preventDefault();tabs[j].focus();render(tabs[j].id.slice(4));}
     };
   });
-  render('am');
-
-  const buy=document.getElementById('buy');
-  buy.onclick=()=>{
-    if(buy.getAttribute('aria-disabled')==='true')return;
-    buy.setAttribute('aria-disabled','true'); buy.textContent='Agregando…';
-    setTimeout(()=>{buy.removeAttribute('aria-disabled'); buy.textContent='Agregar el kit · $68';
-      document.getElementById('buymsg').textContent='Kit agregado al carrito (vista previa: todavía no hay tienda conectada).';},600);
-  };
+  render('f1');
 })();
 </script>
 </body>

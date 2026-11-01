@@ -1,24 +1,23 @@
 {
-  "_about": "Tokens de la landing (modo oscuro). Mismos nombres que tokens.json. on-step y los layer-* no cambian en el HTML actual: el texto del frasco y las capas de piel van en #1B2627 fijo en ambos modos.",
+  "_about": "Tokens de Spa Line (modo oscuro). Mismos nombres que tokens.json. Comprobar con: python3 .claude/skills/replica-design/contrast.py replica/design/tokens-dark.json",
   "color": {
-    "bg": "#111819",
-    "surface": "#182223",
-    "border": "#2D3A3B",
-    "border-control": "#6B7B7C",
-    "text": "#E6EEEC",
-    "text-muted": "#97A6A5",
-    "accent": "#E6EEEC",
-    "on-accent": "#111819",
-    "focus": "#6FA7A3",
-    "step-1": "#6FA7A3",
-    "step-2": "#D9957A",
-    "step-3": "#9E95D2",
-    "step-4": "#D9B54F",
-    "on-step": "#1B2627",
-    "layer-1": "#F3D9C9",
-    "layer-2": "#E9B8A2",
-    "layer-3": "#D79A86",
-    "on-layer": "#1B2627"
+    "bg": "#1A0F1D",
+    "surface": "#251729",
+    "border": "#3A2840",
+    "border-control": "#8E7088",
+    "text": "#F7EAF2",
+    "text-muted": "#C8AFC3",
+    "accent": "#F27BB5",
+    "on-accent": "#1A0F1D",
+    "focus": "#F27BB5",
+    "pink": "#F27BB5",
+    "mandarina": "#9BBE48",
+    "cherry": "#4FBACB",
+    "mora": "#B391DB",
+    "on-fragrance": "#2A1030",
+    "mandarina-ink": "#C3E07C",
+    "cherry-ink": "#8EE0EA",
+    "mora-ink": "#D9C0F5"
   },
   "pairs": [
     [
@@ -42,32 +41,53 @@
       "accent"
     ],
     [
-      "on-step",
-      "step-1"
+      "accent",
+      "bg"
     ],
     [
-      "on-step",
-      "step-2"
+      "accent",
+      "surface"
     ],
     [
-      "on-step",
-      "step-3"
+      "on-fragrance",
+      "mandarina"
     ],
     [
-      "on-step",
-      "step-4"
+      "on-fragrance",
+      "cherry"
     ],
     [
-      "on-layer",
-      "layer-1"
+      "on-fragrance",
+      "mora"
     ],
     [
-      "on-layer",
-      "layer-2"
+      "mandarina-ink",
+      "surface"
     ],
     [
-      "on-layer",
-      "layer-3"
+      "cherry-ink",
+      "surface"
+    ],
+    [
+      "mora-ink",
+      "surface"
+    ],
+    [
+      "mandarina-ink",
+      "bg"
+    ],
+    [
+      "cherry-ink",
+      "bg"
+    ],
+    [
+      "mora-ink",
+      "bg"
+    ],
+    [
+      "pink",
+      "bg",
+      "large"
     ],
     [
       "focus",
@@ -90,5 +110,5 @@
       "ui"
     ]
   ],
-  "_decorative": "'border' solo se usa en adornos (chips, separadores) y no necesita 3:1. Los bordes de controles usan 'border-control'."
+  "_decorative": "'border' solo en adornos; los bordes de controles usan 'border-control'. '*-ink' es el color de cada fragancia para texto."
 }
