@@ -60,3 +60,6 @@ como el "MANDARINA COCO / momento de playita" de las publicaciones). El logotipo
   espumoso 150 ml. Datos solo de las etiquetas. Color `vanilla` / `vanilla-ink`.
 - Leche de Almendras Dulces con envase nuevo: gel 200 ml, crema 240 ml, rocío 150 ml (fotos de
   ambiente recortadas por producto; se muestran enteras con object-fit: contain).
+- Leche de Almendras Dulces son DOS productos: Línea Profesional (catálogo, envases blancos 250 ml,
+  foto de grupo) y Nueva Línea (envase amarillo: gel 200, crema 240, rocío 150; id f8, color
+  `almendras-nl`). El portafolio sigue mostrando solo Mandarina, Cherry y Mora (las de 4 productos).

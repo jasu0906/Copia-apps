@@ -25,7 +25,9 @@
     "orquidea-ink": "#F4BFE4",
     "almendras-ink": "#EBD3A6",
     "vanilla": "#D9A866",
-    "vanilla-ink": "#F6D3A0"
+    "vanilla-ink": "#F6D3A0",
+    "almendras-nl": "#CDAE4E",
+    "almendras-nl-ink": "#F2DB8F"
   },
   "pairs": [
     [
@@ -152,6 +154,18 @@
     [
       "on-fragrance",
       "vanilla"
+    ],
+    [
+      "almendras-nl-ink",
+      "surface"
+    ],
+    [
+      "almendras-nl-ink",
+      "bg"
+    ],
+    [
+      "on-fragrance",
+      "almendras-nl"
     ]
   ],
   "_decorative": "'border' solo en adornos; los bordes de controles usan 'border-control'. '*-ink' es el color de cada fragancia para texto."
