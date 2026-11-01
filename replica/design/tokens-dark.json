@@ -23,7 +23,9 @@
     "almendras": "#CDB585",
     "blueberry-ink": "#BFCBF7",
     "orquidea-ink": "#F4BFE4",
-    "almendras-ink": "#EBD3A6"
+    "almendras-ink": "#EBD3A6",
+    "vanilla": "#D9A866",
+    "vanilla-ink": "#F6D3A0"
   },
   "pairs": [
     [
@@ -138,6 +140,18 @@
     [
       "almendras-ink",
       "bg"
+    ],
+    [
+      "vanilla-ink",
+      "surface"
+    ],
+    [
+      "vanilla-ink",
+      "bg"
+    ],
+    [
+      "on-fragrance",
+      "vanilla"
     ]
   ],
   "_decorative": "'border' solo en adornos; los bordes de controles usan 'border-control'. '*-ink' es el color de cada fragancia para texto."

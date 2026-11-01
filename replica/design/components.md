@@ -53,3 +53,10 @@ como el "MANDARINA COCO / momento de playita" de las publicaciones). El logotipo
 - Test "¿Cuál es tu fragancia?": 3 preguntas basadas en las descripciones del catálogo, puntúa las
   6 fragancias, muestra resultado con beneficios y lleva a la pestaña de la tienda. Botón Volver.
 - Ficha de producto (<dialog>): foto grande, beneficios de la fragancia, cantidad y agregar.
+
+## Nuevos productos (nov 2026)
+- Spa Line 83 Vanilla Dream (nuevo lanzamiento): sección destacada tras el inicio + pestaña con
+  etiqueta "Nuevo"; rocío corporal 150 ml, crema corporal ultra humectante 200 ml, aceite de baño
+  espumoso 150 ml. Datos solo de las etiquetas. Color `vanilla` / `vanilla-ink`.
+- Leche de Almendras Dulces con envase nuevo: gel 200 ml, crema 240 ml, rocío 150 ml (fotos de
+  ambiente recortadas por producto; se muestran enteras con object-fit: contain).

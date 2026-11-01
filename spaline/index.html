@@ -12,8 +12,8 @@
 :root{
   --bg:#FBF4F8; --surface:#FFFFFF; --ink:#2A1030; --muted:#6E5372; --line:#EED9E5; --line-control:#A27E98;
   --accent:#8B1A6B; --on-accent:#FFFFFF; --focus:#8B1A6B; --pink:#E64A97;
-  --f1:#A9CB55; --f2:#5FCAD8; --f3:#C9AAE8; --f4:#9DB0EE; --f5:#E9AAD8; --f6:#E8D3A6;
-  --f1-ink:#3F5A0E; --f2-ink:#0E5964; --f3-ink:#5B2A86; --f4-ink:#2D3F8F; --f5-ink:#8B1A6B; --f6-ink:#6E431B;
+  --f1:#A9CB55; --f2:#5FCAD8; --f3:#C9AAE8; --f4:#9DB0EE; --f5:#E9AAD8; --f6:#E8D3A6; --f7:#F4C98E;
+  --f1-ink:#3F5A0E; --f2-ink:#0E5964; --f3-ink:#5B2A86; --f4-ink:#2D3F8F; --f5-ink:#8B1A6B; --f6-ink:#6E431B; --f7-ink:#7A4410;
   --cur:var(--f1);
   --display:"Baloo 2",system-ui,sans-serif; --script:"Dancing Script",cursive;
   --body:"Manrope",system-ui,-apple-system,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
@@ -21,13 +21,13 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#1A0F1D;--surface:#251729;--ink:#F7EAF2;--muted:#C8AFC3;--line:#3A2840;--line-control:#8E7088;
   --accent:#F27BB5;--on-accent:#1A0F1D;--focus:#F27BB5;--pink:#F27BB5;
-  --f1:#9BBE48;--f2:#4FBACB;--f3:#B391DB;--f4:#8396DB;--f5:#D98BC4;--f6:#CDB585;
-  --f1-ink:#C3E07C;--f2-ink:#8EE0EA;--f3-ink:#D9C0F5;--f4-ink:#BFCBF7;--f5-ink:#F4BFE4;--f6-ink:#EBD3A6;color-scheme:dark}}
+  --f1:#9BBE48;--f2:#4FBACB;--f3:#B391DB;--f4:#8396DB;--f5:#D98BC4;--f6:#CDB585;--f7:#D9A866;
+  --f1-ink:#C3E07C;--f2-ink:#8EE0EA;--f3-ink:#D9C0F5;--f4-ink:#BFCBF7;--f5-ink:#F4BFE4;--f6-ink:#EBD3A6;--f7-ink:#F6D3A0;color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#1A0F1D;--surface:#251729;--ink:#F7EAF2;--muted:#C8AFC3;--line:#3A2840;--line-control:#8E7088;
   --accent:#F27BB5;--on-accent:#1A0F1D;--focus:#F27BB5;--pink:#F27BB5;
-  --f1:#9BBE48;--f2:#4FBACB;--f3:#B391DB;--f4:#8396DB;--f5:#D98BC4;--f6:#CDB585;
-  --f1-ink:#C3E07C;--f2-ink:#8EE0EA;--f3-ink:#D9C0F5;--f4-ink:#BFCBF7;--f5-ink:#F4BFE4;--f6-ink:#EBD3A6;color-scheme:dark}
+  --f1:#9BBE48;--f2:#4FBACB;--f3:#B391DB;--f4:#8396DB;--f5:#D98BC4;--f6:#CDB585;--f7:#D9A866;
+  --f1-ink:#C3E07C;--f2-ink:#8EE0EA;--f3-ink:#D9C0F5;--f4-ink:#BFCBF7;--f5-ink:#F4BFE4;--f6-ink:#EBD3A6;--f7-ink:#F6D3A0;color-scheme:dark}
 
 *{box-sizing:border-box}
 body{margin:0;padding-bottom:88px;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
@@ -106,6 +106,23 @@ h2{font-size:clamp(38px,6vw,64px)}
 .card{background:var(--surface);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0;border-top:6px solid var(--card)}
 .card .pic{height:220px;display:flex;align-items:center;justify-content:center;border-radius:16px;background:radial-gradient(circle at 50% 60%,color-mix(in srgb,var(--card) 45%,transparent),transparent 70%);margin-bottom:6px}
 .card .pic img{height:88%;width:auto;max-width:90%;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(42,16,48,.2))}
+.card .pic img.photo{height:100%;width:auto;max-width:100%;object-fit:contain;border-radius:14px;filter:drop-shadow(0 8px 10px rgba(42,16,48,.18))}
+.detail .dpic img.photo{height:100%;width:100%;max-width:100%;object-fit:cover;border-radius:0;filter:none}
+.detail .dpic:has(img.photo){padding:0}
+.detail .dpic img.photo{max-height:none;min-height:360px}
+.tab .new{font:700 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;background:var(--f7);color:#2A1030;border-radius:999px;padding:2px 7px}
+
+/* Nuevo lanzamiento */
+.launch{padding-block:16px 40px}
+.launch .box{display:grid;grid-template-columns:1.25fr .75fr;border-radius:28px;overflow:hidden;background:linear-gradient(160deg,color-mix(in srgb,var(--f7) 55%,var(--surface)),color-mix(in srgb,var(--pink) 28%,var(--surface)))}
+.launch figure{margin:0;min-height:100%}
+.launch figure img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:1080/602}
+.launch .txt{padding:clamp(22px,4vw,44px);display:flex;flex-direction:column;gap:12px;justify-content:center;min-width:0}
+.launch .badge{align-self:flex-start;font:700 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--bg);border-radius:999px;padding:5px 12px}
+.launch h2{font-size:clamp(36px,5vw,56px)}
+.launch h2 small{display:block;font-size:.45em;font-family:var(--body);font-weight:700;letter-spacing:.02em;color:var(--f7-ink)}
+.launch ul{margin:0;padding-left:18px;color:var(--ink)}
+.launch li{margin:2px 0}
 .card .kind{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--card-ink)}
 .card h4{margin:0;font-size:17px;line-height:1.3}
 .card p{margin:0;color:var(--muted);font-size:14px}
@@ -218,7 +235,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
 .reveal{transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s}
 .reveal.pre{transform:translateY(24px);opacity:.4}
 
-@media (max-width:900px){.list{grid-template-columns:repeat(2,1fr)}.ingredients{grid-template-columns:1fr}.pf{grid-template-columns:1fr}.q-result,.detail-inner{grid-template-columns:1fr}.detail .dpic{min-height:240px}.detail .dpic img{max-height:260px}}
+@media (max-width:900px){.launch .box{grid-template-columns:1fr}.list{grid-template-columns:repeat(2,1fr)}.ingredients{grid-template-columns:1fr}.pf{grid-template-columns:1fr}.q-result,.detail-inner{grid-template-columns:1fr}.detail .dpic{min-height:240px}.detail .dpic img{max-height:260px}}
 @media (max-width:760px){
   .navlinks a:not(.keep){display:none}
   .hero,.brand,.tour .box{grid-template-columns:1fr}
@@ -280,6 +297,23 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
     <img src="img/cherry-scrub.webp" alt="" width="318" height="900" style="width:20%">
   </div>
 </header>
+
+<section class="wrap launch reveal" id="vanilla" aria-labelledby="launch-title">
+  <div class="box">
+    <figure><img src="img/vanilla-grupo.webp" alt="Spa Line 83 Vanilla Dream: rocío corporal, crema corporal ultra humectante y aceite de baño espumoso" width="1080" height="602"></figure>
+    <div class="txt">
+      <span class="badge">Nuevo lanzamiento</span>
+      <h2 id="launch-title"><small>Spa Line 83</small>Vanilla Dream</h2>
+      <ul>
+        <li>Rocío corporal hidratante y emoliente · 150 ml</li>
+        <li>Crema corporal ultra humectante · 200 ml</li>
+        <li>Aceite de baño espumoso · 150 ml</li>
+      </ul>
+      <p style="margin:0;color:var(--muted)">Con aceite de coco, manteca de cacao y ácido hialurónico.</p>
+      <div class="actions"><a class="btn" href="#tienda" data-open="f7">Ver Vanilla Dream</a></div>
+    </div>
+  </div>
+</section>
 
 <section class="wrap brand reveal" id="marca" aria-labelledby="marca-title">
   <figure><img src="img/modelo-mora-yogurt.jpg" alt="Modelo con look ochentero sostiene el Scrub Cream Mora Yogurt de Spa Line" width="1010" height="1133" loading="lazy"></figure>
@@ -432,15 +466,18 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
     gel:['Gel exfoliante','Gel de baño exfoliante','Hidratante y removedor de células muertas. Gránulos no abrasivos.'],
     scrub:['Scrub cream','Exfoliante en crema sin enjuagar','Exfolia en seco y cuida la piel.'],
     crema:['Crema corporal','Crema hidratante para manos y cuerpo','Hidratante y emoliente de rápida absorción.'],
-    mist:['Body mist','Rocío corporal','Refrescante, hidratante y reafirmante.']
+    mist:['Body mist','Rocío corporal','Refrescante, hidratante y reafirmante.'],
+    aceite:['Aceite de baño','Aceite de baño espumoso','Con aceite de coco, manteca de cacao y ácido hialurónico.']
   };
+  const PHOTO=new Set(['almendras-gel','almendras-crema','almendras-rocio','vanilla-crema','vanilla-aceite','vanilla-rocio']);
   const LINES=[
     {id:'f1',name:'Mandarina Coco',group:'Nueva Línea',items:[['mandarina-gel','gel','200 ml'],['mandarina-crema','crema','240 ml'],['mandarina-rocio','mist','150 ml'],['mandarina-scrub','scrub','300 ml']]},
     {id:'f2',name:'Cherry Berry',group:'Nueva Línea',items:[['cherry-gel','gel','200 ml'],['cherry-crema','crema','240 ml'],['cherry-rocio','mist','150 ml'],['cherry-scrub','scrub','300 ml']]},
     {id:'f3',name:'Mora Yogurt',group:'Nueva Línea',items:[['mora-gel','gel','200 ml'],['mora-crema','crema','240 ml'],['mora-rocio','mist','150 ml'],['mora-scrub','scrub','300 ml']]},
     {id:'f4',name:'Blueberry Orange',group:'Línea Profesional',items:[['blueberry-gel','gel','250 ml','Gel de baño exfoliante hidratante','Para el cuerpo.'],['blueberry-crema','crema','250 ml',null,'Para manos y cuerpo.'],['blueberry-mist','mist','','Body mist','Refresca y perfuma.']]},
     {id:'f5',name:'Orquídea Salvaje',group:'Línea Profesional',items:[['orquidea-gel','gel','250 ml','Gel exfoliante para manos y cuerpo','Toque de seda.'],['orquidea-crema','crema','250 ml','Crema para manos y cuerpo','Toque de seda.'],['orquidea-mist','mist','','Body mist','Aroma floral.']]},
-    {id:'f6',name:'Leche de Almendras Dulces',group:'Línea Profesional',items:[['almendras-gel','gel','250 ml',null,'Para el cuerpo.','almendras-grupo'],['almendras-crema','crema','250 ml',null,'Para manos y cuerpo.','almendras-grupo'],['almendras-mist','mist','','Body mist','Aroma cálido y reconfortante.','almendras-grupo']]}
+    {id:'f6',name:'Leche de Almendras Dulces',group:'Línea Profesional',items:[['almendras-gel','gel','200 ml',null,'Para el cuerpo.'],['almendras-crema','crema','240 ml',null,'Para manos y cuerpo.'],['almendras-rocio','mist','150 ml','Rocío corporal','Hidratante y emoliente.']]},
+    {id:'f7',name:'Vanilla Dream',group:'Nuevo lanzamiento · Spa Line 83',isNew:true,items:[['vanilla-crema','crema','200 ml','Crema corporal ultra humectante','Con aceite de coco, manteca de cacao y ácido hialurónico.'],['vanilla-aceite','aceite','150 ml',null,null],['vanilla-rocio','mist','150 ml','Rocío corporal','Hidratante y emoliente.']]}
   ];
   const INFO={
     f1:{tag:'momento de playita',benefits:[['Revitaliza y energiza','la mandarina aporta vitamina C y antioxidantes que iluminan la piel y promueven su regeneración natural.'],['Hidrata profundamente','el coco nutre y suaviza, ayudando a mantener la humedad natural de la piel.'],['Suaviza y mejora la textura','juntos ayudan a mantener una piel más lisa, flexible y con aspecto saludable.']]},
@@ -448,11 +485,12 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
     f3:{tag:'regálate un momento',benefits:[['Nutre y suaviza','la mora aporta vitaminas y antioxidantes que ayudan a mantener la piel tersa y radiante.'],['Hidrata y equilibra','el yogurt contribuye a mantener la humedad natural y suaviza la textura de la piel.'],['Aroma dulce y envolvente','su fragancia combina lo frutal y cremoso, dejando una sensación de confort y frescura durante todo el día.']]},
     f4:{tag:'Línea Profesional',benefits:[['Protege y rejuvenece','los arándanos son ricos en antioxidantes que combaten los radicales libres y previenen el envejecimiento prematuro.'],['Aporta luminosidad natural','la naranja revitaliza y unifica el tono de la piel gracias a su alto contenido de vitamina C.'],['Refresca y revitaliza','su mezcla frutal despierta los sentidos y deja la piel con una sensación fresca, suave y llena de vida.']]},
     f5:{tag:'Línea Profesional',benefits:[['Revitaliza y embellece','la orquídea salvaje ayuda a mantener la firmeza y el brillo natural de la piel.'],['Hidrata y protege','sus extractos naturales retienen la humedad y crean una barrera protectora contra agresores externos.'],['Aporta elegancia y frescura','su delicado aroma floral envuelve la piel en una sensación de sofisticación y bienestar.']]},
+    f7:{tag:'Nuevo lanzamiento · Spa Line 83',benefits:[['Con aceite de coco, manteca de cacao y ácido hialurónico','en la crema corporal ultra humectante y en el aceite de baño espumoso.'],['Aceite de baño espumoso','para el baño, 150 ml.'],['Rocío corporal','hidratante y emoliente, 150 ml.']]},
     f6:{tag:'Línea Profesional',benefits:[['Nutre y aporta elasticidad','el aceite y la leche de almendras dulces brindan sustancias altamente nutritivas que mantienen la piel flexible, suave y saludable.'],['Tonifica y protege','el aloe vera, la glicerina y la vitamina E reafirman la piel y actúan como un escudo antioxidante frente a las agresiones externas.'],['Aroma cálido y reconfortante','su delicada fragancia a almendras dulces envuelve los sentidos, dejando una sensación de calma, suavidad y bienestar.']]}
   };
   const PRODUCTS={};
   LINES.forEach(L=>L.items.forEach(([key,type,size,name,desc,img])=>{
-    PRODUCTS[key]={key,line:L,kind:T[type][0],name:name||T[type][1],desc:desc||T[type][2],size,img:'img/'+(img||key)+'.webp'};
+    PRODUCTS[key]={key,line:L,kind:T[type][0],name:name||T[type][1],desc:desc||T[type][2],size,img:'img/'+(img||key)+'.webp',photo:PHOTO.has(key)};
   }));
 
   // ===== Fragancias con scroll =====
@@ -486,21 +524,20 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
   let html='', lastGroup='';
   LINES.forEach((L,i)=>{
     if(L.group!==lastGroup){ if(lastGroup)html+='</div>'; html+='<div class="tabgroup"><span class="eyebrow">'+L.group+'</span>'; lastGroup=L.group; }
-    html+='<button class="tab" role="tab" id="tab-'+L.id+'" aria-controls="panel" aria-selected="'+(i===0)+'" tabindex="'+(i===0?0:-1)+'"><span class="swatch" style="background:var(--'+L.id+')"></span>'+L.name+'</button>';
+    html+='<button class="tab" role="tab" id="tab-'+L.id+'" aria-controls="panel" aria-selected="'+(i===0)+'" tabindex="'+(i===0?0:-1)+'"><span class="swatch" style="background:var(--'+L.id+')"></span>'+L.name+(L.isNew?' <span class="new">Nuevo</span>':'')+'</button>';
   });
   tabsEl.innerHTML=html+'</div>';
   const tabs=[...tabsEl.querySelectorAll('.tab')];
   function render(id){
     const L=LINES.find(l=>l.id===id);
     list.innerHTML=L.items.map(([key])=>{const p=PRODUCTS[key];return '<div class="card" style="--card:var(--'+L.id+');--card-ink:var(--'+L.id+'-ink)">'+
-      '<button type="button" class="pic" data-detail="'+key+'" aria-label="Ver ficha de '+esc(p.name+' '+L.name)+'"><img src="'+p.img+'" alt="" loading="lazy"></button>'+
+      '<button type="button" class="pic" data-detail="'+key+'" aria-label="Ver ficha de '+esc(p.name+' '+L.name)+'"><img src="'+p.img+'" alt="" loading="lazy"'+(p.photo?' class="photo"':'')+'></button>'+
       '<div class="kind">'+p.kind+'</div><h4>'+esc(p.name)+'</h4><p>'+esc(p.desc)+'</p><button type="button" class="more" data-detail="'+key+'">Ver ficha</button>'+(p.size?'<div class="size">'+p.size+'</div>':'')+
       (PRICES[key]!=null?'<div class="price">'+money(PRICES[key])+'</div>':'<div class="price pending">Precio por confirmar</div>')+
       '<div class="buy"><div class="qty" role="group" aria-label="Cantidad"><button type="button" data-q="-1" aria-label="Quitar uno">−</button><output>1</output><button type="button" data-q="1" aria-label="Añadir uno">+</button></div>'+
       '<button type="button" class="btn add" data-key="'+key+'">Agregar</button></div></div>';}).join('');
     tabs.forEach(t=>{const on=t.id==='tab-'+id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1});
     panel.setAttribute('aria-labelledby','tab-'+id);
-    note.textContent=L.id==='f6'?'Leche de Almendras Dulces: por ahora solo hay una foto de grupo de la línea.':'';
   }
   tabs.forEach((t,i)=>{
     t.onclick=()=>render(t.id.slice(4));
@@ -518,13 +555,14 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
     a.textContent='¡Agregado!'; setTimeout(()=>a.textContent='Agregar',900);
   });
   render('f1');
+  document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',()=>render(a.dataset.open)));
 
   // ===== Ficha de producto =====
   const detail=document.getElementById('detail'), dIn=document.getElementById('detailInner');
   function openDetail(key){
     const p=PRODUCTS[key], L=p.line, I=INFO[L.id];
     dIn.style.setProperty('--card','var(--'+L.id+')');
-    dIn.innerHTML='<div class="dpic"><img src="'+p.img+'" alt="'+esc(p.name+' '+L.name)+'"></div><div class="dtext">'+
+    dIn.innerHTML='<div class="dpic"><img src="'+p.img+'" alt="'+esc(p.name+' '+L.name)+'"'+(p.photo?' class="photo"':'')+'></div><div class="dtext">'+
       '<button class="close" type="button" aria-label="Cerrar">×</button><div class="eyebrow">'+L.group+' · '+L.name+'</div><h2 id="dTitle">'+esc(p.name)+'</h2>'+
       '<p style="margin:0;font-size:17px">'+esc(p.desc)+'</p>'+(p.size?'<div class="meta" style="font-family:var(--mono);font-size:13px">'+p.size+'</div>':'')+
       '<ul class="benefits">'+I.benefits.map(b=>'<li><strong>'+b[0]+':</strong> '+b[1]+'</li>').join('')+'</ul>'+
@@ -573,9 +611,9 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
 
   // ===== Test: ¿cuál es tu fragancia? (basado en las descripciones del catálogo) =====
   const QUIZ=[
-    ['¿Qué aroma te llama más?',[['Cítrico y tropical','Mandarina y coco',{f1:3}],['Frutal y vibrante','Cerezas y berries',{f2:3}],['Dulce y cremoso','Frutal con un toque cremoso',{f3:3}],['Fresco y frutal','Arándanos y naranja',{f4:3}],['Floral y delicado','Un aroma elegante',{f5:3}],['Cálido y suave','Almendras dulces',{f6:3}]]],
-    ['¿Qué quieres para tu piel?',[['Luminosidad y energía','Vitamina C y antioxidantes',{f1:1,f2:1,f4:1}],['Hidratación y suavidad','Humedad natural todo el día',{f1:1,f3:1,f6:1}],['Firmeza y protección','Frente a agresores externos',{f4:1,f5:1,f6:1}]]],
-    ['¿Cuál es tu momento?',[['Un día de playita','Sol, arena y frescura',{f1:2}],['Un momento de paz','Para desconectar',{f2:2}],['Regalarme un momento','Confort y mimo',{f3:2}],['Llena de vida','Energía para el día',{f4:2}],['Un toque de elegancia','Sofisticación y bienestar',{f5:2}],['Calma y bienestar','Suavidad al final del día',{f6:2}]]]
+    ['¿Qué aroma te llama más?',[['Cítrico y tropical','Mandarina y coco',{f1:3}],['Frutal y vibrante','Cerezas y berries',{f2:3}],['Dulce y cremoso','Frutal con un toque cremoso',{f3:3}],['Fresco y frutal','Arándanos y naranja',{f4:3}],['Floral y delicado','Un aroma elegante',{f5:3}],['Cálido y suave','Almendras dulces',{f6:3}],['Dulce de vainilla','Cremoso y envolvente',{f7:3}]]],
+    ['¿Qué quieres para tu piel?',[['Luminosidad y energía','Vitamina C y antioxidantes',{f1:1,f2:1,f4:1}],['Hidratación y suavidad','Humedad natural todo el día',{f1:1,f3:1,f6:1,f7:1}],['Firmeza y protección','Frente a agresores externos',{f4:1,f5:1,f6:1}]]],
+    ['¿Cuál es tu momento?',[['Un día de playita','Sol, arena y frescura',{f1:2}],['Un momento de paz','Para desconectar',{f2:2}],['Regalarme un momento','Confort y mimo',{f3:2}],['Llena de vida','Energía para el día',{f4:2}],['Un toque de elegancia','Sofisticación y bienestar',{f5:2}],['Calma y bienestar','Suavidad al final del día',{f6:2}],['Un baño espumoso','Algo nuevo para consentirme',{f7:2}]]]
   ];
   const qEl=document.getElementById('quiz'); let qi=0, score={};
   function bar(){return '<div class="q-progress" aria-hidden="true">'+QUIZ.map((_,i)=>'<span class="'+(i<qi?'done':'')+'"></span>').join('')+'</div>';}
@@ -585,9 +623,9 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
       qEl.innerHTML=bar()+'<p class="q-title">'+(qi+1)+'. '+q+'</p><div class="q-opts">'+opts.map((o,i)=>'<button type="button" data-o="'+i+'">'+o[0]+'<small>'+o[1]+'</small></button>').join('')+'</div>'+(qi?'<button type="button" class="q-back" data-back>← Volver</button>':'');
       return;
     }
-    const order=['f1','f2','f3','f4','f5','f6']; const win=order.reduce((a,b)=>(score[b]||0)>(score[a]||0)?b:a,'f1');
+    const order=['f1','f2','f3','f4','f5','f6','f7']; const win=order.reduce((a,b)=>(score[b]||0)>(score[a]||0)?b:a,'f1');
     const L=LINES.find(l=>l.id===win), I=INFO[win];
-    qEl.innerHTML=bar()+'<div class="q-result" style="--card:var(--'+win+')"><div class="grp">'+L.items.map(([k,t])=>'<img src="'+PRODUCTS[k].img+'" alt="" style="width:'+(L.items.length>3?W[t]:28)+'%">').filter((v,i,a)=>win!=='f6'||i===0).join('')+'</div>'+
+    qEl.innerHTML=bar()+'<div class="q-result" style="--card:var(--'+win+')"><div class="grp">'+L.items.map(([k,t])=>'<img src="'+PRODUCTS[k].img+'" alt="" style="width:'+(L.items.length>3?W[t]:28)+'%'+(PRODUCTS[k].photo?';border-radius:12px;filter:none':'')+'">').join('')+'</div>'+
       '<div><div class="eyebrow">Tu fragancia es</div><h3>'+L.name+'</h3><p class="meta" style="font-family:var(--mono);color:var(--muted)">'+I.tag+'</p><ul class="benefits">'+I.benefits.map(b=>'<li><strong>'+b[0]+':</strong> '+b[1]+'</li>').join('')+'</ul>'+
       '<div class="actions" style="margin-top:18px"><a class="btn" href="#tienda" data-shop="'+win+'">Ver '+L.name+' en la tienda</a><button type="button" class="btn ghost" data-restart>Repetir el test</button></div></div></div>';
   }
