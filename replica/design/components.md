@@ -56,7 +56,7 @@ como el "MANDARINA COCO / momento de playita" de las publicaciones). El logotipo
 
 ## Nuevos productos (nov 2026)
 - Spa Line 83 Vanilla Dream (nuevo lanzamiento): sección destacada tras el inicio + pestaña con
-  etiqueta "Nuevo"; rocío corporal 150 ml, crema corporal ultra humectante 200 ml, aceite de baño
+  etiqueta "Nuevo"; rocío corporal 150 ml, crema corporal ultra humectante 250 ml (foto de estudio), aceite de baño
   espumoso 150 ml. Datos solo de las etiquetas. Color `vanilla` / `vanilla-ink`.
 - Leche de Almendras Dulces con envase nuevo: gel 200 ml, crema 240 ml, rocío 150 ml (fotos de
   ambiente recortadas por producto; se muestran enteras con object-fit: contain).
