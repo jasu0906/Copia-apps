@@ -31,7 +31,7 @@
   --f1-ink:#C3E07C;--f2-ink:#8EE0EA;--f3-ink:#D9C0F5;color-scheme:dark}
 
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+body{margin:0;padding-bottom:88px;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
 a{color:inherit}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 h1,h2,h3{font-family:var(--display);font-weight:800;text-wrap:balance;line-height:1;margin:0;letter-spacing:-.01em}
@@ -60,28 +60,19 @@ h1,h2,h3{font-family:var(--display);font-weight:800;text-wrap:balance;line-heigh
 .hero h1 em{font-style:normal;font-family:var(--script);font-weight:700;color:var(--pink);font-size:1.08em}
 .hero p{max-width:42ch;color:var(--muted);font-size:18px;margin:20px 0 28px}
 .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.drops{position:relative;aspect-ratio:1;max-width:100%}
-.drops span{position:absolute;border-radius:50% 50% 50% 0;transform:rotate(-45deg);animation:float 6s ease-in-out infinite}
-.drops span:nth-child(1){width:44%;height:44%;left:8%;top:20%;background:var(--f1)}
-.drops span:nth-child(2){width:32%;height:32%;left:56%;top:6%;background:var(--f2);animation-delay:-2s}
-.drops span:nth-child(3){width:36%;height:36%;left:48%;top:54%;background:var(--f3);animation-delay:-4s}
-.drops span:nth-child(4){width:15%;height:15%;left:20%;top:72%;background:var(--pink);animation-delay:-1s}
-@keyframes float{50%{translate:0 -10px}}
 
-/* Fragancias (frasco fijo) */
+/* Foto del inicio */
+.hero-photo{margin:0;border-radius:28px;overflow:hidden;aspect-ratio:1010/1133;background:var(--surface);box-shadow:0 20px 50px rgba(139,26,107,.18);transform:rotate(2deg)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+figcaption.credit{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:8px}
+
+/* Fragancias (foto fija) */
 .fragrances{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding-block:24px 40px}
 .stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12vh);height:min(70vh,560px);display:grid;place-items:center;background:var(--surface);border-radius:28px;overflow:hidden}
-.stage::before{content:"";position:absolute;width:72%;aspect-ratio:1;border-radius:50%;background:var(--cur);opacity:.45;filter:blur(34px);transition:background .6s}
-.stepnum{position:absolute;top:18px;left:20px;font-family:var(--mono);font-size:12px;color:var(--muted)}
-.bottle{position:relative;width:min(170px,44%);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-.cap{height:44px;width:58%;margin:0 auto;background:#D8D2D6;border-radius:8px 8px 4px 4px;box-shadow:inset -8px 0 0 rgba(0,0,0,.06)}
-.neck{height:14px;width:48%;margin:0 auto;background:#C9C2C7}
-.body{height:250px;border-radius:30px 30px 26px 26px;background:var(--cur);transition:background .6s;position:relative;display:flex;align-items:center;justify-content:center;padding:18px 14px;box-shadow:inset -14px 0 0 rgba(0,0,0,.07)}
-.label{background:#FFFFFFE6;border-radius:14px;padding:14px 10px;text-align:center;width:100%;color:#2A1030}
-.label .brand{font-family:var(--display);font-weight:800;font-size:28px;line-height:.85;color:var(--cur-ink-fixed,#2A1030)}
-.label .brand span{display:block}
-.label .name{font-family:var(--script);font-weight:700;font-size:22px;line-height:1.1;margin-top:8px;color:#8B1A6B}
-.label small{display:block;font-family:var(--mono);font-size:12px;margin-top:6px;color:#2A1030}
+.stepnum{position:absolute;top:16px;left:16px;z-index:2;font-family:var(--mono);font-size:12px;color:var(--ink);background:var(--surface);padding:4px 10px;border-radius:999px}
+.photos{position:absolute;inset:0}
+.photos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+.photos img.on{opacity:1}
 .steps{display:flex;flex-direction:column}
 .step{min-height:70vh;display:flex;flex-direction:column;justify-content:center;gap:12px;padding-left:20px;border-left:4px solid transparent;transition:border-color .4s}
 .step.on{border-left-color:var(--cur)}
@@ -94,6 +85,37 @@ h1,h2,h3{font-family:var(--display);font-weight:800;text-wrap:balance;line-heigh
 .swatch{width:14px;height:14px;border-radius:50%;display:inline-block;vertical-align:middle;margin-right:8px}
 
 /* Colección */
+.shop{display:grid;grid-template-columns:minmax(0,400px) 1fr;gap:16px;align-items:start}
+.col-photo{margin:0;border-radius:20px;overflow:hidden;background:var(--surface);aspect-ratio:1/1;position:sticky;top:16px}
+.col-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.price{font-weight:700;font-size:15px}
+.price.pending{font-weight:500;font-size:13px;color:var(--muted)}
+.buy{display:flex;gap:8px;align-items:center;margin-top:6px;flex-wrap:wrap}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line-control);border-radius:999px}
+.qty button{width:34px;height:34px;border:0;background:none;color:var(--ink);font:700 18px var(--body);cursor:pointer;border-radius:999px}
+.qty output{min-width:22px;text-align:center;font-variant-numeric:tabular-nums}
+.add{flex:1;min-width:110px;justify-content:center;padding:9px 14px;font-size:14px}
+.qty button:focus-visible,.cart-btn:focus-visible,.cart button:focus-visible,.cart a:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+/* Carrito */
+.cart-btn{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:30;background:var(--accent);color:var(--on-accent);border:0;border-radius:999px;padding:14px 20px;font:700 15px var(--body);cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.25);display:flex;gap:10px;align-items:center}
+.cart-btn .count{background:var(--on-accent);color:var(--accent);border-radius:999px;min-width:24px;height:24px;display:inline-grid;place-items:center;font-size:13px;padding:0 6px}
+.cart{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;width:min(420px,100%);background:var(--bg);color:var(--ink)}
+.cart::backdrop{background:rgba(26,15,29,.45)}
+.cart-inner{display:flex;flex-direction:column;height:100%;padding:20px}
+.cart-head{display:flex;justify-content:space-between;align-items:center}
+.cart-head h2{font-size:32px}
+.close{border:1px solid var(--line-control);background:var(--surface);color:var(--ink);border-radius:999px;width:40px;height:40px;font-size:20px;cursor:pointer}
+.cart ul{list-style:none;padding:0;margin:16px 0;display:flex;flex-direction:column;gap:10px;overflow:auto;flex:1}
+.cart li{background:var(--surface);border-radius:16px;padding:12px 14px;display:flex;justify-content:space-between;gap:10px;align-items:center;border-left:5px solid var(--card)}
+.cart li small{display:block;color:var(--muted);font-size:13px}
+.cart .empty{color:var(--muted)}
+.cart .msg{background:var(--surface);border:1px dashed var(--line-control);border-radius:14px;padding:12px;font-family:var(--mono);font-size:12px;white-space:pre-wrap;max-height:160px;overflow:auto;margin:0 0 12px}
+.cart .warn{font-size:13px;color:var(--muted);margin:8px 0 0}
+.cart .btn{justify-content:center}
+.cart .btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+.demo-banner{background:var(--accent);color:var(--on-accent);text-align:center;font-size:13px;padding:8px 16px}
+
 .collection{padding-block:56px}
 .collection h2,.tour h2{font-size:clamp(38px,6vw,64px)}
 .collection .lead{color:var(--muted);max-width:52ch;margin:12px 0 0}
@@ -102,7 +124,7 @@ h1,h2,h3{font-family:var(--display);font-weight:800;text-wrap:balance;line-heigh
 .tab:hover:not([aria-selected="true"]){background:var(--bg)}
 .tab[aria-selected="true"]{background:var(--accent);color:var(--on-accent)}
 .tab .swatch{margin:0;width:12px;height:12px}
-.list{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .card{background:var(--surface);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px;min-width:0;border-top:6px solid var(--card)}
 .card .kind{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--card-ink)}
 .card h4{margin:0;font-size:17px;line-height:1.3}
@@ -114,7 +136,8 @@ h1,h2,h3{font-family:var(--display);font-weight:800;text-wrap:balance;line-heigh
 .tour .box{background:var(--surface);border-radius:28px;padding:clamp(24px,5vw,56px);display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;position:relative;overflow:hidden}
 .tour .box::after{content:"";position:absolute;right:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:conic-gradient(var(--f1),var(--f2),var(--f3),var(--pink),var(--f1));opacity:.35;filter:blur(18px)}
 .tour p{color:var(--muted);margin:14px 0 0;max-width:46ch}
-.tour .flag{font-size:44px;line-height:1;position:relative;z-index:1}
+.tour figure{margin:0;border-radius:20px;overflow:hidden;position:relative;z-index:1;aspect-ratio:503/484}
+.tour figure img{width:100%;height:100%;object-fit:cover;display:block}
 
 .final{padding-block:72px 96px}
 .final h2{font-size:clamp(44px,7.5vw,88px);max-width:12ch;margin-bottom:24px}
@@ -127,12 +150,14 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
 
 @media (max-width:760px){
   .hero{grid-template-columns:1fr;padding-block:16px 24px}
-  .drops{width:62%;margin:0 auto}
+  .hero-photo{width:78%;margin:8px auto 0}
+  .shop{grid-template-columns:1fr}
+  .col-photo{position:static;aspect-ratio:4/3}
   .fragrances{grid-template-columns:1fr;gap:0}
   .stage{top:env(safe-area-inset-top,0px);height:44vh;z-index:2;box-shadow:0 -8px 0 var(--bg)}
-  .body{height:180px}.cap{height:32px}.label .brand{font-size:22px}.label .name{font-size:18px}
   .step{min-height:75vh;justify-content:flex-end;padding-bottom:6vh}
   .list{grid-template-columns:1fr 1fr}
+  .cart-btn{padding:12px 16px}
   .tour .box{grid-template-columns:1fr}
 }
 @media (max-width:420px){.list{grid-template-columns:1fr}}
@@ -141,6 +166,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
 </head>
 <body>
 
+<div class="demo-banner">Demo: precios y número de WhatsApp pendientes. Fotos tomadas de @spalineve, a sustituir por los originales.</div>
 <div id="progress"></div>
 
 <nav class="wrap top" aria-label="Principal">
@@ -158,15 +184,16 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
       <a class="btn ghost" href="https://www.instagram.com/spalineve/" rel="noopener">Escríbenos en Instagram</a>
     </div>
   </div>
-  <div class="drops" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <figure class="hero-photo"><img src="img/modelo-mora-yogurt.jpg" alt="Modelo con look ochentero sostiene el exfoliante en crema Mora Yogurt de Spa Line" width="1010" height="1133"></figure>
 </header>
 
 <section class="wrap fragrances" id="fragancias" aria-label="Fragancias">
   <div class="stage" aria-hidden="true">
     <div class="stepnum" id="stepnum">Fragancia 1 de 3</div>
-    <div class="bottle" id="bottle">
-      <div class="cap"></div><div class="neck"></div>
-      <div class="body"><div class="label"><div class="brand"><span>SPA</span><span>LINE</span></div><div class="name" id="bname">Mandarina Coco</div><small id="bspec">momento de playita</small></div></div>
+    <div class="photos">
+      <img class="on" src="img/mandarina-coco.jpg" alt="" width="968" height="696">
+      <img src="img/cherry-berry.jpg" alt="" width="434" height="336" loading="lazy">
+      <img src="img/mora-yogurt.jpg" alt="" width="434" height="395" loading="lazy">
     </div>
   </div>
 
@@ -200,11 +227,14 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
   <h2 id="col-title">Cuatro productos por fragancia</h2>
   <p class="lead">Elige tu aroma y combina los cuatro: del baño a la última capa de perfume.</p>
   <div class="tabs" role="tablist" aria-label="Fragancia">
-    <button class="tab" role="tab" id="tab-f1" aria-selected="true" aria-controls="list" tabindex="0"><span class="swatch" style="background:var(--f1)"></span>Mandarina Coco</button>
-    <button class="tab" role="tab" id="tab-f2" aria-selected="false" aria-controls="list" tabindex="-1"><span class="swatch" style="background:var(--f2)"></span>Cherry Berry</button>
-    <button class="tab" role="tab" id="tab-f3" aria-selected="false" aria-controls="list" tabindex="-1"><span class="swatch" style="background:var(--f3)"></span>Mora Yogurt</button>
+    <button class="tab" role="tab" id="tab-f1" aria-selected="true" aria-controls="list-panel" tabindex="0"><span class="swatch" style="background:var(--f1)"></span>Mandarina Coco</button>
+    <button class="tab" role="tab" id="tab-f2" aria-selected="false" aria-controls="list-panel" tabindex="-1"><span class="swatch" style="background:var(--f2)"></span>Cherry Berry</button>
+    <button class="tab" role="tab" id="tab-f3" aria-selected="false" aria-controls="list-panel" tabindex="-1"><span class="swatch" style="background:var(--f3)"></span>Mora Yogurt</button>
   </div>
-  <div class="list" id="list" role="tabpanel" aria-labelledby="tab-f1" tabindex="0"></div>
+  <div class="shop" id="list-panel" role="tabpanel" aria-labelledby="tab-f1" tabindex="0">
+    <figure class="col-photo"><img id="colimg" src="img/mandarina-coco.jpg" alt="Línea Mandarina Coco de Spa Line" width="968" height="696"></figure>
+    <div class="list" id="list"></div>
+  </div>
 </section>
 
 <section class="wrap tour reveal" aria-labelledby="tour-title">
@@ -215,7 +245,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
       <p>Para llevarte tu momento Spa Line bien cerquita. Sigue la cuenta para saber dónde estaremos.</p>
       <div class="actions" style="margin-top:22px"><a class="btn ghost" href="https://www.instagram.com/spalineve/" rel="noopener">Seguir a @spalineve</a></div>
     </div>
-    <div class="flag" aria-hidden="true">🇻🇪 ✨</div>
+    <figure><img src="img/gira-stand.jpg" alt="Productos Spa Line de las tres fragancias en el stand de un evento" width="503" height="484" loading="lazy"></figure>
   </div>
 </section>
 
@@ -225,21 +255,31 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
   <p class="note">Precios y disponibilidad por mensaje directo en @spalineve.</p>
 </section>
 
+<button class="cart-btn" id="cartBtn" aria-haspopup="dialog">🛍 Mi pedido <span class="count" id="cartCount">0</span></button>
+<dialog class="cart" id="cart" aria-labelledby="cartTitle">
+  <div class="cart-inner">
+    <div class="cart-head"><h2 id="cartTitle">Tu pedido</h2><button class="close" id="cartClose" aria-label="Cerrar">×</button></div>
+    <ul id="cartList"></ul>
+    <p class="eyebrow" style="margin:0 0 6px">Mensaje que llegará por WhatsApp</p>
+    <pre class="msg" id="cartMsg"></pre>
+    <a class="btn" id="sendWa" href="#" rel="noopener">Enviar pedido por WhatsApp</a>
+    <p class="warn" id="cartWarn"></p>
+  </div>
+</dialog>
+
 <footer class="wrap"><span>© Spa Line · Venezuela</span><a href="https://www.instagram.com/spalineve/" rel="noopener">Instagram @spalineve</a></footer>
 
 <script>
 (function(){
   const root=document.documentElement, steps=[...document.querySelectorAll('.step')];
-  const bottle=document.getElementById('bottle'), bname=document.getElementById('bname'),
-        bspec=document.getElementById('bspec'), num=document.getElementById('stepnum'),
+  const photos=[...document.querySelectorAll('.photos img')], num=document.getElementById('stepnum'),
         prog=document.getElementById('progress');
   let cur=-1;
   function setStep(i){
     if(i===cur)return; cur=i; const s=steps[i];
     root.style.setProperty('--cur','var('+s.dataset.c+')');
-    bname.textContent=s.dataset.name; bspec.textContent=s.dataset.spec;
-    num.textContent='Fragancia '+(i+1)+' de '+steps.length;
-    bottle.style.transform='rotate('+s.dataset.rot+'deg) translateY('+(i%2?-8:0)+'px)';
+    photos.forEach((im,k)=>im.classList.toggle('on',k===i));
+    num.textContent=s.dataset.name+' · '+(i+1)+' de '+steps.length;
     steps.forEach((el,k)=>{el.classList.toggle('on',k===i);el.classList.toggle('dim',k!==i)});
   }
   function onScroll(){
@@ -255,6 +295,11 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
   addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll);
   onScroll();
 
+  // ===== Configuración de la tienda (rellenar) =====
+  const WHATSAPP='';          // número con código de país, sin + ni espacios. Ej.: 58412XXXXXXX
+  const PRICES={};            // precio en USD por producto: {gel:0, scrub:0, crema:0, rocio:0}
+  const FRAG={f1:['Mandarina Coco','img/mandarina-coco.jpg'],f2:['Cherry Berry','img/cherry-berry.jpg'],f3:['Mora Yogurt','img/mora-yogurt.jpg']};
+  const IDS=['gel','scrub','crema','rocio'];
   // Colección: datos tomados de las etiquetas de los productos
   const products=[
     ['Gel de baño','Gel de baño exfoliante','Exfoliante para el cuerpo, para la ducha.','200 ml'],
@@ -262,13 +307,51 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
     ['Crema','Crema hidratante','Para manos y cuerpo.','240 ml'],
     ['Rocío','Rocío corporal','Hidratante y emoliente.','150 ml']
   ];
-  const list=document.getElementById('list');
+  const list=document.getElementById('list'), panel=document.getElementById('list-panel'), colimg=document.getElementById('colimg');
   const tabs=[...document.querySelectorAll('.tab')];
+  const money=v=>'$'+Number(v).toFixed(2);
+  function priceHTML(id){return PRICES[id]!=null?'<div class="price">'+money(PRICES[id])+'</div>':'<div class="price pending">Precio por confirmar</div>';}
   function render(k){
-    list.innerHTML=products.map(p=>'<div class="card" style="--card:var(--'+k+');--card-ink:var(--'+k+'-ink)"><div class="kind">'+p[0]+'</div><h4>'+p[1]+'</h4><p>'+p[2]+'</p><div class="size">'+p[3]+'</div></div>').join('');
+    list.innerHTML=products.map((p,i)=>{const key=k+'-'+IDS[i];return '<div class="card" style="--card:var(--'+k+');--card-ink:var(--'+k+'-ink)"><div class="kind">'+p[0]+'</div><h4>'+p[1]+'</h4><p>'+p[2]+'</p><div class="size">'+p[3]+'</div>'+priceHTML(IDS[i])+
+      '<div class="buy"><div class="qty" role="group" aria-label="Cantidad de '+p[1]+'"><button type="button" data-q="-1" aria-label="Quitar uno">−</button><output>1</output><button type="button" data-q="1" aria-label="Añadir uno">+</button></div>'+
+      '<button type="button" class="btn add" data-key="'+key+'">Agregar</button></div></div>';}).join('');
     tabs.forEach(t=>{const on=t.id==='tab-'+k;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1});
-    list.setAttribute('aria-labelledby','tab-'+k);
+    panel.setAttribute('aria-labelledby','tab-'+k);
+    colimg.src=FRAG[k][1]; colimg.alt='Línea '+FRAG[k][0]+' de Spa Line';
   }
+  list.addEventListener('click',e=>{
+    const q=e.target.closest('[data-q]');
+    if(q){const o=q.parentNode.querySelector('output');o.value=Math.max(1,Math.min(20,(+o.value||1)+(+q.dataset.q)));return;}
+    const a=e.target.closest('.add'); if(!a)return;
+    const n=+a.parentNode.querySelector('output').value||1;
+    cart[a.dataset.key]=(cart[a.dataset.key]||0)+n; save(); updateCart();
+    a.textContent='¡Agregado!'; setTimeout(()=>a.textContent='Agregar',900);
+  });
+
+  // ===== Carrito =====
+  let cart={}; try{cart=JSON.parse(localStorage.getItem('spaline-cart')||'{}')||{}}catch(e){cart={}}
+  function save(){try{localStorage.setItem('spaline-cart',JSON.stringify(cart))}catch(e){}}
+  const dlg=document.getElementById('cart'), cartList=document.getElementById('cartList'), cartCount=document.getElementById('cartCount'),
+        cartMsg=document.getElementById('cartMsg'), sendWa=document.getElementById('sendWa'), cartWarn=document.getElementById('cartWarn');
+  function lines(){return Object.entries(cart).filter(([,n])=>n>0).map(([key,n])=>{const [f,id]=key.split('-');const i=IDS.indexOf(id);return {key,f,id,n,name:products[i][1],size:products[i][3],frag:FRAG[f][0]};});}
+  function updateCart(){
+    const L=lines(); cartCount.textContent=L.reduce((a,l)=>a+l.n,0);
+    cartList.innerHTML=L.length?L.map(l=>'<li style="--card:var(--'+l.f+')"><div><strong>'+l.name+'</strong><small>'+l.frag+' · '+l.size+'</small></div><div class="qty" role="group" aria-label="Cantidad de '+l.name+' '+l.frag+'"><button type="button" data-k="'+l.key+'" data-d="-1" aria-label="Quitar uno">−</button><output>'+l.n+'</output><button type="button" data-k="'+l.key+'" data-d="1" aria-label="Añadir uno">+</button></div></li>').join(''):'<li class="empty" style="--card:var(--line)">Todavía no has agregado productos.</li>';
+    const allPriced=L.length&&L.every(l=>PRICES[l.id]!=null);
+    const total=allPriced?L.reduce((a,l)=>a+PRICES[l.id]*l.n,0):null;
+    const msg='¡Hola Spa Line! Quiero hacer este pedido:\n'+(L.length?L.map(l=>'• '+l.n+' × '+l.name+' '+l.frag+' ('+l.size+')').join('\n'):'(vacío)')+(total!=null?'\nTotal: '+money(total):'')+'\n\n¿Cómo puedo pagar y cuándo me llega?';
+    cartMsg.textContent=msg;
+    const ready=WHATSAPP&&L.length;
+    sendWa.href=ready?'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg):'#';
+    sendWa.setAttribute('aria-disabled',ready?'false':'true');
+    cartWarn.textContent=!L.length?'Agrega al menos un producto.':(!WHATSAPP?'Demo: falta configurar el número de WhatsApp de Spa Line, por eso el botón aún no envía.':'');
+  }
+  cartList.addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(!b)return;cart[b.dataset.k]=Math.max(0,(cart[b.dataset.k]||0)+(+b.dataset.d));if(!cart[b.dataset.k])delete cart[b.dataset.k];save();updateCart();});
+  sendWa.addEventListener('click',e=>{if(sendWa.getAttribute('aria-disabled')==='true')e.preventDefault();});
+  document.getElementById('cartBtn').onclick=()=>{updateCart();dlg.showModal();};
+  document.getElementById('cartClose').onclick=()=>dlg.close();
+  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();});
+  updateCart();
   tabs.forEach((t,i)=>{
     t.onclick=()=>render(t.id.slice(4));
     t.onkeydown=e=>{
