@@ -45,3 +45,11 @@ como el "MANDARINA COCO / momento de playita" de las publicaciones). El logotipo
 - Textos de marca, beneficios, propiedades e ingredientes tomados del catálogo, sin cambios de sentido.
 - Leche de Almendras Dulces: solo hay foto de grupo; los tamaños de los body mist de la Línea
   Profesional no aparecen en el catálogo.
+
+## Interactividad (nov 2026)
+- Selector Mandarina/Cherry/Mora en el escenario fijo (salta a cada fragancia; aria-current).
+- Portafolio "4 productos clave": chips de fragancia + productos como botones (aria-pressed);
+  panel con la propiedad del catálogo, cantidad y "Agregar al pedido".
+- Test "¿Cuál es tu fragancia?": 3 preguntas basadas en las descripciones del catálogo, puntúa las
+  6 fragancias, muestra resultado con beneficios y lleva a la pestaña de la tienda. Botón Volver.
+- Ficha de producto (<dialog>): foto grande, beneficios de la fragancia, cantidad y agregar.

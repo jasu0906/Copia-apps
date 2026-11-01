@@ -141,6 +141,62 @@ h2{font-size:clamp(38px,6vw,64px)}
 .final .actions{justify-content:center}
 footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
+/* Selector de fragancias en el escenario */
+.dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:6px;background:var(--surface);padding:6px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.dots button{border:0;background:none;color:var(--ink);font:700 13px var(--body);padding:6px 12px;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:6px}
+.dots button[aria-current="true"]{background:var(--accent);color:var(--on-accent)}
+.dots .swatch{margin:0;width:10px;height:10px}
+
+/* Portafolio interactivo */
+.portfolio{padding-block:56px}
+.pf{display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:stretch;margin-top:22px}
+.pf-stage{position:relative;background:var(--surface);border-radius:28px;padding:24px 16px 0;display:flex;flex-direction:column;overflow:hidden}
+.pf-stage::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 85%,color-mix(in srgb,var(--pfc) 50%,transparent),transparent 75%);transition:background .5s}
+.pf-chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1}
+.pf-row{position:relative;z-index:1;flex:1;display:flex;align-items:flex-end;justify-content:center;gap:2%;min-height:340px;padding-top:16px}
+.pf-row button{border:0;background:none;padding:0 0 18px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;transition:transform .3s,opacity .3s;border-radius:16px}
+.pf-row button img{height:auto;display:block;filter:drop-shadow(0 14px 14px rgba(42,16,48,.22));transition:transform .3s}
+.pf-row button span{font:700 13px var(--body);color:var(--ink);background:var(--bg);border-radius:999px;padding:4px 10px;white-space:nowrap}
+.pf-row button:hover img{transform:translateY(-6px)}
+.pf-row button[aria-pressed="false"]{opacity:.55}
+.pf-row button[aria-pressed="true"] img{transform:translateY(-10px) scale(1.04)}
+.pf-row button[aria-pressed="true"] span{background:var(--accent);color:var(--on-accent)}
+.pf-info{background:var(--surface);border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:10px;border-top:8px solid var(--pfc)}
+.pf-info h3{font-size:34px}
+.pf-info .prop{font-size:18px;margin:0}
+.pf-info .meta{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.pf-info .buy{margin-top:auto}
+
+/* Test */
+.quiz{padding-block:40px}
+.quiz .box{background:linear-gradient(135deg,color-mix(in srgb,var(--f3) 35%,var(--surface)),color-mix(in srgb,var(--f2) 30%,var(--surface)));border-radius:28px;padding:clamp(24px,5vw,56px)}
+.q-progress{display:flex;gap:6px;margin:18px 0}
+.q-progress span{height:6px;flex:1;border-radius:6px;background:color-mix(in srgb,var(--ink) 15%,transparent)}
+.q-progress span.done{background:var(--accent)}
+.q-title{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,36px);margin:0 0 16px}
+.q-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.q-opts button{text-align:left;border:2px solid var(--line-control);background:var(--surface);color:var(--ink);border-radius:18px;padding:16px;font:700 16px var(--body);cursor:pointer;transition:border-color .2s,transform .2s}
+.q-opts button:hover{border-color:var(--accent);transform:translateY(-2px)}
+.q-opts small{display:block;font-weight:500;color:var(--muted);font-size:14px;margin-top:4px}
+.q-result{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:center}
+.q-result .grp{display:flex;align-items:flex-end;justify-content:center;gap:3%;min-height:260px;background:var(--surface);border-radius:22px;padding:18px}
+.q-result .grp img{height:auto;filter:drop-shadow(0 12px 12px rgba(42,16,48,.2))}
+.q-result h3{font-size:clamp(34px,5vw,52px)}
+.q-back{background:none;border:0;color:var(--ink);font:700 14px var(--body);text-decoration:underline;cursor:pointer;margin-top:14px;padding:4px 0}
+
+/* Ficha de producto */
+.card .pic{border:0;cursor:pointer;width:100%}
+.more{background:none;border:0;padding:0;color:var(--accent);font:700 13px var(--body);text-align:left;cursor:pointer;text-decoration:underline}
+.detail{border:0;border-radius:28px;padding:0;width:min(860px,calc(100% - 24px));max-height:calc(100% - 24px);background:var(--bg);color:var(--ink)}
+.detail::backdrop{background:rgba(26,15,29,.5)}
+.detail-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:0}
+.detail .dpic{background:radial-gradient(circle at 50% 60%,color-mix(in srgb,var(--card) 50%,var(--surface)),var(--surface) 70%);display:grid;place-items:center;padding:28px;min-height:360px}
+.detail .dpic img{max-height:420px;width:auto;max-width:100%;filter:drop-shadow(0 16px 16px rgba(42,16,48,.25))}
+.detail .dtext{padding:28px;display:flex;flex-direction:column;gap:10px;position:relative}
+.detail .dtext h2{font-size:34px;padding-right:44px}
+.detail .close{position:absolute;top:16px;right:16px}
+.detail .benefits{margin-top:4px}
+
 /* Carrito */
 .cart-btn{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:30;background:var(--accent);color:var(--on-accent);border:0;border-radius:999px;padding:14px 20px;font:700 15px var(--body);cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.25);display:flex;gap:10px;align-items:center}
 .cart-btn .count{background:var(--on-accent);color:var(--accent);border-radius:999px;min-width:24px;height:24px;display:inline-grid;place-items:center;font-size:13px;padding:0 6px}
@@ -162,7 +218,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
 .reveal{transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s}
 .reveal.pre{transform:translateY(24px);opacity:.4}
 
-@media (max-width:900px){.list{grid-template-columns:repeat(2,1fr)}.ingredients{grid-template-columns:1fr}}
+@media (max-width:900px){.list{grid-template-columns:repeat(2,1fr)}.ingredients{grid-template-columns:1fr}.pf{grid-template-columns:1fr}.q-result,.detail-inner{grid-template-columns:1fr}.detail .dpic{min-height:240px}.detail .dpic img{max-height:260px}}
 @media (max-width:760px){
   .navlinks a:not(.keep){display:none}
   .hero,.brand,.tour .box{grid-template-columns:1fr}
@@ -176,6 +232,13 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
   .step h3{font-size:34px}
   .benefits{gap:8px;font-size:15px}
   .cart-btn{padding:12px 16px}
+  .dots button{padding:6px 8px;font-size:12px}
+  .pf-row{min-height:240px}
+  .pf-row button span{font-size:11px;padding:3px 7px}
+  .pf-row button[aria-pressed="false"] span{visibility:hidden}
+  .stepnum{display:none}
+  .dots{top:10px;bottom:auto}
+  .group{inset:20% 4% 4%}
 }
 @media (max-width:420px){.list{grid-template-columns:1fr 1fr;gap:10px}.card{padding:12px}.card .pic{height:170px}.add{min-width:0}.buy{flex-direction:column;align-items:stretch}.qty{justify-content:space-between}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -193,6 +256,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
   <div class="navlinks">
     <a href="#marca">Nuestra marca</a>
     <a href="#fragancias">Fragancias</a>
+    <a href="#test">Test</a>
     <a class="keep" href="#tienda">Tienda</a>
     <a class="keep" href="https://www.instagram.com/spalineve/" rel="noopener">Instagram</a>
   </div>
@@ -234,8 +298,9 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
 </section>
 
 <section class="wrap fragrances" aria-label="Fragancias de la Nueva Línea">
-  <div class="stage" aria-hidden="true">
+  <div class="stage">
     <div class="stepnum" id="stepnum">Mandarina Coco · 1 de 3</div>
+    <div class="dots" id="dots"><button type="button" data-i="0" aria-current="true"><span class="swatch" style="background:var(--f1)"></span>Mandarina</button><button type="button" data-i="1"><span class="swatch" style="background:var(--f2)"></span>Cherry</button><button type="button" data-i="2"><span class="swatch" style="background:var(--f3)"></span>Mora</button></div>
     <div class="group on"><img src="img/mandarina-gel.webp" alt="" style="width:23%" width="447" height="900"><img src="img/mandarina-crema.webp" alt="" style="width:21%" width="381" height="900"><img src="img/mandarina-rocio.webp" alt="" style="width:14%" width="273" height="900"><img src="img/mandarina-scrub.webp" alt="" style="width:18%" width="323" height="900"></div>
     <div class="group"><img src="img/cherry-gel.webp" alt="" style="width:21%" width="407" height="900" loading="lazy"><img src="img/cherry-crema.webp" alt="" style="width:21%" width="379" height="900" loading="lazy"><img src="img/cherry-rocio.webp" alt="" style="width:14%" width="270" height="900" loading="lazy"><img src="img/cherry-scrub.webp" alt="" style="width:18%" width="318" height="900" loading="lazy"></div>
     <div class="group"><img src="img/mora-gel.webp" alt="" style="width:26%" width="537" height="900" loading="lazy"><img src="img/mora-crema.webp" alt="" style="width:21%" width="383" height="900" loading="lazy"><img src="img/mora-rocio.webp" alt="" style="width:14%" width="273" height="900" loading="lazy"><img src="img/mora-scrub.webp" alt="" style="width:18%" width="333" height="900" loading="lazy"></div>
@@ -272,6 +337,27 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
         <li><strong>Aroma dulce y envolvente:</strong> su fragancia combina lo frutal y cremoso, dejando una sensación de confort y frescura durante todo el día.</li>
       </ul>
     </article>
+  </div>
+</section>
+
+<section class="wrap portfolio reveal" id="portafolio" aria-labelledby="pf-title">
+  <div class="eyebrow">Portafolio</div>
+  <h2 id="pf-title">4 productos clave</h2>
+  <p class="lead">Nuestras líneas de cuidado de la piel se dividen en 4 productos clave. Toca cada uno para ver para qué sirve.</p>
+  <div class="pf" id="pf" style="--pfc:var(--f1)">
+    <div class="pf-stage">
+      <div class="pf-chips" role="group" aria-label="Fragancia" id="pfChips"></div>
+      <div class="pf-row" role="group" aria-label="Productos" id="pfRow"></div>
+    </div>
+    <div class="pf-info" id="pfInfo" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="wrap quiz reveal" id="test" aria-labelledby="quiz-title">
+  <div class="box">
+    <div class="eyebrow">Test · 3 preguntas</div>
+    <h2 id="quiz-title">¿Cuál es tu fragancia Spa Line?</h2>
+    <div id="quiz" aria-live="polite"></div>
   </div>
 </section>
 
@@ -331,6 +417,10 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
   </div>
 </dialog>
 
+<dialog class="detail" id="detail" aria-labelledby="dTitle">
+  <div class="detail-inner" id="detailInner"></div>
+</dialog>
+
 <script>
 (function(){
   // ===== Configuración de la tienda (rellenar) =====
@@ -352,6 +442,14 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
     {id:'f5',name:'Orquídea Salvaje',group:'Línea Profesional',items:[['orquidea-gel','gel','250 ml','Gel exfoliante para manos y cuerpo','Toque de seda.'],['orquidea-crema','crema','250 ml','Crema para manos y cuerpo','Toque de seda.'],['orquidea-mist','mist','','Body mist','Aroma floral.']]},
     {id:'f6',name:'Leche de Almendras Dulces',group:'Línea Profesional',items:[['almendras-gel','gel','250 ml',null,'Para el cuerpo.','almendras-grupo'],['almendras-crema','crema','250 ml',null,'Para manos y cuerpo.','almendras-grupo'],['almendras-mist','mist','','Body mist','Aroma cálido y reconfortante.','almendras-grupo']]}
   ];
+  const INFO={
+    f1:{tag:'momento de playita',benefits:[['Revitaliza y energiza','la mandarina aporta vitamina C y antioxidantes que iluminan la piel y promueven su regeneración natural.'],['Hidrata profundamente','el coco nutre y suaviza, ayudando a mantener la humedad natural de la piel.'],['Suaviza y mejora la textura','juntos ayudan a mantener una piel más lisa, flexible y con aspecto saludable.']]},
+    f2:{tag:'momento de paz',benefits:[['Ilumina y revitaliza','las cerezas aportan vitamina C y antioxidantes que ayudan a darle un aspecto más fresco y radiante a la piel.'],['Suaviza y tonifica','las berries nutren profundamente, mejorando la textura y elasticidad de la piel.'],['Aroma dulce y vibrante','su fragancia frutal despierta los sentidos y deja una sensación de energía y alegría.']]},
+    f3:{tag:'regálate un momento',benefits:[['Nutre y suaviza','la mora aporta vitaminas y antioxidantes que ayudan a mantener la piel tersa y radiante.'],['Hidrata y equilibra','el yogurt contribuye a mantener la humedad natural y suaviza la textura de la piel.'],['Aroma dulce y envolvente','su fragancia combina lo frutal y cremoso, dejando una sensación de confort y frescura durante todo el día.']]},
+    f4:{tag:'Línea Profesional',benefits:[['Protege y rejuvenece','los arándanos son ricos en antioxidantes que combaten los radicales libres y previenen el envejecimiento prematuro.'],['Aporta luminosidad natural','la naranja revitaliza y unifica el tono de la piel gracias a su alto contenido de vitamina C.'],['Refresca y revitaliza','su mezcla frutal despierta los sentidos y deja la piel con una sensación fresca, suave y llena de vida.']]},
+    f5:{tag:'Línea Profesional',benefits:[['Revitaliza y embellece','la orquídea salvaje ayuda a mantener la firmeza y el brillo natural de la piel.'],['Hidrata y protege','sus extractos naturales retienen la humedad y crean una barrera protectora contra agresores externos.'],['Aporta elegancia y frescura','su delicado aroma floral envuelve la piel en una sensación de sofisticación y bienestar.']]},
+    f6:{tag:'Línea Profesional',benefits:[['Nutre y aporta elasticidad','el aceite y la leche de almendras dulces brindan sustancias altamente nutritivas que mantienen la piel flexible, suave y saludable.'],['Tonifica y protege','el aloe vera, la glicerina y la vitamina E reafirman la piel y actúan como un escudo antioxidante frente a las agresiones externas.'],['Aroma cálido y reconfortante','su delicada fragancia a almendras dulces envuelve los sentidos, dejando una sensación de calma, suavidad y bienestar.']]}
+  };
   const PRODUCTS={};
   LINES.forEach(L=>L.items.forEach(([key,type,size,name,desc,img])=>{
     PRODUCTS[key]={key,line:L,kind:T[type][0],name:name||T[type][1],desc:desc||T[type][2],size,img:'img/'+(img||key)+'.webp'};
@@ -367,7 +465,10 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
     groups.forEach((g,k)=>g.classList.toggle('on',k===i));
     num.textContent=s.dataset.name+' · '+(i+1)+' de '+steps.length;
     steps.forEach((el,k)=>{el.classList.toggle('on',k===i);el.classList.toggle('dim',k!==i)});
+    dots.forEach((d,k)=>d.setAttribute('aria-current',k===i));
   }
+  const dots=[...document.querySelectorAll('#dots button')];
+  dots.forEach(d=>d.onclick=()=>steps[+d.dataset.i].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'}));
   function onScroll(){
     const h=document.documentElement.scrollHeight-innerHeight;
     prog.style.width=(h>0?scrollY/h*100:0)+'%';
@@ -392,8 +493,8 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
   function render(id){
     const L=LINES.find(l=>l.id===id);
     list.innerHTML=L.items.map(([key])=>{const p=PRODUCTS[key];return '<div class="card" style="--card:var(--'+L.id+');--card-ink:var(--'+L.id+'-ink)">'+
-      '<div class="pic"><img src="'+p.img+'" alt="'+esc(p.name+' '+L.name)+'" loading="lazy"></div>'+
-      '<div class="kind">'+p.kind+'</div><h4>'+esc(p.name)+'</h4><p>'+esc(p.desc)+'</p>'+(p.size?'<div class="size">'+p.size+'</div>':'')+
+      '<button type="button" class="pic" data-detail="'+key+'" aria-label="Ver ficha de '+esc(p.name+' '+L.name)+'"><img src="'+p.img+'" alt="" loading="lazy"></button>'+
+      '<div class="kind">'+p.kind+'</div><h4>'+esc(p.name)+'</h4><p>'+esc(p.desc)+'</p><button type="button" class="more" data-detail="'+key+'">Ver ficha</button>'+(p.size?'<div class="size">'+p.size+'</div>':'')+
       (PRICES[key]!=null?'<div class="price">'+money(PRICES[key])+'</div>':'<div class="price pending">Precio por confirmar</div>')+
       '<div class="buy"><div class="qty" role="group" aria-label="Cantidad"><button type="button" data-q="-1" aria-label="Quitar uno">−</button><output>1</output><button type="button" data-q="1" aria-label="Añadir uno">+</button></div>'+
       '<button type="button" class="btn add" data-key="'+key+'">Agregar</button></div></div>';}).join('');
@@ -409,6 +510,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
       if(j!==null){e.preventDefault();tabs[j].focus();render(tabs[j].id.slice(4));}};
   });
   list.addEventListener('click',e=>{
+    const dt=e.target.closest('[data-detail]'); if(dt){openDetail(dt.dataset.detail);return;}
     const q=e.target.closest('[data-q]');
     if(q){const o=q.parentNode.querySelector('output');o.value=Math.max(1,Math.min(20,(+o.value||1)+(+q.dataset.q)));return;}
     const a=e.target.closest('.add'); if(!a)return;
@@ -416,6 +518,88 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
     a.textContent='¡Agregado!'; setTimeout(()=>a.textContent='Agregar',900);
   });
   render('f1');
+
+  // ===== Ficha de producto =====
+  const detail=document.getElementById('detail'), dIn=document.getElementById('detailInner');
+  function openDetail(key){
+    const p=PRODUCTS[key], L=p.line, I=INFO[L.id];
+    dIn.style.setProperty('--card','var(--'+L.id+')');
+    dIn.innerHTML='<div class="dpic"><img src="'+p.img+'" alt="'+esc(p.name+' '+L.name)+'"></div><div class="dtext">'+
+      '<button class="close" type="button" aria-label="Cerrar">×</button><div class="eyebrow">'+L.group+' · '+L.name+'</div><h2 id="dTitle">'+esc(p.name)+'</h2>'+
+      '<p style="margin:0;font-size:17px">'+esc(p.desc)+'</p>'+(p.size?'<div class="meta" style="font-family:var(--mono);font-size:13px">'+p.size+'</div>':'')+
+      '<ul class="benefits">'+I.benefits.map(b=>'<li><strong>'+b[0]+':</strong> '+b[1]+'</li>').join('')+'</ul>'+
+      (PRICES[key]!=null?'<div class="price">'+money(PRICES[key])+'</div>':'<div class="price pending">Precio por confirmar</div>')+
+      '<div class="buy"><div class="qty" role="group" aria-label="Cantidad"><button type="button" data-q="-1" aria-label="Quitar uno">−</button><output>1</output><button type="button" data-q="1" aria-label="Añadir uno">+</button></div><button type="button" class="btn add" data-key="'+key+'">Agregar al pedido</button></div></div>';
+    detail.showModal();
+  }
+  dIn.addEventListener('click',e=>{
+    if(e.target.closest('.close')){detail.close();return;}
+    const q=e.target.closest('[data-q]');
+    if(q){const o=q.parentNode.querySelector('output');o.value=Math.max(1,Math.min(20,(+o.value||1)+(+q.dataset.q)));return;}
+    const a=e.target.closest('.add'); if(!a)return;
+    cart[a.dataset.key]=(cart[a.dataset.key]||0)+(+a.parentNode.querySelector('output').value||1); save(); updateCart();
+    a.textContent='¡Agregado!'; setTimeout(()=>detail.close(),700);
+  });
+  detail.addEventListener('click',e=>{if(e.target===detail)detail.close();});
+
+  // ===== Portafolio interactivo =====
+  const PROPS={gel:'Hidratante y removedor de células muertas. Gránulos no abrasivos.',crema:'Hidratante y emoliente de rápida absorción.',mist:'Refrescante, hidratante y reafirmante. Tiene una composición química distinta a un splash.',scrub:'Exfolia en seco y cuida la piel.'};
+  const pf=document.getElementById('pf'), pfChips=document.getElementById('pfChips'), pfRow=document.getElementById('pfRow'), pfInfo=document.getElementById('pfInfo');
+  const PF_LINES=LINES.slice(0,3), W={gel:23,crema:21,mist:14,scrub:18};
+  let pfLine='f1', pfKey='mandarina-gel';
+  pfChips.innerHTML=PF_LINES.map(L=>'<button type="button" class="tab" data-l="'+L.id+'" aria-pressed="'+(L.id==='f1')+'"><span class="swatch" style="background:var(--'+L.id+')"></span>'+L.name+'</button>').join('');
+  function typeOf(key){return LINES.find(l=>l.id===pfLine).items.find(i=>i[0]===key)[1];}
+  function pfRender(){
+    const L=LINES.find(l=>l.id===pfLine);
+    pf.style.setProperty('--pfc','var(--'+pfLine+')');
+    pfChips.querySelectorAll('button').forEach(b=>{const on=b.dataset.l===pfLine;b.setAttribute('aria-pressed',on);b.toggleAttribute('aria-selected',false);b.style.background=on?'var(--accent)':'';b.style.color=on?'var(--on-accent)':'';b.style.borderColor=on?'var(--accent)':'';});
+    pfRow.innerHTML=L.items.map(([key,type])=>'<button type="button" data-k="'+key+'" aria-pressed="'+(key===pfKey)+'" style="width:'+W[type]+'%"><img src="'+PRODUCTS[key].img+'" alt=""><span>'+T[type][0]+'</span></button>').join('');
+    const p=PRODUCTS[pfKey], t=typeOf(pfKey);
+    pfInfo.innerHTML='<div class="eyebrow">'+L.name+'</div><h3>'+T[t][0]+'</h3><p class="meta">'+esc(p.name)+(p.size?' · '+p.size:'')+'</p><p class="prop">'+PROPS[t]+'</p>'+
+      '<div class="buy"><div class="qty" role="group" aria-label="Cantidad"><button type="button" data-q="-1" aria-label="Quitar uno">−</button><output>1</output><button type="button" data-q="1" aria-label="Añadir uno">+</button></div><button type="button" class="btn add" data-key="'+pfKey+'">Agregar al pedido</button></div>'+
+      '<button type="button" class="more" data-detail="'+pfKey+'">Ver ficha completa</button>';
+  }
+  pfChips.addEventListener('click',e=>{const b=e.target.closest('[data-l]');if(!b)return;const t=typeOf(pfKey);pfLine=b.dataset.l;pfKey=LINES.find(l=>l.id===pfLine).items.find(i=>i[1]===t)[0];pfRender();});
+  pfRow.addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(!b)return;pfKey=b.dataset.k;pfRender();pfRow.querySelector('[data-k="'+pfKey+'"]').focus();});
+  pfInfo.addEventListener('click',e=>{
+    const dt=e.target.closest('[data-detail]'); if(dt){openDetail(dt.dataset.detail);return;}
+    const q=e.target.closest('[data-q]');
+    if(q){const o=q.parentNode.querySelector('output');o.value=Math.max(1,Math.min(20,(+o.value||1)+(+q.dataset.q)));return;}
+    const a=e.target.closest('.add'); if(!a)return;
+    cart[a.dataset.key]=(cart[a.dataset.key]||0)+(+a.parentNode.querySelector('output').value||1); save(); updateCart();
+    a.textContent='¡Agregado!'; setTimeout(()=>a.textContent='Agregar al pedido',900);
+  });
+  pfRender();
+
+  // ===== Test: ¿cuál es tu fragancia? (basado en las descripciones del catálogo) =====
+  const QUIZ=[
+    ['¿Qué aroma te llama más?',[['Cítrico y tropical','Mandarina y coco',{f1:3}],['Frutal y vibrante','Cerezas y berries',{f2:3}],['Dulce y cremoso','Frutal con un toque cremoso',{f3:3}],['Fresco y frutal','Arándanos y naranja',{f4:3}],['Floral y delicado','Un aroma elegante',{f5:3}],['Cálido y suave','Almendras dulces',{f6:3}]]],
+    ['¿Qué quieres para tu piel?',[['Luminosidad y energía','Vitamina C y antioxidantes',{f1:1,f2:1,f4:1}],['Hidratación y suavidad','Humedad natural todo el día',{f1:1,f3:1,f6:1}],['Firmeza y protección','Frente a agresores externos',{f4:1,f5:1,f6:1}]]],
+    ['¿Cuál es tu momento?',[['Un día de playita','Sol, arena y frescura',{f1:2}],['Un momento de paz','Para desconectar',{f2:2}],['Regalarme un momento','Confort y mimo',{f3:2}],['Llena de vida','Energía para el día',{f4:2}],['Un toque de elegancia','Sofisticación y bienestar',{f5:2}],['Calma y bienestar','Suavidad al final del día',{f6:2}]]]
+  ];
+  const qEl=document.getElementById('quiz'); let qi=0, score={};
+  function bar(){return '<div class="q-progress" aria-hidden="true">'+QUIZ.map((_,i)=>'<span class="'+(i<qi?'done':'')+'"></span>').join('')+'</div>';}
+  function qRender(){
+    if(qi<QUIZ.length){
+      const [q,opts]=QUIZ[qi];
+      qEl.innerHTML=bar()+'<p class="q-title">'+(qi+1)+'. '+q+'</p><div class="q-opts">'+opts.map((o,i)=>'<button type="button" data-o="'+i+'">'+o[0]+'<small>'+o[1]+'</small></button>').join('')+'</div>'+(qi?'<button type="button" class="q-back" data-back>← Volver</button>':'');
+      return;
+    }
+    const order=['f1','f2','f3','f4','f5','f6']; const win=order.reduce((a,b)=>(score[b]||0)>(score[a]||0)?b:a,'f1');
+    const L=LINES.find(l=>l.id===win), I=INFO[win];
+    qEl.innerHTML=bar()+'<div class="q-result" style="--card:var(--'+win+')"><div class="grp">'+L.items.map(([k,t])=>'<img src="'+PRODUCTS[k].img+'" alt="" style="width:'+(L.items.length>3?W[t]:28)+'%">').filter((v,i,a)=>win!=='f6'||i===0).join('')+'</div>'+
+      '<div><div class="eyebrow">Tu fragancia es</div><h3>'+L.name+'</h3><p class="meta" style="font-family:var(--mono);color:var(--muted)">'+I.tag+'</p><ul class="benefits">'+I.benefits.map(b=>'<li><strong>'+b[0]+':</strong> '+b[1]+'</li>').join('')+'</ul>'+
+      '<div class="actions" style="margin-top:18px"><a class="btn" href="#tienda" data-shop="'+win+'">Ver '+L.name+' en la tienda</a><button type="button" class="btn ghost" data-restart>Repetir el test</button></div></div></div>';
+  }
+  let history=[];
+  qEl.addEventListener('click',e=>{
+    const o=e.target.closest('[data-o]');
+    if(o){const w=QUIZ[qi][1][+o.dataset.o][2];history.push(w);for(const k in w)score[k]=(score[k]||0)+w[k];qi++;qRender();qEl.querySelector('button,a')?.focus();return;}
+    if(e.target.closest('[data-back]')){const w=history.pop();for(const k in w)score[k]-=w[k];qi--;qRender();return;}
+    if(e.target.closest('[data-restart]')){qi=0;score={};history=[];qRender();qEl.querySelector('button')?.focus();return;}
+    const s=e.target.closest('[data-shop]'); if(s){render(s.dataset.shop);}
+  });
+  qRender();
 
   // ===== Carrito =====
   let cart={}; try{cart=JSON.parse(localStorage.getItem('spaline-cart')||'{}')||{}}catch(e){cart={}}
