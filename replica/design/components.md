@@ -63,3 +63,4 @@ como el "MANDARINA COCO / momento de playita" de las publicaciones). El logotipo
 - Leche de Almendras Dulces son DOS productos: Línea Profesional (catálogo, envases blancos 250 ml,
   foto de grupo) y Nueva Línea (envase amarillo: gel 200, crema 240, rocío 150; id f8, color
   `almendras-nl`). El portafolio sigue mostrando solo Mandarina, Cherry y Mora (las de 4 productos).
+- Leche de Almendras Dulces (Nueva Línea): fotos de estudio individuales de gel, crema y rocío.
