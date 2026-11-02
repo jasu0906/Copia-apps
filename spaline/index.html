@@ -263,7 +263,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
 </head>
 <body>
 
-<div class="demo-banner">Demo: precios y número de WhatsApp pendientes.</div>
+<div class="demo-banner">Demo: precios pendientes.</div>
 <div id="progress"></div>
 
 <nav class="wrap top" aria-label="Principal">
@@ -437,7 +437,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
   <div class="actions"><a class="btn" href="#tienda">Arma tu pedido</a></div>
 </section>
 
-<footer class="wrap"><span>© Spa Line · Venezuela</span><span><a href="https://www.instagram.com/spalineve/" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@spalineve" rel="noopener">TikTok</a> · @spalineve</span></footer>
+<footer class="wrap"><span>© Spa Line · Venezuela</span><span>WhatsApp <a href="https://wa.me/584146448843" rel="noopener">+58 414-6448843</a> · 8:00 a. m. – 3:00 p. m.</span><span><a href="https://www.instagram.com/spalineve/" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@spalineve" rel="noopener">TikTok</a> · @spalineve</span></footer>
 
 <button class="cart-btn" id="cartBtn" aria-haspopup="dialog">🛍 Mi pedido <span class="count" id="cartCount">0</span></button>
 <dialog class="cart" id="cart" aria-labelledby="cartTitle">
@@ -447,6 +447,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
     <p class="eyebrow" style="margin:0 0 6px">Mensaje que llegará por WhatsApp</p>
     <pre class="msg" id="cartMsg"></pre>
     <a class="btn" id="sendWa" href="#" rel="noopener">Enviar pedido por WhatsApp</a>
+    <p class="warn" style="margin-top:10px">WhatsApp <strong style="user-select:all">+58 414-6448843</strong> · Atención de 8:00 a. m. a 3:00 p. m.</p>
     <p class="warn" id="cartWarn"></p>
   </div>
 </dialog>
@@ -458,7 +459,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
 <script>
 (function(){
   // ===== Configuración de la tienda (rellenar) =====
-  const WHATSAPP='';   // número con código de país, sin + ni espacios. Ej.: 58412XXXXXXX
+  const WHATSAPP='584146448843';   // número con código de país, sin + ni espacios. Ej.: 58412XXXXXXX
   const PRICES={};     // precio en USD por producto, con la clave del producto. Ej.: {'mandarina-gel':5, 'cherry-scrub':7}
 
   // ===== Catálogo (datos de las etiquetas y del catálogo de Spa Line) =====
