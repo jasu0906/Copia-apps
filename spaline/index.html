@@ -263,7 +263,6 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
 </head>
 <body>
 
-<div class="demo-banner">Demo: precios pendientes.</div>
 <div id="progress"></div>
 
 <nav class="wrap top" aria-label="Principal">
@@ -403,7 +402,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
   <div id="panel" role="tabpanel" tabindex="0">
     <div class="list" id="list"></div>
   </div>
-  <p class="shop-note" id="shopNote"></p>
+  <p class="shop-note" id="shopNote">Precios en dólares (USD), lista minorista de octubre de 2026. Formas de pago y envío por WhatsApp.</p>
 </section>
 
 <section class="wrap seal reveal" aria-labelledby="seal-title">
@@ -460,7 +459,8 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
 (function(){
   // ===== Configuración de la tienda (rellenar) =====
   const WHATSAPP='584146448843';   // número con código de país, sin + ni espacios. Ej.: 58412XXXXXXX
-  const PRICES={};     // precio en USD por producto, con la clave del producto. Ej.: {'mandarina-gel':5, 'cherry-scrub':7}
+  // Precios en USD: Lista de Precios Minorista, octubre 2026 (+ tabla de Vanilla Dream y Almendras nueva imagen)
+  const PRICES={'mandarina-gel':7.99,'cherry-gel':7.99,'mora-gel':7.99,'mandarina-crema':5.31,'cherry-crema':5.31,'mora-crema':5.31,'mandarina-rocio':5.42,'cherry-rocio':5.42,'mora-rocio':5.42,'mandarina-scrub':6.99,'cherry-scrub':6.99,'mora-scrub':6.99,'blueberry-gel':7.30,'orquidea-gel':7.30,'blueberry-crema':3.91,'orquidea-crema':3.91,'blueberry-mist':4.03,'orquidea-mist':4.03,'vanilla-crema':11.15,'vanilla-aceite':13.59,'vanilla-rocio':9.46,'almendras-crema':9.21,'almendras-gel':12.61,'almendras-rocio':8.98};
 
   // ===== Catálogo (datos de las etiquetas y del catálogo de Spa Line) =====
   const T={
@@ -596,7 +596,7 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:14px;color:
     pfChips.querySelectorAll('button').forEach(b=>{const on=b.dataset.l===pfLine;b.setAttribute('aria-pressed',on);b.toggleAttribute('aria-selected',false);b.style.background=on?'var(--accent)':'';b.style.color=on?'var(--on-accent)':'';b.style.borderColor=on?'var(--accent)':'';});
     pfRow.innerHTML=L.items.map(([key,type])=>'<button type="button" data-k="'+key+'" aria-pressed="'+(key===pfKey)+'" style="width:'+W[type]+'%"><img src="'+PRODUCTS[key].img+'" alt=""><span>'+T[type][0]+'</span></button>').join('');
     const p=PRODUCTS[pfKey], t=typeOf(pfKey);
-    pfInfo.innerHTML='<div class="eyebrow">'+L.name+'</div><h3>'+T[t][0]+'</h3><p class="meta">'+esc(p.name)+(p.size?' · '+p.size:'')+'</p><p class="prop">'+PROPS[t]+'</p>'+
+    pfInfo.innerHTML='<div class="eyebrow">'+L.name+'</div><h3>'+T[t][0]+'</h3><p class="meta">'+esc(p.name)+(p.size?' · '+p.size:'')+'</p><p class="prop">'+PROPS[t]+'</p>'+(PRICES[pfKey]!=null?'<div class="price" style="font-size:22px">'+money(PRICES[pfKey])+'</div>':'')+
       '<div class="buy"><div class="qty" role="group" aria-label="Cantidad"><button type="button" data-q="-1" aria-label="Quitar uno">−</button><output>1</output><button type="button" data-q="1" aria-label="Añadir uno">+</button></div><button type="button" class="btn add" data-key="'+pfKey+'">Agregar al pedido</button></div>'+
       '<button type="button" class="more" data-detail="'+pfKey+'">Ver ficha completa</button>';
   }
