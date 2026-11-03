@@ -1,0 +1,19 @@
+# Cabeceras para Cloudflare Pages o Netlify (generado por herramientas/generar.py; no editar a mano)
+/*
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; manifest-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'; object-src 'none'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+/
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
+/datos.js
+  Cache-Control: no-cache
+/app.js
+  Cache-Control: no-cache
+/img/*
+  Cache-Control: public, max-age=86400

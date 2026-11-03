@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# Añade el dominio en datos.js (sitio.url) y vuelve a generar para incluir el sitemap.

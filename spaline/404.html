@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Página no encontrada · Spa Line</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<style>
+:root{--bg:#FBF4F8;--surface:#FFFFFF;--ink:#2A1030;--muted:#6E5372;--accent:#8B1A6B;--on-accent:#FFFFFF;--wa:#177A42}
+@media (prefers-color-scheme:dark){:root{--bg:#1A0F1D;--surface:#251729;--ink:#F7EAF2;--muted:#C8AFC3;--accent:#F27BB5;--on-accent:#1A0F1D;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;padding:24px max(16px,env(safe-area-inset-left,0px))}
+main{max-width:520px;text-align:left}
+img{width:120px;height:auto;display:block;margin-bottom:24px}
+h1{font-size:clamp(30px,6vw,44px);line-height:1.1;margin:0 0 12px}
+p{color:var(--muted);margin:0 0 24px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+a.btn{display:inline-flex;align-items:center;min-height:44px;padding:12px 20px;border-radius:8px;font-weight:700;text-decoration:none;background:var(--accent);color:var(--on-accent)}
+a.btn.wa{background:var(--wa);color:#fff}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+</style>
+</head>
+<body>
+<main>
+  <picture><source srcset="/img/logo-blanco-200.webp" media="(prefers-color-scheme: dark)"><img src="/img/logo-morado-200.webp" alt="Spa Line" width="200" height="202"></picture>
+  <h1>Esta página se fue de playita.</h1>
+  <p>No encontramos lo que buscabas. Vuelve al catálogo o escríbenos y te ayudamos a encontrar tu fragancia.</p>
+  <div class="actions">
+    <a class="btn" href="/">Ver el catálogo</a>
+    <a class="btn wa" href="https://wa.me/584146448843" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
+  </div>
+</main>
+</body>
+</html>

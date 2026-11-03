@@ -1,0 +1,16 @@
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Variables y credenciales (la web no usa ninguna; esto evita subirlas por error)
+.env
+.env.*
+*.pem
+credentials.json
+
+# Temporales
+*.tmp
+*.log
+__pycache__/
