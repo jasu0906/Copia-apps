@@ -9,20 +9,30 @@ window.SPALINE = {
     "url": "",
     "whatsapp": "584146448843",
     "whatsappVisible": "+58 414-6448843",
-    "horario": "8:00 a. m. – 3:00 p. m.",
-    "dias": "",
-    "horarioSchema": "",
+    "horario": "9:00 a. m. – 5:00 p. m.",
+    "dias": "lunes a viernes",
+    "horarioSchema": "Mo-Fr 09:00-17:00",
+    "fueraHorario": "Los mensajes que llegan fuera de horario se responden el siguiente día hábil.",
     "instagram": "https://www.instagram.com/spalineve/",
     "tiktok": "https://www.tiktok.com/@spalineve",
     "usuario": "@spalineve",
     "moneda": "USD",
     "listaPrecios": "lista minorista de octubre de 2026",
-    "tasa": "",
-    "pagos": [],
-    "entrega": [],
+    "tasa": "Pagos en bolívares a tasa BCV del día",
+    "pagos": [
+      "Pago Móvil",
+      "Zelle",
+      "Transferencia bancaria",
+      "Binance"
+    ],
+    "entrega": [
+      "Delivery en Caracas: 3 USD",
+      "Envíos nacionales por Zoom (el envío lo paga el cliente)",
+      "Sin pedido mínimo"
+    ],
     "zona": "",
     "analitica": {
-      "proveedor": "",
+      "proveedor": "umami",
       "dominio": "",
       "id": "",
       "script": ""

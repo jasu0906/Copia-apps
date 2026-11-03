@@ -180,12 +180,12 @@
   function save(){try{localStorage.setItem('spaline-cart',JSON.stringify(cart))}catch(e){}}
   const dlg=document.getElementById('cart'), cartList=document.getElementById('cartList'), cartCount=document.getElementById('cartCount'),
         cartMsg=document.getElementById('cartMsg'), sendWa=document.getElementById('sendWa'), cartWarn=document.getElementById('cartWarn'), cartContact=document.getElementById('cartContact');
-  if(cartContact)cartContact.innerHTML='WhatsApp <strong class="sel">'+esc(S.whatsappVisible)+'</strong>'+(S.horario?' · Atención '+esc((S.dias?S.dias+', ':'')+S.horario):'');
+  if(cartContact)cartContact.innerHTML='WhatsApp <strong class="sel">'+esc(S.whatsappVisible)+'</strong>'+(S.horario?' · Atención '+esc((S.dias?S.dias+', ':'')+S.horario):'')+(S.fueraHorario?'<br>'+esc(S.fueraHorario):'');
   function mensaje(L){
     const total=L.length&&L.every(l=>PRICES[l.p.key]!=null)?L.reduce((a,l)=>a+PRICES[l.p.key]*l.n,0):null;
     const lineas=L.map(({p,n})=>'• '+n+' × '+p.name+' '+p.line.nombre+(p.size?' ('+p.size+')':'')+(PRICES[p.key]!=null?' – '+money(PRICES[p.key])+' c/u':''));
     return '¡Hola Spa Line! Quiero hacer este pedido:\n'+(L.length?lineas.join('\n'):'(vacío)')+(total!=null?'\nTotal: '+money(total)+' ('+S.moneda+')':'')+
-      (S.url?'\n\nLo vi en '+S.url:'')+'\n\n¿Cómo puedo pagar y cuándo me llega?';
+      (S.url?'\n\nLo vi en '+S.url:'')+'\n\n¿Me confirmas la disponibilidad y cómo coordinamos la entrega?';
   }
   function updateCart(){
     const L=Object.entries(cart).filter(([,n])=>n>0).map(([k,n])=>({p:PRODUCTS[k],n}));

@@ -49,7 +49,22 @@ Todo esto ya está en el repositorio.
 | Imágenes por tamaño de pantalla (7.2) | `srcset` 1x/2x en la escena principal y las fragancias; foto de la modelo en 600 y 900 px; Vanilla Dream en 640 y 1080 px |
 | Pendiente de una foto mejor | La foto de la gira mide solo 503 px de ancho y se ve algo borrosa en pantallas grandes. Una de al menos 1200 px lo resuelve |
 
-## Tanda 3 — Datos de la empresa ⏳
+## Tanda 3 — Datos de la empresa (parte hecha ✅, parte pendiente ⏳)
+
+**Hecho (3 nov 2026):**
+- Pagos: Pago Móvil, Zelle, transferencia bancaria, Binance; en bolívares a tasa BCV del día.
+- Entrega: delivery en Caracas por 3 USD; envíos nacionales por Zoom, que paga el cliente; sin pedido mínimo.
+- Atención: lunes a viernes de 9:00 a. m. a 5:00 p. m.; lo que llega fuera de horario se responde el siguiente día hábil. Aparece en "Antes de pedir", el carrito, el pie de página y la ficha de Google.
+- Umami elegido como analítica: falta crear la cuenta y pegar el id del sitio en `datos.js`.
+
+**Pendiente:**
+- Precio de la Leche de Almendras Línea Profesional, o quitarla de la tienda.
+- Dominio (el preferido entre `spaline.com.ve` y `spalineve.com`) → `sitio.url`.
+- Retiro en persona: si existe, añadirlo a `sitio.entrega`.
+- "Nuestra marca": año, ciudad, dónde se fabrica y una foto real.
+- Actualizar el horario del perfil de WhatsApp Business (dice 8:00–3:00) para que coincida con la web (9:00–5:00).
+
+### Tabla original de la tanda 3
 
 El código ya está preparado: basta con rellenar `spaline/datos.js` y ejecutar `python3 herramientas/generar.py`.
 

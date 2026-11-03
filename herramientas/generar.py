@@ -144,12 +144,14 @@ def bloque_info(d):
     if S.get("zona"):
         entrega += f'<p>{e(S["zona"])}</p>'
     horario = e((S["dias"] + ", " if S.get("dias") else "") + S["horario"])
+    horario = horario[:1].upper() + horario[1:]
+    fuera = f'<p>{e(S["fueraHorario"])}</p>' if S.get("fueraHorario") else ""
     return f'''<section class="wrap info" id="antes" aria-labelledby="antes-title">
   <div class="box">
     <h2 id="antes-title">Antes de pedir</h2>
     <div><h3>Pago</h3>{pago}</div>
     <div><h3>Entrega</h3>{entrega}</div>
-    <div><h3>Atención</h3><p>{horario}</p><p><a href="https://wa.me/{e(S["whatsapp"])}" target="_blank" rel="noopener noreferrer">WhatsApp {e(S["whatsappVisible"])}</a> · <a href="tel:+{e(S["whatsapp"])}">Llamar</a></p></div>
+    <div><h3>Atención</h3><p>{horario}</p>{fuera}<p><a href="https://wa.me/{e(S["whatsapp"])}" target="_blank" rel="noopener noreferrer">WhatsApp {e(S["whatsappVisible"])}</a> · <a href="tel:+{e(S["whatsapp"])}">Llamar</a></p></div>
     <div><h3>Precios</h3><p>Precios en {e(S["moneda"])}, {e(S["listaPrecios"])}. Precio y disponibilidad se confirman por WhatsApp.</p></div>
   </div>
 </section>'''
@@ -177,7 +179,7 @@ def headers(d):
     extra = ""
     if an.get("proveedor") == "plausible":
         extra = "https://plausible.io"
-    elif an.get("proveedor") == "umami":
+    elif an.get("proveedor") == "umami" and an.get("id"):
         src = an.get("script") or "https://cloud.umami.is/script.js"
         extra = re.match(r"https://[^/]+", src).group(0)
     csp = ("default-src 'self'; img-src 'self' data:; "
