@@ -34,6 +34,10 @@ Añade `"disponible": false,` dentro de ese producto en `datos.js`. Se muestra c
 3. Para una fragancia nueva, copia una línea completa y dale un `id` nuevo (por ejemplo `"f9"`). Su color se define en `index.html` con `--f9` y `--f9-ink`; pide ayuda para este paso.
 4. Ejecuta `python3 herramientas/generar.py`.
 
+## Compartir una fragancia concreta
+
+Cada fragancia tiene su propio enlace, que abre la tienda directamente en ella. Por ejemplo: `https://tu-dominio/#vanilla-dream` o `#cherry-berry`. El nombre del enlace está en `"ancla"` de cada línea en `datos.js`.
+
 ## Cambiar el WhatsApp, el horario, el pago o el envío
 
 Todo está al principio de `datos.js`, en `"sitio"`:

@@ -58,6 +58,7 @@ window.SPALINE = {
   "lineas": [
     {
       "id": "f1",
+      "ancla": "mandarina-coco",
       "nombre": "Mandarina Coco",
       "grupo": "Nueva Línea",
       "productos": [
@@ -89,6 +90,7 @@ window.SPALINE = {
     },
     {
       "id": "f2",
+      "ancla": "cherry-berry",
       "nombre": "Cherry Berry",
       "grupo": "Nueva Línea",
       "productos": [
@@ -120,6 +122,7 @@ window.SPALINE = {
     },
     {
       "id": "f3",
+      "ancla": "mora-yogurt",
       "nombre": "Mora Yogurt",
       "grupo": "Nueva Línea",
       "productos": [
@@ -151,6 +154,7 @@ window.SPALINE = {
     },
     {
       "id": "f8",
+      "ancla": "almendras-dulces",
       "nombre": "Leche de Almendras Dulces",
       "grupo": "Nueva Línea",
       "productos": [
@@ -183,6 +187,7 @@ window.SPALINE = {
     },
     {
       "id": "f4",
+      "ancla": "blueberry-orange",
       "nombre": "Blueberry Orange",
       "grupo": "Línea Profesional",
       "productos": [
@@ -213,6 +218,7 @@ window.SPALINE = {
     },
     {
       "id": "f5",
+      "ancla": "orquidea-salvaje",
       "nombre": "Orquídea Salvaje",
       "grupo": "Línea Profesional",
       "productos": [
@@ -244,6 +250,7 @@ window.SPALINE = {
     },
     {
       "id": "f6",
+      "ancla": "almendras-linea-pro",
       "nombre": "Leche de Almendras Dulces",
       "grupo": "Línea Profesional",
       "productos": [
@@ -276,6 +283,7 @@ window.SPALINE = {
     },
     {
       "id": "f7",
+      "ancla": "vanilla-dream",
       "nombre": "Vanilla Dream",
       "grupo": "Nuevo lanzamiento · Spa Line 83",
       "nuevo": true,

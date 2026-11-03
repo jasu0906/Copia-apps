@@ -38,6 +38,16 @@ Todo esto ya está en el repositorio.
 | Radios (13.4, 13.11) | Un solo radio de 8 px en tarjetas, paneles y fotos; píldora solo en pestañas y botones |
 | Animaciones (13.10, 13.13) | Quitadas las apariciones al hacer scroll en las 8 secciones y las elevaciones al pasar el ratón. Quedan solo el cambio de fragancia y la selección (0,15–0,25 s) |
 | Emoji como icono (13.6) | "🛍" del carrito cambiado por un icono de bolsa en línea |
+| Fotos a sangre (13.15) | Vanilla Dream con la foto llegando al borde izquierdo y el texto a la derecha; la gira con la foto llegando al borde derecho. En el móvil, la foto va arriba a todo el ancho |
+
+## Remates de las tandas 1 y 2 ✅
+
+| Punto | Qué se hizo |
+|---|---|
+| Anclas por fragancia (9.9) | `#mandarina-coco`, `#cherry-berry`, `#mora-yogurt`, `#almendras-dulces`, `#blueberry-orange`, `#orquidea-salvaje`, `#almendras-linea-pro`, `#vanilla-dream`. Abren esa fragancia en la tienda, también sin JavaScript; al cambiar de pestaña la dirección se actualiza para poder compartirla |
+| Precarga de la imagen principal (7.5) | `preload` del logo (claro u oscuro según el tema) y de la primera foto de producto, con `imagesrcset` para no descargarla dos veces |
+| Imágenes por tamaño de pantalla (7.2) | `srcset` 1x/2x en la escena principal y las fragancias; foto de la modelo en 600 y 900 px; Vanilla Dream en 640 y 1080 px |
+| Pendiente de una foto mejor | La foto de la gira mide solo 503 px de ancho y se ve algo borrosa en pantallas grandes. Una de al menos 1200 px lo resuelve |
 
 ## Tanda 3 — Datos de la empresa ⏳
 

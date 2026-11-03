@@ -119,7 +119,7 @@ def bloque_noscript(d):
                 msg = f"¡Hola {S['nombre']}! Quiero pedir: 1 × {nombre} {L['nombre']}{tam}" + (f" – {pr_txt}" if isinstance(pr, (int, float)) else "")
                 accion = f'<a href="{e(wa(d, msg))}" target="_blank" rel="noopener noreferrer">Pedir por WhatsApp</a>'
             items.append(f'<li><strong>{e(nombre)}</strong><span>{e(p.get("tamano", ""))} · {e(pr_txt)}</span>{accion}</li>')
-        partes.append(f'<section><h3>{e(L["nombre"])}</h3><p class="eyebrow">{e(L["grupo"])}</p><ul>{"".join(items)}</ul></section>')
+        partes.append(f'<section id="{e(L.get("ancla", L["id"]))}"><h3>{e(L["nombre"])}</h3><p class="eyebrow">{e(L["grupo"])}</p><ul>{"".join(items)}</ul></section>')
     partes += ['</div>', '</noscript>']
     return "\n".join(partes)
 

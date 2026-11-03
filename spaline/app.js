@@ -72,12 +72,19 @@
     tabs.forEach(t=>{const on=t.id==='tab-'+id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1});
     panel.setAttribute('aria-labelledby','tab-'+id);
   }
+  // Anclas por fragancia: #vanilla-dream, #cherry-berry… abren esa pestaña de la tienda
+  const porAncla=a=>LINES.find(l=>l.ancla===a);
+  function elegir(id){const L=LINES.find(l=>l.id===id); render(id); if(L&&L.ancla&&location.hash!=='#'+L.ancla){try{window.history.replaceState(null,'','#'+L.ancla)}catch(e){}}}
+  function abrirAncla(scroll){const L=porAncla(decodeURIComponent(location.hash.slice(1))); if(!L)return false; render(L.id); if(scroll)document.getElementById('tienda').scrollIntoView({block:'start'}); return true;}
+  addEventListener('hashchange',()=>abrirAncla(true));
+  document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]'); if(!a)return; const L=porAncla(a.getAttribute('href').slice(1)); if(!L)return;
+    e.preventDefault(); if(document.getElementById('detail').open)document.getElementById('detail').close(); elegir(L.id); document.getElementById('tienda').scrollIntoView({block:'start'});});
   tabs.forEach((t,i)=>{
-    t.onclick=()=>render(t.id.slice(4));
+    t.onclick=()=>elegir(t.id.slice(4));
     t.onkeydown=e=>{let j=null;
       if(e.key==='ArrowRight')j=(i+1)%tabs.length; else if(e.key==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;
       else if(e.key==='Home')j=0; else if(e.key==='End')j=tabs.length-1;
-      if(j!==null){e.preventDefault();tabs[j].focus();render(tabs[j].id.slice(4));}};
+      if(j!==null){e.preventDefault();tabs[j].focus();elegir(tabs[j].id.slice(4));}};
   });
   function qtyClick(e){const q=e.target.closest('[data-q]'); if(!q)return false; const o=q.parentNode.querySelector('output'); o.value=Math.max(1,Math.min(MAX_CANTIDAD,(+o.value||1)+(+q.dataset.q))); return true;}
   function addClick(e,label,after){
@@ -91,8 +98,7 @@
     const dt=e.target.closest('[data-detail]'); if(dt){openDetail(dt.dataset.detail);return;}
     if(qtyClick(e))return; addClick(e,'Agregar');
   });
-  render(LINES[0].id);
-  document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',()=>render(a.dataset.open)));
+  if(!abrirAncla(true))render(LINES[0].id);
 
   // ===== Ficha de producto =====
   const detail=document.getElementById('detail'), dIn=document.getElementById('detailInner');
@@ -144,7 +150,7 @@
     ['¿Qué quieres para tu piel?',[['Luminosidad y energía','Vitamina C y antioxidantes',{f1:1,f2:1,f4:1}],['Hidratación y suavidad','Humedad natural todo el día',{f1:1,f3:1,f8:1,f7:1}],['Firmeza y protección','Frente a agresores externos',{f4:1,f5:1,f6:1}]]],
     ['¿Cuál es tu momento?',[['Un día de playita','Sol, arena y frescura',{f1:2}],['Un momento de paz','Para desconectar',{f2:2}],['Regalarme un momento','Confort y mimo',{f3:2}],['Llena de vida','Energía para el día',{f4:2}],['Un toque de elegancia','Sofisticación y bienestar',{f5:2}],['Calma y bienestar','Suavidad al final del día',{f6:2}],['Un baño espumoso','Algo nuevo para consentirme',{f7:2}]]]
   ];
-  const qEl=document.getElementById('quiz'); let qi=0, score={}, history=[];
+  const qEl=document.getElementById('quiz'); let qi=0, score={}, pasos=[];
   const bar=()=>'<div class="q-progress" aria-hidden="true">'+QUIZ.map((_,i)=>'<span class="'+(i<qi?'done':'')+'"></span>').join('')+'</div>';
   function qRender(){
     if(qi<QUIZ.length){
@@ -158,14 +164,13 @@
     const imgs=[...new Set(L.productos.map(it=>PRODUCTS[it.clave].thumb))];
     qEl.innerHTML=bar()+'<div class="q-result" style="--card:var(--'+win+')"><div class="grp">'+imgs.map(src=>'<img src="'+src+'" alt="" style="width:'+(imgs.length>3?20:28)+'%">').join('')+'</div>'+
       '<div><div class="eyebrow">Tu fragancia es</div><h3>'+esc(L.nombre)+'</h3><p class="meta">'+esc(I?I.etiqueta:L.grupo)+'</p><ul class="benefits">'+benefitsHTML(win)+'</ul>'+
-      '<div class="actions" style="margin-top:18px"><a class="btn" href="#tienda" data-shop="'+win+'">Ver '+esc(L.nombre)+' en la tienda</a><button type="button" class="btn ghost" data-restart>Repetir el test</button></div></div></div>';
+      '<div class="actions" style="margin-top:18px"><a class="btn" href="#'+esc(L.ancla||'tienda')+'">Ver '+esc(L.nombre)+' en la tienda</a><button type="button" class="btn ghost" data-restart>Repetir el test</button></div></div></div>';
   }
   qEl.addEventListener('click',e=>{
     const o=e.target.closest('[data-o]');
-    if(o){const w=QUIZ[qi][1][+o.dataset.o][2];history.push(w);for(const k in w)score[k]=(score[k]||0)+w[k];qi++;qRender();qEl.querySelector('button,a')?.focus();return;}
-    if(e.target.closest('[data-back]')){const w=history.pop();for(const k in w)score[k]-=w[k];qi--;qRender();return;}
-    if(e.target.closest('[data-restart]')){qi=0;score={};history=[];qRender();qEl.querySelector('button')?.focus();return;}
-    const s=e.target.closest('[data-shop]'); if(s){render(s.dataset.shop);}
+    if(o){const w=QUIZ[qi][1][+o.dataset.o][2];pasos.push(w);for(const k in w)score[k]=(score[k]||0)+w[k];qi++;qRender();qEl.querySelector('button,a')?.focus();return;}
+    if(e.target.closest('[data-back]')){const w=pasos.pop();for(const k in w)score[k]-=w[k];qi--;qRender();return;}
+    if(e.target.closest('[data-restart]')){qi=0;score={};pasos=[];qRender();qEl.querySelector('button')?.focus();return;}
   });
   qRender();
 
