@@ -97,6 +97,14 @@ Pasos en el README, apartado "Publicar".
 
 Se hacen sobre la web publicada (sección 14 de la lista).
 
+**Prueba previa en local (4 nov 2026)** con navegador automático en Android (Pixel 5), iPhone 13, pantalla de 360 px y escritorio:
+- ✅ Sin desbordes horizontales, sin errores en la consola, sin imágenes rotas ni archivos que fallen.
+- ✅ Los 30 enlaces de WhatsApp van al +58 414-6448843. Sin JavaScript se ven los productos con sus precios (24 con precio y 3 de la Línea Pro sin precio todavía).
+- ✅ Al recorrer la página con Tab, el foco se ve en todos los enlaces y botones.
+- ✅ Corregido: los enlaces de WhatsApp, Llamar, Instagram y TikTok del pie de página y de "Antes de pedir" medían 19–22 px de alto en el móvil; ahora tienen un área táctil de 44 px sin que cambie el diseño.
+
+Estas comprobaciones se repiten igualmente sobre la web publicada:
+
 - [ ] Android con datos móviles: productos visibles en menos de 4 s.
 - [ ] iPhone Safari: botón "Mi pedido", menú y textos sin desbordarse.
 - [ ] Tres pedidos de prueba desde un teléfono sin el número guardado. Abren WhatsApp con el mensaje correcto.
